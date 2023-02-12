@@ -1,26 +1,20 @@
 const express = require('express');
-const cors = require('cors')
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "Canada",
+    password: "password",
     database: "rentmyridedb",
     connectionLimit: 10
 });
 
-db.connect((err)=>{
-    if(err){
-       console.log(err) 
-    }
-})
-
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.get('/api/fetch', (req, res)=>{
     db.query("SELECT * FROM rentmyridedb.users" , function(err,result,fields){
@@ -29,24 +23,20 @@ app.get('/api/fetch', (req, res)=>{
         }
         else{
             //res.send(result)
-            console.log(result);
+            res.send(true);
         }
-
     })
-
 })
 
-app.post('/api/Login', (req, res)=>{
+app.get('/api/test', (req, res)=>{
+    console.log("hello?");
+}); 
 
+app.get('/api/Login', (req, res)=>{
+    res.send(true);
     const username = req.body.username
     const pw = req.body.pw
-
-
-
-    /* const sqlInsert = "INSERT INTO users (username, password) VALUES (?, ?);";
-     db.query(sqlInsert, [username, pw], (err, result)=>{
-        console.log(err)
-     });*/
+    const auth = false;
 
      db.query("SELECT * FROM rentmyridedb.users" , function(err,result,fields){
         if(err){
@@ -58,28 +48,44 @@ app.post('/api/Login', (req, res)=>{
             
             for(const type of r){
                 if(type.username == username && type.password == pw){  
-                    console.log("LOGGED IN")
+                    console.log("LoGGED IN")
+                    auth = true;
+               
                 }
                 
             }
-            
+           
         }
-
+      
     })
+    if(auth == true) res.send(true);
+    else res.send(false);
+  //  res.redirect('http://google.com');
+   
  });
-/*
-app.get("/", (req, res) => {
-  
-    const sqlInsert = "INSERT INTO users (username, password) VALUES ('', 'dfhpw');";
 
-   // const sqlInsert = 'select * from rentmyridedb.users';
-    db.query(sqlInsert, (err, result) => {
-       /*if (err)  res.send(err);
-      //  console.log("1 record inserted");
-        else { res.send("hello !!!");}*/
-       /* res.send
-    });
-});*/
+//// can use this code for registration
+// app.post('/api/insert', (req, res)=>{
+//     const username = req.body.username; 
+//     const pw = req.body.pw;
+
+//     const sqlInsert = "INSERT INTO users (username, password) VALUES (?, ?);";
+//     db.query(sqlInsert, [username, pw], (err, result)=>{
+//         console.log(result);
+//     });
+// }); 
+
+// app.get("/api/get", (req, res) => {
+//     res.send("hello");
+//    // const sqlSelect = "INSERT INTO users (username, password) VALUES ('er', 'et');";
+
+//     const sqlSelect = 'select * from users';
+//     db.query(sqlSelect, (req, res) => {
+//     //  if (err)  res.send(err);
+//        console.log(res);
+//      //   else { res.send("hello !!!");}
+//     });
+// });
 
 app.listen(3001, () => {
     console.log("running on port 3001");
