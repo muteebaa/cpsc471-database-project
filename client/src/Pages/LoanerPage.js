@@ -6,7 +6,6 @@ import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} fr
 
 
 function LoanerPage() {
-<<<<<<< HEAD
     var navigate = useNavigate();
     var { username } = useParams();
     const auth = useAuth()
@@ -21,6 +20,7 @@ function LoanerPage() {
       Axios.post("http://localhost:3001/api/UserInfo", {
       username: auth.user
     }).then((response) => {
+      console.log(response.data)
       setFName(response.data[0].FirstName);
       setLName(response.data[0].LastName);
       setPhoNumber(response.data[0].PhoneNumber);
@@ -30,11 +30,6 @@ function LoanerPage() {
     
 
   }
-=======
-  var navigate = useNavigate();
-  var { username } = useParams();
-  const auth = useAuth()
->>>>>>> a4ffe72cf86a23e3a48e6a3646cee56d82528926
 
   const handleLogout = () => {
     auth.logout()
