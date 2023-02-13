@@ -35,7 +35,6 @@ app.get('/api/test', (req, res)=>{
 app.post("/api/UserInfo",(req, res)=>{
     const username = req.body.username
     
-    console.log(username)
     db.query("SELECT * FROM rentmyridedb.users WHERE username = ?" , 
     [username],
     function(err,result){
