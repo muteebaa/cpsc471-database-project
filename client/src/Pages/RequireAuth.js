@@ -10,7 +10,7 @@ export const RequireAuth = ({children}) => {
 
   console.log(auth.user)
   if (!auth.user) {
-    return <Navigate to='/loaner-login' />
+    return <Navigate to='/' />
   }
 
   return children
