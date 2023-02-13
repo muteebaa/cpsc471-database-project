@@ -4,17 +4,25 @@ const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
 auth = false;
+
+const multer = require("multer");
+const upload = multer({storage:multer.memoryStorage()});
+
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "Canada",
+    password: "password",
     database: "rentmyridedb",
     connectionLimit: 10
 });
 
+
+
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}))
+
+
 
 app.get('/api/fetch', (req, res)=>{
     db.query("SELECT * FROM rentmyridedb.users" , function(err,result,fields){
@@ -93,7 +101,7 @@ app.post('/api/Login', (req, res)=>{
             res.send({err: err})
         }
         else{
-            console.log(result)
+         //   console.log(result)
             res.send(result)
             // if (result.length == 0) { 
             //     console.log(result)
@@ -143,7 +151,7 @@ app.post('/api/insert', (req, res)=>{
     console.log("okkk")
     
     db.query(check, [username], (err, result)=>{
-        console.log(result)
+       // console.log(result)
         if (result.length == 0){
             console.log("registeringg")
             db.query(sqlInsert, [username, pw, type, fName, lName, phone, email], (err, result)=>{
@@ -155,6 +163,22 @@ app.post('/api/insert', (req, res)=>{
         }
     })
 }); 
+
+app.post('/api/upload', upload.single('photo'), (req, res)=>{
+    regNo = req.body.regNo
+    price = req.body.price
+    color = req.body.color
+    photo = req.file.buffer.toString('base64')
+    console.log("here")
+
+    q = "insert into cars (reg-number, price, colour, photo) VALUES (?, ?, ?, ?)"
+    console.log(photo)
+    db.query(q, [regNo, price, color, photo], (err, rows, fields)=>{
+        if(err) throw err;
+        else console.log("worked")
+    })
+});
+
 
 // app.get("/api/get", (req, res) => {
 //     res.send("hello");
