@@ -21,14 +21,11 @@ function LoanerLogin() {
 
     Axios.post('http://localhost:3001/api/Login', {
         username: username, 
-        pw: pw
+        pw: pw,
+        type: 0
         }).then((response)=>{
-          console.log("what is the response")
-          console.log(response.data)
-
             if (response.data.length == 0){
               alert("Wrong Password");
-              console.log(response.data.length)
               
             }
             else{
