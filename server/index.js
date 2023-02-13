@@ -7,7 +7,7 @@ auth = false;
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "password",
+    password: "Canada",
     database: "rentmyridedb",
     connectionLimit: 10
 });
