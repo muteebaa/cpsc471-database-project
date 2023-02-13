@@ -3,11 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
-
+auth = false;
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "password",
+    password: "Canada",
     database: "rentmyridedb",
     connectionLimit: 10
 });
@@ -78,6 +78,9 @@ app.post('/api/Login', (req, res)=>{
   //  res.redirect('http://google.com');
    
  });
+
+
+
 
 //// can use this code for registration
 // app.post('/api/insert', (req, res)=>{
