@@ -32,6 +32,51 @@ app.get('/api/test', (req, res)=>{
     console.log("hello?");
 }); 
 
+app.post("/api/UserInfo",(req, res)=>{
+    const username = req.body.username
+    
+    console.log(username)
+    db.query("SELECT * FROM rentmyridedb.users WHERE username = ?" , 
+    [username],
+    function(err,result){
+        
+       if(err){
+           res.send({err: err})
+       }
+       else{
+           console.log(result)
+           res.send(result)
+           // if (result.length == 0) { 
+           //     console.log(result)
+           //     res.send({message: "Wrong username/password"})   
+           // } else {
+           //     console.log("found")
+           //     res.send(result)
+           // }
+       }
+   }
+   //         var r = JSON.parse(JSON.stringify(result))
+           
+   //         for(const type of r){
+   //             if(type.username == username && type.password == pw){  
+   //               //  console.log("LoGGED IN")
+   //                 auth = true;
+              
+   //             }
+               
+   //         }
+          
+   //     }
+     
+   // }
+   )
+   
+ //  res.redirect('http://google.com');
+  
+
+
+});
+
 app.post('/api/Login', (req, res)=>{
     const username = req.body.username
     const password = req.body.pw
