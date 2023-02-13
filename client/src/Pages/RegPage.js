@@ -22,7 +22,7 @@ function RegisterUser() {
   const regUser = () => {
     console.log('handling reg');
     var type = document.getElementById("userType").value;
-
+    console.log(type);
     Axios.post('http://localhost:3001/api/insert', {
         username: username, 
         pw: pw,
