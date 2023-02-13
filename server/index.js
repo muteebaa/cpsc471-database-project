@@ -3,11 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
-
+auth = false;
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "password",
+    password: "Canada",
     database: "rentmyridedb",
     connectionLimit: 10
 });
@@ -32,12 +32,13 @@ app.get('/api/test', (req, res)=>{
     console.log("hello?");
 }); 
 
-app.get('/api/Login', (req, res)=>{
-    res.send(true);
+app.post('/api/Login', (req, res)=>{
+    console.log("yayyy");
     const username = req.body.username
     const pw = req.body.pw
-    const auth = false;
-
+    
+    console.log(username);
+    auth = false;
      db.query("SELECT * FROM rentmyridedb.users" , function(err,result,fields){
         if(err){
             console.log(err)
@@ -48,21 +49,26 @@ app.get('/api/Login', (req, res)=>{
             
             for(const type of r){
                 if(type.username == username && type.password == pw){  
-                    console.log("LoGGED IN")
                     auth = true;
+                    console.log("LoGGED IN")
+                
                
                 }
                 
             }
            
         }
+       
+        res.send(auth);
       
     })
-    if(auth == true) res.send(true);
-    else res.send(false);
+    
   //  res.redirect('http://google.com');
    
  });
+
+
+
 
 //// can use this code for registration
 // app.post('/api/insert', (req, res)=>{
