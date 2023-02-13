@@ -4,10 +4,10 @@ import Axios from 'axios';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import LoanerLogin from './Pages/LoanerLogin'
 import Home from "./Pages/Home";
-import ErrorPage from "./Pages/ErrorPafe";
+import ErrorPage from "./Pages/ErrorPage";
 import LoanerPage from "./Pages/LoanerPage";
-import ProtectedRoute from "./Pages/ProtectedRoute";
-
+import { RequireAuth} from "./Pages/RequireAuth";
+import { AuthProvider } from "./Pages/auth";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -25,19 +25,25 @@ function App() {
   // };
 
   return (
+    <AuthProvider>
+    
     <Router> 
     
-      
       <Routes>
         <Route path='/' element={< Home />} />
         <Route path='/loaner-login' element={< LoanerLogin />} />
         <Route path='*' element={< ErrorPage />} />
 
         {/* protected routes */}
-        <Route path='/loaner-page/:username' element={< LoanerPage />} />
+        {/* <Route element={<ProtectedRoute  />}> */}
+          <Route path='/loaner-page' element={<RequireAuth> < LoanerPage /> </RequireAuth> } exact/>
+        {/* </Route> */}
+       
       </Routes>
       {/* <ProtectedRoute/> */}
     </Router>
+    </AuthProvider>
+ 
     
     // <div className="App">  
     // <h1> RentMyRide </h1>
