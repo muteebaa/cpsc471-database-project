@@ -8,8 +8,6 @@ function LoanerPage() {
   var navigate = useNavigate();
   var { username } = useParams();
   const auth = useAuth()
-  console.log('l pageee')
-  console.log(auth.user)
 
   const handleLogout = () => {
     auth.logout()

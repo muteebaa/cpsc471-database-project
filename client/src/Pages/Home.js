@@ -13,6 +13,12 @@ function Home() {
        <nav>
         <Link to="/loaner-login"> Loaner Login </Link>
       </nav>  
+      <nav>
+        <Link to="/renter-login"> Renter Login </Link>
+      </nav>  
+      <nav>
+        <Link to="/registration"> Registration </Link>
+      </nav>  
     </div>
       
 //     {/* <Routes>
