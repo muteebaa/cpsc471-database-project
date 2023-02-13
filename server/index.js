@@ -32,34 +32,49 @@ app.get('/api/test', (req, res)=>{
     console.log("hello?");
 }); 
 
-app.get('/api/Login', (req, res)=>{
-    res.send(true);
+app.post('/api/Login', (req, res)=>{
     const username = req.body.username
-    const pw = req.body.pw
-    const auth = false;
+    const password = req.body.pw
 
-     db.query("SELECT * FROM rentmyridedb.users" , function(err,result,fields){
+    console.log("in the backend")
+    console.log(username)
+    console.log("in the backend")
+    console.log(password)
+
+     db.query("SELECT * FROM rentmyridedb.users WHERE username = ? AND password = ?" , 
+     [username, password],
+     function(err,result){
         if(err){
-            console.log(err)
+            res.send({err: err})
         }
         else{
-            //res.send(result)
-            var r = JSON.parse(JSON.stringify(result))
-            
-            for(const type of r){
-                if(type.username == username && type.password == pw){  
-                    console.log("LoGGED IN")
-                    auth = true;
-               
-                }
-                
-            }
-           
+            console.log(result)
+            res.send(result)
+            // if (result.length == 0) { 
+            //     console.log(result)
+            //     res.send({message: "Wrong username/password"})   
+            // } else {
+            //     console.log("found")
+            //     res.send(result)
+            // }
         }
+    }
+    //         var r = JSON.parse(JSON.stringify(result))
+            
+    //         for(const type of r){
+    //             if(type.username == username && type.password == pw){  
+    //               //  console.log("LoGGED IN")
+    //                 auth = true;
+               
+    //             }
+                
+    //         }
+           
+    //     }
       
-    })
-    if(auth == true) res.send(true);
-    else res.send(false);
+    // }
+    )
+    
   //  res.redirect('http://google.com');
    
  });
