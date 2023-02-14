@@ -5,8 +5,40 @@ const app = express();
 const mysql = require('mysql');
 auth = false;
 
+
 const multer = require("multer");
-const upload = multer({storage:multer.memoryStorage()});
+
+
+var fileName = multer({
+    filename:(req,file,callback)=>{
+        callback(null,`image-${file.originalname}`)
+    }
+});
+
+// img storage confing
+var imgconfig = multer.diskStorage({
+    destination:(req,file,callback)=>{
+        callback(null,"./imgs");
+    },
+    filename:(req,file,callback)=>{
+        callback(null,`image-${file.originalname}`)
+    }
+});
+
+
+// img filter
+const isImage = (req,file,callback)=>{
+    if(file.mimetype.startsWith("image")){
+        callback(null,true)
+    }else{
+        callback(null,Error("only image is allowd"))
+    }
+}
+
+var upload = multer({
+    storage:imgconfig,
+    fileFilter:isImage
+})
 
 const db = mysql.createPool({
     host: "localhost",
@@ -36,8 +68,19 @@ app.get('/api/fetch', (req, res)=>{
     })
 })
 
-app.get('/api/test', (req, res)=>{
-    console.log("hello?");
+app.post('/api/test', upload.single('photo'), (req, res)=>{
+    const fname = req.body.fname;
+    const filename = `image-${req.body.photoName}`;
+    const reg = req.body.reg;
+    const price = req.body.price;
+    const colour = req.body.colour;
+   
+    db.query("INSERT INTO cars (name, regNumber, price, colour, photo) VALUES (?, ?, ?, ?, ?)", [fname, reg, price, colour, filename], (err, result)=>{
+        if(err) throw err;
+        else console.log("worked")
+    });
+
+    
 }); 
 
 app.post("/api/UserInfo",(req, res)=>{
@@ -136,7 +179,7 @@ app.post('/api/Login', (req, res)=>{
 
 
 //// can use this code for registration
-app.post('/api/insert', (req, res)=>{
+app.post('/api/insert',  (req, res)=>{
     const username = req.body.username; 
     const pw = req.body.pw;
     const type = req.body.type;
@@ -164,20 +207,6 @@ app.post('/api/insert', (req, res)=>{
     })
 }); 
 
-app.post('/api/upload', upload.single('photo'), (req, res)=>{
-    regNo = req.body.regNo
-    price = req.body.price
-    color = req.body.color
-    photo = req.file.buffer.toString('base64')
-    console.log("here")
-
-    q = "insert into cars (reg-number, price, colour, photo) VALUES (?, ?, ?, ?)"
-    console.log(photo)
-    db.query(q, [regNo, price, color, photo], (err, rows, fields)=>{
-        if(err) throw err;
-        else console.log("worked")
-    })
-});
 
 
 // app.get("/api/get", (req, res) => {
