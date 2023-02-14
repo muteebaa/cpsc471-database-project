@@ -12,6 +12,7 @@ import RegPage from "./Pages/RegPage";
 import { RequireAuth} from "./Pages/RequireAuth";
 import { AuthProvider } from "./Pages/auth";
 
+
 function App() {
   const [username, setUsername] = useState("");
   const [pw, setPW] = useState("");
