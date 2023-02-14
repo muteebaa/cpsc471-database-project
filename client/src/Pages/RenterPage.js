@@ -15,7 +15,8 @@ function RenterPage() {
     const [regNo, setRegNo] = useState("");
     const [image, setImage] = useState([]);
 
-    
+    const [fname,setFileName] = useState("");
+    const [file,setFile] = useState("");
 
     const info = () => {
       Axios.post("http://localhost:3001/api/UserInfo", {
@@ -38,13 +39,23 @@ function RenterPage() {
   }
 
   function addCar() {
-    console.log("okk")
-    Axios.post("http://localhost:3001/api/upload", {
-      image: image
+    console.log("add car called")
+    
+    const config = {
+        headers:{
+            "Content-Type":"multipart/form-data"
+        }
+    }
+    console.log(fname)
+    console.log(file)
+    Axios.post("http://localhost:3001/api/test", {
+      fname: fname,
+      photo: file
     }).then((response) => {
       console.log(response)
     })
   }
+
   function handleImage(e){
     console.log(e.target.files)
     setImage(e.target.files[0])
@@ -74,7 +85,10 @@ function RenterPage() {
           }}/>
           <input type="text" placeholder="price" name="price" />
           <input type="text" placeholder="color" name="color" />
-          <input type="file" name="photo" onChange={handleImage}/>
+          <input type="text" placeholder="name" name="name" onChange={(e)=>{setFileName(e.target.value)}} />
+          <input type="file" onChange={
+            (e) => { setFile(e.target.files[0].name)
+          }}  />
           <button onClick={addCar}>Add car</button>
         {/* </form> */}
       </div>
