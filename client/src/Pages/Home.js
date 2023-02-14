@@ -19,6 +19,7 @@ function Home() {
       <nav>
         <Link to="/registration"> Registration </Link>
       </nav>  
+
     </div>
       
 //     {/* <Routes>
