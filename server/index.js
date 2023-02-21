@@ -42,7 +42,7 @@ var upload = multer({
 
 const db = mysql.createPool({
     host: "localhost",
-    user: "root",
+    user: "sqluser",
     password: "password",
     database: "rentmyridedb",
     connectionLimit: 10
@@ -69,13 +69,16 @@ app.get('/api/fetch', (req, res)=>{
 })
 
 app.post('/api/test', upload.single('photo'), (req, res)=>{
-    const fname = req.body.fname;
+    const username = req.body.username;
+    const make = req.body.make;
+    const model = req.body.model;
     const filename = `image-${req.body.photoName}`;
     const reg = req.body.reg;
+    const features = req.body.features;
     const price = req.body.price;
     const colour = req.body.colour;
    
-    db.query("INSERT INTO cars (name, regNumber, price, colour, photo) VALUES (?, ?, ?, ?, ?)", [fname, reg, price, colour, filename], (err, result)=>{
+    db.query("INSERT INTO cars (username, make, model, regNumber, price, features, colour, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, reg, price,features, colour, filename], (err, result)=>{
         if(err) throw err;
         else console.log("worked")
     });
@@ -194,7 +197,7 @@ app.post('/api/insert',  (req, res)=>{
     console.log("okkk")
     
     db.query(check, [username], (err, result)=>{
-       // console.log(result)
+        //console.log(result)
         if (result.length == 0){
             console.log("registeringg")
             db.query(sqlInsert, [username, pw, type, fName, lName, phone, email], (err, result)=>{
