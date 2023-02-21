@@ -16,10 +16,12 @@ function LoanerPage() {
  
     const [regNo, setRegNo] = useState("");
 
-    const [fname,setFileName] = useState("");
+    const [make,setMake] = useState("");
+    const [model,setModel] = useState("");
     const [file,setFile] = useState("");
     const [photoName,setPhotoName] = useState("");
     const [price,setPrice] = useState("");
+    const [features,setFeatures] = useState("");
     const [colour,setColour] = useState("");
 
     const info = () => {
@@ -50,15 +52,17 @@ function LoanerPage() {
             "Content-Type":"multipart/form-data"
         }
     }
-    console.log(fname)
     console.log(file)
     Axios.post("http://localhost:3001/api/test", {
-      fname: fname,
+      username: auth.user,
+      make: make,
+      model: model,
       photo: file,
       photoName: photoName,
       reg: regNo,
       price: price,
-      colour: colour
+      colour: colour,
+      features: features
     }, config).then((response) => {
       console.log(response)
     })
@@ -87,13 +91,17 @@ function LoanerPage() {
           onChange={
             (e) => {setRegNo(e.target.value);
           }}/>
-          <input type="text" placeholder="price" name="price"    onChange={
+          <input type="number" placeholder="price" name="price"    onChange={
             (e) => {setPrice(e.target.value);
           }}/>
           <input type="text" placeholder="color" name="color"   onChange={
             (e) => {setColour(e.target.value);
           }} />
-          <input type="text" placeholder="name" name="name" onChange={(e)=>{setFileName(e.target.value)}} />
+          <input type="text" placeholder="make" name="make" onChange={(e)=>{setMake(e.target.value)}} />
+          <input type="text" placeholder="model" name="model" onChange={(e)=>{setModel(e.target.value)}} />
+          <input type="text" placeholder="add features with a comma" name="features" onChange={(e)=>{setFeatures(e.target.value)}} />
+
+          
           <input type="file" onChange={
             (e) => { setFile(e.target.files[0] )
               setPhotoName(e.target.files[0].name )
