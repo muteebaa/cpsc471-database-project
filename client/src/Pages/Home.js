@@ -18,6 +18,9 @@ function Home() {
       </nav>  
       <nav>
         <Link to="/registration"> Registration </Link>
+      </nav> 
+      <nav>
+        <Link to="/carsForRent"> Search for cars as a guest </Link>
       </nav>  
 
     </div>

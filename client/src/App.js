@@ -9,6 +9,7 @@ import ErrorPage from "./Pages/ErrorPage";
 import LoanerPage from "./Pages/LoanerPage";
 import RenterPage from "./Pages/RenterPage";
 import RegPage from "./Pages/RegPage";
+import Cars from "./Pages/carsForRent";
 import { RequireAuth} from "./Pages/RequireAuth";
 import { AuthProvider } from "./Pages/auth";
 
@@ -38,6 +39,7 @@ function App() {
         <Route path='/loaner-login' element={< LoanerLogin />} />
         <Route path='/renter-login' element={< RenterLogin />} />
         <Route path='/registration' element={< RegPage />} />
+        <Route path='/carsForRent' element={< Cars />} />
 
         <Route path='*' element={< ErrorPage />} />
 
