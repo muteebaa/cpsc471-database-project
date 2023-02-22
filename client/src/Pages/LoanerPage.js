@@ -68,6 +68,10 @@ function LoanerPage() {
     })
   }
 
+  function showRentHistory() {
+    
+  }
+
   return (
     
 
@@ -108,6 +112,7 @@ function LoanerPage() {
           }}  />
           <button onClick={addCar}>Add car</button>
         {/* </form> */}
+        <button onClick={showRentHistory}>Show Rent History</button>
       </div>
       
 
