@@ -20,7 +20,7 @@ function Home() {
         <Link to="/registration"> Registration </Link>
       </nav> 
       <nav>
-        <Link to="/carsForRent"> Search for cars as a guest </Link>
+        <Link to="/CarsForRent"> Search for cars as a guest </Link>
       </nav>  
 
     </div>

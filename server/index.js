@@ -18,7 +18,7 @@ var fileName = multer({
 // img storage confing
 var imgconfig = multer.diskStorage({
     destination:(req,file,callback)=>{
-        callback(null,"./imgs");
+        callback(null,"../client/src/imgs");
     },
     filename:(req,file,callback)=>{
         callback(null,`image-${file.originalname}`)
@@ -108,24 +108,30 @@ app.post("/api/UserInfo",(req, res)=>{
            // }
        }
    }
-   //         var r = JSON.parse(JSON.stringify(result))
-           
-   //         for(const type of r){
-   //             if(type.username == username && type.password == pw){  
-   //               //  console.log("LoGGED IN")
-   //                 auth = true;
-              
-   //             }
-               
-   //         }
-          
-   //     }
-     
-   // }
-   )
-   
- //  res.redirect('http://google.com');
   
+   )
+
+});
+
+app.post("/api/Cars",(req, res)=>{
+    db.query("SELECT * FROM rentmyridedb.cars",
+    function(err,result){
+         
+        if(err){
+            res.send({err: err})
+        }
+        else{
+            res.send(result)
+            // if (result.length == 0) { 
+            //     console.log(result)
+            //     res.send({message: "Wrong username/password"})   
+            // } else {
+            //     console.log("found")
+            //     res.send(result)
+            // }
+        }
+    }
+    )
 
 
 });
