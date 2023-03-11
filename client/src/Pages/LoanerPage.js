@@ -23,6 +23,7 @@ function LoanerPage() {
     const [price,setPrice] = useState("");
     const [features,setFeatures] = useState("");
     const [colour,setColour] = useState("");
+    const [pickupAddress,setAddress] = useState("");
 
     const info = () => {
       Axios.post("http://localhost:3001/api/UserInfo", {
@@ -62,7 +63,9 @@ function LoanerPage() {
       reg: regNo,
       price: price,
       colour: colour,
-      features: features
+      features: features,
+      pickupAddress: pickupAddress,
+
     }, config).then((response) => {
       console.log(response)
     })
@@ -104,6 +107,7 @@ function LoanerPage() {
           <input type="text" placeholder="make" name="make" onChange={(e)=>{setMake(e.target.value)}} />
           <input type="text" placeholder="model" name="model" onChange={(e)=>{setModel(e.target.value)}} />
           <input type="text" placeholder="add features with a comma" name="features" onChange={(e)=>{setFeatures(e.target.value)}} />
+          <input type="text" placeholder="pickup address" name="pickupAddress" onChange={(e)=>{setAddress(e.target.value)}} />
 
           
           <input type="file" onChange={

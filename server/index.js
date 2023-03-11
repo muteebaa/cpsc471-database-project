@@ -74,14 +74,19 @@ app.post('/api/test', upload.single('photo'), (req, res)=>{
     const model = req.body.model;
     const filename = `image-${req.body.photoName}`;
     const reg = req.body.reg;
+    const pickupAddress = req.body.pickupAddress;
     const features = req.body.features;
     const price = req.body.price;
     const colour = req.body.colour;
+    
+    
    
-    db.query("INSERT INTO cars (username, make, model, regNumber, price, features, colour, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, reg, price,features, colour, filename], (err, result)=>{
+    db.query("INSERT INTO cars (username, make, model, regNumber, price, features, colour, photo, pickupAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, reg, price,features, colour, filename, pickupAddress], (err, result)=>{
         if(err) throw err;
         else console.log("worked")
     });
+
+   
 
     
 }); 
