@@ -9,6 +9,7 @@ import ErrorPage from "./Pages/ErrorPage";
 import LoanerPage from "./Pages/LoanerPage";
 import RenterPage from "./Pages/RenterPage";
 import RegPage from "./Pages/RegPage";
+import AddCarPage from "./Pages/AddCarPage";
 import { RequireAuth} from "./Pages/RequireAuth";
 import { AuthProvider } from "./Pages/auth";
 
@@ -39,13 +40,15 @@ function App() {
         <Route path='/renter-login' element={< RenterLogin />} />
         <Route path='/registration' element={< RegPage />} />
 
+        
+
         <Route path='*' element={< ErrorPage />} />
 
         {/* protected routes */}
         {/* <Route element={<ProtectedRoute  />}> */}
           <Route path='/loaner-page' element={<RequireAuth> < LoanerPage /> </RequireAuth> } exact/>
           <Route path='/renter-page' element={<RequireAuth> < RenterPage /> </RequireAuth> } exact/>
-
+          <Route path='/addcar' element={<RequireAuth> < AddCarPage /> </RequireAuth>} exact/>
         {/* </Route> */}
        
       </Routes>

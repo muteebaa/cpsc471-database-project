@@ -14,14 +14,6 @@ function LoanerPage() {
     const [phoneNumber, setPhoNumber] = useState("");
     const [emailAddress, setEmail] = useState("");
  
-    const [regNo, setRegNo] = useState("");
-
-    const [fname,setFileName] = useState("");
-    const [file,setFile] = useState("");
-    const [photoName,setPhotoName] = useState("");
-    const [price,setPrice] = useState("");
-    const [colour,setColour] = useState("");
-
     const info = () => {
       Axios.post("http://localhost:3001/api/UserInfo", {
       username: auth.user
@@ -32,36 +24,16 @@ function LoanerPage() {
       setPhoNumber(response.data[0].PhoneNumber);
       setEmail(response.data[0].EmailAddress);
     })
-      
-    
-
   }
+
 
   const handleLogout = () => {
     auth.logout()
     navigate('/')
   }
 
-  function addCar() {
-    console.log("add car called")
-    
-    const config = {
-        headers:{
-            "Content-Type":"multipart/form-data"
-        }
-    }
-    console.log(fname)
-    console.log(file)
-    Axios.post("http://localhost:3001/api/test", {
-      fname: fname,
-      photo: file,
-      photoName: photoName,
-      reg: regNo,
-      price: price,
-      colour: colour
-    }, config).then((response) => {
-      console.log(response)
-    })
+  const testbutton = () => {
+    navigate('/addcar')
   }
 
   return (
@@ -69,40 +41,30 @@ function LoanerPage() {
 
     <><div>
       {info()}
-    </div> <div className="App">
+    </div> 
+    
+    <div className="App">
         <h1> Loaner Home Page </h1>
         <div> Welcome {auth.user} </div>
+       
+
+
       </div>
       <div className="Information">
         <h1> About: </h1>
+         
         <div> First Name : {firstName} </div>
         <div> Last Name : {lastName} </div>
         <div> PhoneNumber : {phoneNumber} </div>
         <div> Email : {emailAddress} </div>
+
+        <div>  
+          {/* <img src={pic} class="logo" alt="aaa"/> */}
+        </div>
       </div>
 
-      <div>
-        {/* <form method="POST" encType="multpart/form-data" action={addCar}> */}
-          <input type="text" placeholder="regNo" name="regNo" 
-          onChange={
-            (e) => {setRegNo(e.target.value);
-          }}/>
-          <input type="text" placeholder="price" name="price"    onChange={
-            (e) => {setPrice(e.target.value);
-          }}/>
-          <input type="text" placeholder="color" name="color"   onChange={
-            (e) => {setColour(e.target.value);
-          }} />
-          <input type="text" placeholder="name" name="name" onChange={(e)=>{setFileName(e.target.value)}} />
-          <input type="file" onChange={
-            (e) => { setFile(e.target.files[0] )
-              setPhotoName(e.target.files[0].name )
-          }}  />
-          <button onClick={addCar}>Add car</button>
-        {/* </form> */}
-      </div>
-      
-
+      <button onClick={testbutton}> Add Car </button>
+  
       <button onClick={handleLogout}>Logout</button>
       </>
 

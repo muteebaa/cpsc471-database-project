@@ -12,11 +12,7 @@ function RenterPage() {
     const [lastName, setLName] = useState("");
     const [phoneNumber, setPhoNumber] = useState("");
     const [emailAddress, setEmail] = useState("");
-    const [regNo, setRegNo] = useState("");
-    const [image, setImage] = useState([]);
-
-    const [fname,setFileName] = useState("");
-    const [file,setFile] = useState("");
+    
 
     const info = () => {
       Axios.post("http://localhost:3001/api/UserInfo", {
@@ -38,28 +34,7 @@ function RenterPage() {
     navigate('/')
   }
 
-  function addCar() {
-    console.log("add car called")
-    
-    const config = {
-        headers:{
-            "Content-Type":"multipart/form-data"
-        }
-    }
-    console.log(fname)
-    console.log(file)
-    Axios.post("http://localhost:3001/api/test", {
-      fname: fname,
-      photo: file
-    }).then((response) => {
-      console.log(response)
-    })
-  }
 
-  function handleImage(e){
-    console.log(e.target.files)
-    setImage(e.target.files[0])
-  }
 
   return (
     
@@ -77,21 +52,7 @@ function RenterPage() {
         <div> Email : {emailAddress} </div>
       </div>
 
-      <div>
-        {/* <form method="POST" encType="multpart/form-data" action={addCar}> */}
-          <input type="text" placeholder="regNo" name="regNo" 
-          onChange={
-            (e) => {setRegNo(e.target.value);
-          }}/>
-          <input type="text" placeholder="price" name="price" />
-          <input type="text" placeholder="color" name="color" />
-          <input type="text" placeholder="name" name="name" onChange={(e)=>{setFileName(e.target.value)}} />
-          <input type="file" onChange={
-            (e) => { setFile(e.target.files[0].name)
-          }}  />
-          <button onClick={addCar}>Add car</button>
-        {/* </form> */}
-      </div>
+    
       
 
       <button onClick={handleLogout}>Logout</button>

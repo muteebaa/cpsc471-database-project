@@ -18,7 +18,7 @@ var fileName = multer({
 // img storage confing
 var imgconfig = multer.diskStorage({
     destination:(req,file,callback)=>{
-        callback(null,"./imgs");
+        callback(null,"C:\\Users\\mutee\\OneDrive\\Desktop\\cpsc471\\project\\cpsc471-database-project\\client\\public\\imgs");
     },
     filename:(req,file,callback)=>{
         callback(null,`image-${file.originalname}`)
@@ -70,18 +70,36 @@ app.get('/api/fetch', (req, res)=>{
 
 app.post('/api/test', upload.single('photo'), (req, res)=>{
     const fname = req.body.fname;
-    const filename = `image-${req.body.photoName}`;
+    const filepath = `./imgs/image-${req.body.photoName}`;
     const reg = req.body.reg;
     const price = req.body.price;
     const colour = req.body.colour;
    
-    db.query("INSERT INTO cars (name, regNumber, price, colour, photo) VALUES (?, ?, ?, ?, ?)", [fname, reg, price, colour, filename], (err, result)=>{
+    db.query("INSERT INTO cars (name, regNumber, price, colour, photo) VALUES (?, ?, ?, ?, ?)", [fname, reg, price, colour, filepath], (err, result)=>{
         if(err) throw err;
         else console.log("worked")
     });
 
     
 }); 
+
+app.post("/api/carinfo",(req, res)=>{
+    const regNo = req.body.regNo
+    
+    db.query("SELECT * FROM rentmyridedb.cars WHERE regNumber = ?" , 
+    [regNo],
+    function(err,result){
+        
+       if(err){
+           res.send({err: err})
+       }
+       else{
+           console.log(result)
+           res.send(result)
+       }
+   }
+   )
+});
 
 app.post("/api/UserInfo",(req, res)=>{
     const username = req.body.username
