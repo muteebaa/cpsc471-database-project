@@ -24,6 +24,9 @@ function LoanerPage() {
     const [features,setFeatures] = useState("");
     const [colour,setColour] = useState("");
     const [pickupAddress,setAddress] = useState("");
+    const [year,setYear] = useState("");
+    const [description,setDescription] = useState("");
+    const [type,setType] = useState("");
 
     const info = () => {
       Axios.post("http://localhost:3001/api/UserInfo", {
@@ -54,10 +57,11 @@ function LoanerPage() {
         }
     }
     console.log(file)
-    Axios.post("http://localhost:3001/api/test", {
+    Axios.post("http://localhost:3001/api/registerCar", {
       username: auth.user,
       make: make,
       model: model,
+      year: year,
       photo: file,
       photoName: photoName,
       reg: regNo,
@@ -65,6 +69,8 @@ function LoanerPage() {
       colour: colour,
       features: features,
       pickupAddress: pickupAddress,
+      type: type,
+      description: description
 
     }, config).then((response) => {
       console.log(response)
@@ -98,19 +104,28 @@ function LoanerPage() {
           onChange={
             (e) => {setRegNo(e.target.value);
           }}/>
-          <input type="number" placeholder="price" name="price"    onChange={
+          <input type="number" placeholder="price per day" name="price"   onChange={
             (e) => {setPrice(e.target.value);
           }}/>
-          <input type="text" placeholder="color" name="color"   onChange={
+          <input type="text" placeholder="color" name="color"  onChange={
             (e) => {setColour(e.target.value);
           }} />
-          <input type="text" placeholder="make" name="make" onChange={(e)=>{setMake(e.target.value)}} />
-          <input type="text" placeholder="model" name="model" onChange={(e)=>{setModel(e.target.value)}} />
-          <input type="text" placeholder="add features with a comma" name="features" onChange={(e)=>{setFeatures(e.target.value)}} />
-          <input type="text" placeholder="pickup address" name="pickupAddress" onChange={(e)=>{setAddress(e.target.value)}} />
+          <input type="text" placeholder="make" name="make"  onChange={(e)=>{setMake(e.target.value)}} />
+          <input type="text" placeholder="model" name="model"  onChange={(e)=>{setModel(e.target.value)}} />
+          <input type="text" placeholder="year" name="year"  onChange={(e)=>{setYear(e.target.value)}} />
+          <select name="type" placeholder="type"  onChange={(e)=>{setType(e.target.value)}}>
+            <option value="SUV">SUV</option>
+            <option value="Sedan">Sedan</option>
+            <option value="Truck">Truck</option>
+            <option value="Coupe">Coupe</option>
+            <option value="Other">Other</option>
+          </select>
+          <input type="text" placeholder="add features with a comma" name="features"  onChange={(e)=>{setFeatures(e.target.value)}} />
+          <input type="text" placeholder="pickup address" name="pickupAddress"  onChange={(e)=>{setAddress(e.target.value)}} />
+          <input type="text" placeholder="description" name="descriptionn"  onChange={(e)=>{setDescription(e.target.value)}} />
 
           
-          <input type="file" onChange={
+          <input type="file"  onChange={
             (e) => { setFile(e.target.files[0] )
               setPhotoName(e.target.files[0].name )
           }}  />

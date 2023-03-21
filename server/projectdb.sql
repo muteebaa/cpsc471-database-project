@@ -15,12 +15,17 @@ CREATE TABLE `cars` (
   `username` varchar(45) NOT NULL,
   `make` varchar(45) NOT NULL,
   `model` varchar(45) NOT NULL,
+  `year` varchar(45) NOT NULL,
   `regNumber` varchar(45) NOT NULL,
   `price` varchar(45) NOT NULL,
   `features` varchar(1000) NOT NULL,
+  `type` varchar(45) NOT NULL,
   `colour` varchar(45) NOT NULL,
-  `photo` varchar(45) NOT NULL,
   `pickupAddress` varchar(200) NOT NULL,
+  `description` varchar(3000) NOT NULL,
+  `photo` varchar(450) NOT NULL,
+  
+  
   PRIMARY KEY (`regNumber`)
 );
 
