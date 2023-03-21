@@ -43,13 +43,13 @@ function CarsForRent() {
             
             <div key={getD.regNumber}>
               <div className = "Car">
-                <div className="Make"><strong>Make: </strong>{  getD.make  }</div>
-                <div className="Model"><strong>Model: </strong>{  getD.model  }</div>
-                <div className="Price"><strong>Price: </strong>{  getD.price  }</div>
-                <div className="Color"><strong>Color:</strong>{  getD.photo  }</div>
-                <div className="Picture"><strong>Picture: </strong><img src={require(`../imgs/${  getD.photo  }`)} /> </div>
-
-                <div> <button onClick={MoreInfo}> Find out more </button> </div>
+              <a href={"/CarDetails/"+getD.regNumber}>{getD.make} {getD.model}</a>
+              <br></br>
+                <div className="Price"><strong>Price: </strong>{  getD.price  } per day</div>
+                <br></br>
+                <div className="Picture"><strong></strong><img src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
+                <br></br>
+                <br></br>
               </div>
               <br>
               

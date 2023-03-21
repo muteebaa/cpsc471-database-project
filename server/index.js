@@ -68,7 +68,7 @@ app.get('/api/fetch', (req, res)=>{
     })
 })
 
-app.post('/api/test', upload.single('photo'), (req, res)=>{
+app.post('/api/registerCar', upload.single('photo'), (req, res)=>{
     const username = req.body.username;
     const make = req.body.make;
     const model = req.body.model;
@@ -78,10 +78,13 @@ app.post('/api/test', upload.single('photo'), (req, res)=>{
     const features = req.body.features;
     const price = req.body.price;
     const colour = req.body.colour;
+    const year = req.body.year;
+    const description = req.body.description;
+    const type = req.body.type;
     
     
    
-    db.query("INSERT INTO cars (username, make, model, regNumber, price, features, colour, photo, pickupAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, reg, price,features, colour, filename, pickupAddress], (err, result)=>{
+    db.query("INSERT INTO cars (username, make, model, year, regNumber, price, features, type, colour, pickupAddress, description, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, year, reg, price,features, type, colour, pickupAddress, description, filename, ], (err, result)=>{
         if(err) throw err;
         else console.log("worked")
     });
