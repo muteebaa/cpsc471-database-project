@@ -33,7 +33,7 @@ function CarDetails(props) {
       
     }).then((response) => {
 
-      console.log(response.data[1].regNumber);
+      
       console.log(response.data.length)
       for(const car of response.data){
         if (car.regNumber == id){
@@ -51,10 +51,7 @@ function CarDetails(props) {
           setDescription(car.description)
         }
       }
-      
-      
-      
-      
+         
       
     })}
 
