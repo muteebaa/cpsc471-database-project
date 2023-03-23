@@ -59,6 +59,7 @@ function CarDetails(props) {
     
   })
 
+
   return (
       // <Router> 
       <><div>
@@ -79,7 +80,7 @@ function CarDetails(props) {
        <div className="Description">Description : {description}</div>
        <br></br>
        <div className="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
-        
+        <div className="previousPage"><a href="/carsForRent">Back to the car search page?</a></div>
       </>
   );}
 

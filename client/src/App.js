@@ -13,6 +13,7 @@ import CarsForRent from "./Pages/CarsForRent";
 import CarDetails from "./Pages/CarDetails";
 import { RequireAuth} from "./Pages/RequireAuth";
 import { AuthProvider } from "./Pages/auth";
+import Navbar from "./Pages/NavBar";
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
 
   return (
     <AuthProvider>
-    
+    <Navbar></Navbar>
     <Router> 
     
       <Routes>
