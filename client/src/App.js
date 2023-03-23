@@ -10,6 +10,9 @@ import LoanerPage from "./Pages/LoanerPage";
 import RenterPage from "./Pages/RenterPage";
 import RegPage from "./Pages/RegPage";
 import AddCarPage from "./Pages/AddCarPage";
+import CarInfoPage from "./Pages/CarInfoPage";
+import LoanerHistory from "./Pages/LoanerHistory";
+import RenterHistory from "./Pages/RenterHistory";
 import { RequireAuth} from "./Pages/RequireAuth";
 import { AuthProvider } from "./Pages/auth";
 
@@ -39,6 +42,7 @@ function App() {
         <Route path='/loaner-login' element={< LoanerLogin />} />
         <Route path='/renter-login' element={< RenterLogin />} />
         <Route path='/registration' element={< RegPage />} />
+        <Route path='/carinfo' element={< CarInfoPage />} />
 
         
 
@@ -49,6 +53,8 @@ function App() {
           <Route path='/loaner-page' element={<RequireAuth> < LoanerPage /> </RequireAuth> } exact/>
           <Route path='/renter-page' element={<RequireAuth> < RenterPage /> </RequireAuth> } exact/>
           <Route path='/addcar' element={<RequireAuth> < AddCarPage /> </RequireAuth>} exact/>
+          <Route path='/loanerhistory' element={<RequireAuth> < LoanerHistory /> </RequireAuth>} exact/>
+          <Route path='/renterhistory' element={<RequireAuth> < RenterHistory /> </RequireAuth>} exact/>
         {/* </Route> */}
        
       </Routes>

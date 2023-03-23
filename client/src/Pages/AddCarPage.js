@@ -47,6 +47,10 @@ function RenterPage() {
     }, config).then((response) => {
       console.log(response)
     })
+
+    if(true){
+      navigate('/carinfo')
+    }
   }
 
 

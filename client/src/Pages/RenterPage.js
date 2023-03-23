@@ -34,6 +34,9 @@ function RenterPage() {
     navigate('/')
   }
 
+  const viewhistory = () => {
+    navigate('/renterhistory')
+  }
 
 
   return (
@@ -53,7 +56,7 @@ function RenterPage() {
       </div>
 
     
-      
+      <button onClick={viewhistory}> View History </button>
 
       <button onClick={handleLogout}>Logout</button>
       </>

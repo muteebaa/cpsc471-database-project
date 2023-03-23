@@ -36,6 +36,10 @@ function LoanerPage() {
     navigate('/addcar')
   }
 
+  const viewhistory = () => {
+    navigate('/loanerhistory')
+  }
+
   return (
     
 
@@ -62,6 +66,8 @@ function LoanerPage() {
           {/* <img src={pic} class="logo" alt="aaa"/> */}
         </div>
       </div>
+
+      <button onClick={viewhistory}> View History </button>
 
       <button onClick={testbutton}> Add Car </button>
   
