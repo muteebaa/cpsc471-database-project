@@ -45,7 +45,7 @@ function RenterLogin() {
   return (
     
     <div className="App">  
-      <h1> RentMyRide </h1>
+      <h1> Renter Login </h1>
       <nav>
         <Link to="/"> back </Link>
       </nav>  
@@ -62,7 +62,7 @@ function RenterLogin() {
 
         <div> Password </div>
         <input 
-          type="text" 
+          type="password" 
           name="pw"
           onChange={
             (e) => {setPW(e.target.value);
@@ -70,6 +70,9 @@ function RenterLogin() {
         />
         
         <div> <button onClick={handleLogin}> Login </button> </div>
+
+        <div className="registerPage"><a href="/registration">Dont have an account? Register right now</a></div>
+
     
       </div>
 
