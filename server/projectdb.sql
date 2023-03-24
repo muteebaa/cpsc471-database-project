@@ -21,6 +21,8 @@ CREATE TABLE `cars` (
   `features` varchar(1000) NOT NULL,
   `type` varchar(45) NOT NULL,
   `colour` varchar(45) NOT NULL,
+  `startDate` varchar(45) NOT NULL,
+  `endDate` varchar(45) NOT NULL,
   `pickupAddress` varchar(200) NOT NULL,
   `description` varchar(3000) NOT NULL,
   `photo` varchar(450) NOT NULL,

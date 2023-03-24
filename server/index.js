@@ -81,10 +81,13 @@ app.post('/api/registerCar', upload.single('photo'), (req, res)=>{
     const year = req.body.year;
     const description = req.body.description;
     const type = req.body.type;
+    const startDate = req.body.startDate;
+    const endDate = req.body.endDate;
+
     
     
    
-    db.query("INSERT INTO cars (username, make, model, year, regNumber, price, features, type, colour, pickupAddress, description, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, year, reg, price,features, type, colour, pickupAddress, description, filename, ], (err, result)=>{
+    db.query("INSERT INTO cars (username, make, model, year, regNumber, price, features, type, colour, startDate, endDate, pickupAddress, description, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, year, reg, price,features, type, colour, startDate, endDate, pickupAddress, description, filename, ], (err, result)=>{
         if(err) throw err;
         else console.log("worked")
     });

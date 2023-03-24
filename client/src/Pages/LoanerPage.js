@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from "react"; 
 //import './App.css';
 import Axios from 'axios';
+
 import { useAuth } from "./auth";
+
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
 
@@ -27,11 +29,15 @@ function LoanerPage() {
     const [year,setYear] = useState("");
     const [description,setDescription] = useState("");
     const [type,setType] = useState("");
+    const [startDate,setStartDate] = useState("");
+    const [endDate,setEndDate] = useState("");
+    const current = new Date();
+    const date = `${current.getFullYear()}-${current.getMonth() + 1<10?`0${current.getMonth() + 1}`:`${current.getMonth() + 1}`}-${current.getDate()<10?`0${current.getDate()}`:`${current.getDate()}`}`;
+    
 
     const [regNoError, setRegNoError] = useState("");
     const [makeError,setMakeError] = useState("");
     const [modelError,setModelError] = useState("");
-    const [fileError,setFileError] = useState("");
     const [photoNameError,setPhotoNameError] = useState("");
     const [priceError,setPriceError] = useState("");
     const [featuresError,setFeaturesError] = useState("");
@@ -40,6 +46,7 @@ function LoanerPage() {
     const [yearError,setYearError] = useState("");
     const [descriptionError,setDescriptionError] = useState("");
     const [typeError,setTypeError] = useState("");
+    const [dateError,setDateError] = useState("");
 
     var navigate = useNavigate();
 
@@ -57,9 +64,56 @@ function LoanerPage() {
     
 
   }
+
+
   const validate = () => {
 
     var checker = true;
+
+    const SDate = startDate.split('-');
+    const EDate = endDate.split('-');
+
+    if(startDate != '' && endDate != ''){
+      if(SDate[0] > EDate[0]){
+        setDateError("End Date should be later than start date")
+        checker = false;
+
+      }
+      else if(SDate[0] < EDate[0]){
+        setDateError("");
+        checker = true;
+      }
+      else{
+        if(SDate[1] < EDate[1]){
+          setDateError("");
+          checker = true;
+        }
+        else if(SDate[1] > EDate[1]){
+          setDateError("End Date should be later than start date")
+          checker = false;
+        }
+        else{
+          if(SDate[2] > EDate[2]){
+            setDateError("End Date should be later than start date")
+            checker = false;
+          }
+          else{
+            setDateError("");
+            checker = true;
+
+          }
+        }
+
+        
+      }
+    }
+    else{
+      setDateError("Please enter the start and end date")
+      checker = false
+    }
+
+    
+
 
     if(regNo == ""){
       
@@ -193,7 +247,9 @@ function LoanerPage() {
         features: features,
         pickupAddress: pickupAddress,
         type: type,
-        description: description
+        description: description,
+        startDate: startDate,
+        endDate: endDate
 
       }, config).then((response) => {
         
@@ -218,6 +274,7 @@ function LoanerPage() {
         <h1> Loaner Home Page </h1>
         <div> Welcome {auth.user} </div>
       </div>
+      <h1>{date}</h1>
       <div className="Information">
         <h1> About: </h1>
         <div> First Name : {firstName} </div>
@@ -385,6 +442,17 @@ function LoanerPage() {
             <div style={{color: "red"}}>{descriptionError}</div>
           </div>
           <br></br>
+
+          <div class="StartDate">
+            Start Date
+            <input type="date" placeholder="StartDate" name="StartDate" min={date} onChange={(e)=>{setStartDate(e.target.value)}} />
+          </div>
+
+          <div class="EndDate">
+            End Date
+            <input type="date" placeholder="EndDate" name="EndDate" min={date}  onChange={(e)=>{setEndDate(e.target.value)}} />
+            <div style={{color: "red"}}>{dateError}</div> 
+          </div>
 
           
           <input type="file"  onChange={
