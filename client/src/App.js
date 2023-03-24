@@ -9,12 +9,15 @@ import ErrorPage from "./Pages/ErrorPage";
 import LoanerPage from "./Pages/LoanerPage";
 import RenterPage from "./Pages/RenterPage";
 import RegPage from "./Pages/RegPage";
+import CarsForRent from "./Pages/CarsForRent";
+import CarDetails from "./Pages/CarDetails";
 import AddCarPage from "./Pages/AddCarPage";
 import CarInfoPage from "./Pages/CarInfoPage";
 import LoanerHistory from "./Pages/LoanerHistory";
 import RenterHistory from "./Pages/RenterHistory";
 import { RequireAuth} from "./Pages/RequireAuth";
 import { AuthProvider } from "./Pages/auth";
+import Navbar from "./Pages/NavBar";
 
 
 function App() {
@@ -34,7 +37,7 @@ function App() {
 
   return (
     <AuthProvider>
-    
+    <Navbar></Navbar>
     <Router> 
     
       <Routes>
@@ -42,6 +45,8 @@ function App() {
         <Route path='/loaner-login' element={< LoanerLogin />} />
         <Route path='/renter-login' element={< RenterLogin />} />
         <Route path='/registration' element={< RegPage />} />
+        <Route path='/CarsForRent' element={< CarsForRent />} />
+        <Route path='/CarDetails/:id' element={< CarDetails />} />
         <Route path='/carinfo' element={< CarInfoPage />} />
 
         

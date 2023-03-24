@@ -34,11 +34,17 @@ function RenterPage() {
     navigate('/')
   }
 
+  const carsForRent = () => {
+    console.log("ok logging in")
+             
+              var test = '/carsForRent';
+              navigate(test);
+  }
   const viewhistory = () => {
     navigate('/renterhistory')
   }
 
-
+ 
   return (
     
     <><div>
@@ -59,6 +65,7 @@ function RenterPage() {
       <button onClick={viewhistory}> View History </button>
 
       <button onClick={handleLogout}>Logout</button>
+      <button onClick={carsForRent}>Look for cars</button>
       </>
   );
 }

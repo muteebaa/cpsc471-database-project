@@ -18,7 +18,7 @@ var fileName = multer({
 // img storage confing
 var imgconfig = multer.diskStorage({
     destination:(req,file,callback)=>{
-        callback(null,"C:\\Users\\mutee\\OneDrive\\Desktop\\cpsc471\\project\\cpsc471-database-project\\client\\public\\imgs");
+        callback(null,"../client/src/imgs");
     },
     filename:(req,file,callback)=>{
         callback(null,`image-${file.originalname}`)
@@ -42,7 +42,7 @@ var upload = multer({
 
 const db = mysql.createPool({
     host: "localhost",
-    user: "root",
+    user: "sqluser",
     password: "password",
     database: "rentmyridedb",
     connectionLimit: 10
@@ -68,17 +68,30 @@ app.get('/api/fetch', (req, res)=>{
     })
 })
 
-app.post('/api/test', upload.single('photo'), (req, res)=>{
-    const fname = req.body.fname;
-    const filepath = `./imgs/image-${req.body.photoName}`;
+app.post('/api/registerCar', upload.single('photo'), (req, res)=>{
+    const username = req.body.username;
+    const make = req.body.make;
+    const model = req.body.model;
+    const filename = `image-${req.body.photoName}`;
     const reg = req.body.reg;
+    const pickupAddress = req.body.pickupAddress;
+    const features = req.body.features;
     const price = req.body.price;
     const colour = req.body.colour;
+    const year = req.body.year;
+    const description = req.body.description;
+    const type = req.body.type;
+    
+    
    
-    db.query("INSERT INTO cars (name, regNumber, price, colour, photo) VALUES (?, ?, ?, ?, ?)", [fname, reg, price, colour, filepath], (err, result)=>{
+    db.query("INSERT INTO cars (username, make, model, year, regNumber, price, features, type, colour, pickupAddress, description, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, year, reg, price,features, type, colour, pickupAddress, description, filename, ], (err, result)=>{
         if(err) throw err;
         else console.log("worked")
     });
+
+   
+
+   
 
     
 }); 
@@ -123,24 +136,30 @@ app.post("/api/UserInfo",(req, res)=>{
            // }
        }
    }
-   //         var r = JSON.parse(JSON.stringify(result))
-           
-   //         for(const type of r){
-   //             if(type.username == username && type.password == pw){  
-   //               //  console.log("LoGGED IN")
-   //                 auth = true;
-              
-   //             }
-               
-   //         }
-          
-   //     }
-     
-   // }
-   )
-   
- //  res.redirect('http://google.com');
   
+   )
+
+});
+
+app.post("/api/Cars",(req, res)=>{
+    db.query("SELECT * FROM rentmyridedb.cars",
+    function(err,result){
+         
+        if(err){
+            res.send({err: err})
+        }
+        else{
+            res.send(result)
+            // if (result.length == 0) { 
+            //     console.log(result)
+            //     res.send({message: "Wrong username/password"})   
+            // } else {
+            //     console.log("found")
+            //     res.send(result)
+            // }
+        }
+    }
+    )
 
 
 });
@@ -212,7 +231,7 @@ app.post('/api/insert',  (req, res)=>{
     console.log("okkk")
     
     db.query(check, [username], (err, result)=>{
-       // console.log(result)
+        //console.log(result)
         if (result.length == 0){
             console.log("registeringg")
             db.query(sqlInsert, [username, pw, type, fName, lName, phone, email], (err, result)=>{
