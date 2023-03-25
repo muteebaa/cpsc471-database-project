@@ -31,6 +31,9 @@ function LoanerPage() {
     const [type,setType] = useState("");
     const [startDate,setStartDate] = useState("");
     const [endDate,setEndDate] = useState("");
+    const [recalls,setRecalls] = useState("");
+    const [status,setStatus] = useState("");
+    const [damage,setDamage] = useState("");
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth() + 1<10?`0${current.getMonth() + 1}`:`${current.getMonth() + 1}`}-${current.getDate()<10?`0${current.getDate()}`:`${current.getDate()}`}`;
     
@@ -47,6 +50,9 @@ function LoanerPage() {
     const [descriptionError,setDescriptionError] = useState("");
     const [typeError,setTypeError] = useState("");
     const [dateError,setDateError] = useState("");
+    const [recallsError,setRecallsError] = useState("");
+    const [statusError,setStatusError] = useState("");
+    const [damageError,setDamageError] = useState("");
 
     var navigate = useNavigate();
 
@@ -187,6 +193,24 @@ function LoanerPage() {
       setPhotoNameError("")
     }
 
+    if(recalls == ""){
+      
+      setRecallsError("Please provide an answer")
+      checker = false
+    }
+    else{
+      setRecallsError("")
+    }
+
+    if(recalls == ""){
+      
+      setStatusError("Please provide the status of your car")
+      checker = false
+    }
+    else{
+      setStatusError("")
+    }
+
     if(colour == ""){
       
       setColourError("Please select the colour of your car")
@@ -194,6 +218,15 @@ function LoanerPage() {
     }
     else{
       setColourError("")
+    }
+
+    if(damage == ""){
+      
+      setDamageError("Please write N/A if there is nothing wrong")
+      checker = false
+    }
+    else{
+      setDamageError("")
     }
 
     if(type == ""){
@@ -249,7 +282,10 @@ function LoanerPage() {
         type: type,
         description: description,
         startDate: startDate,
-        endDate: endDate
+        endDate: endDate,
+        recalls: recalls,
+        status: status,
+        damage:damage
 
       }, config).then((response) => {
         
@@ -274,7 +310,6 @@ function LoanerPage() {
         <h1> Loaner Home Page </h1>
         <div> Welcome {auth.user} </div>
       </div>
-      <h1>{date}</h1>
       <div className="Information">
         <h1> About: </h1>
         <div> First Name : {firstName} </div>
@@ -448,19 +483,49 @@ function LoanerPage() {
             <input type="date" placeholder="StartDate" name="StartDate" min={date} onChange={(e)=>{setStartDate(e.target.value)}} />
           </div>
 
+          <br></br>
+
           <div class="EndDate">
             End Date
             <input type="date" placeholder="EndDate" name="EndDate" min={date}  onChange={(e)=>{setEndDate(e.target.value)}} />
             <div style={{color: "red"}}>{dateError}</div> 
           </div>
 
+          <br></br>
           
+          <div className="Recalls">
+            Please type the number of pending recalls 
+            <input type="number" placeholder="Recalls" name="Recalls"  onChange={(e)=>{setRecalls(e.target.value)}} />
+            <div style={{color: "red"}}>{recallsError}</div>
+          </div>
+          <br></br>
+          
+          <div className="Status">
+            Status 
+            <select name="status" placeholder="Status"  onChange={(e)=>{setStatus(e.target.value)}}>
+              <option value=""></option>
+              <option value="Active">Active</option>
+              <option value="Rebuilt">Rebuilt</option>
+            </select>
+            <div style={{color: "red"}}>{statusError}</div>
+          </div>
+          <br></br>
+
+          <div className="Damage">
+            Please describe any physical or mechanical problems with the car  
+            <input type="text" name="damage"  onChange={(e)=>{setDamage(e.target.value)}} />
+            <div style={{color: "red"}}>{damageError}</div>
+          </div>
+          <br></br>
+
+          Upload a picture
           <input type="file"  onChange={
             (e) => { setFile(e.target.files[0] )
               setPhotoName(e.target.files[0].name )
           }}  />
           <div style={{color: "red"}}>{photoNameError}</div>
           <br></br>
+          
           <button onClick={addCar}>Add car</button>
           <br></br>
         

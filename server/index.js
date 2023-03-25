@@ -83,11 +83,14 @@ app.post('/api/registerCar', upload.single('photo'), (req, res)=>{
     const type = req.body.type;
     const startDate = req.body.startDate;
     const endDate = req.body.endDate;
+    const recalls = req.body.recalls;
+    const status = req.body.status;
+    const damage = req.body.damage;
 
     
     
    
-    db.query("INSERT INTO cars (username, make, model, year, regNumber, price, features, type, colour, startDate, endDate, pickupAddress, description, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, year, reg, price,features, type, colour, startDate, endDate, pickupAddress, description, filename, ], (err, result)=>{
+    db.query("INSERT INTO cars (username, make, model, year, regNumber, price, features, type, colour, startDate, endDate, pickupAddress, description, photo, recalls, status, damage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [username, make, model, year, reg, price,features, type, colour, startDate, endDate, pickupAddress, description, filename, recalls, status, damage ], (err, result)=>{
         if(err) throw err;
         else console.log("worked")
     });
@@ -133,13 +136,7 @@ app.post("/api/Cars",(req, res)=>{
         }
         else{
             res.send(result)
-            // if (result.length == 0) { 
-            //     console.log(result)
-            //     res.send({message: "Wrong username/password"})   
-            // } else {
-            //     console.log("found")
-            //     res.send(result)
-            // }
+            
         }
     }
     )
