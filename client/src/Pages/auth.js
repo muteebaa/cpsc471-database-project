@@ -31,5 +31,6 @@ export const AuthProvider = ({children}) => {
 }
 
 export const useAuth = () => {
+    console.log('useauth called');
     return useContext(AuthContext)
 }

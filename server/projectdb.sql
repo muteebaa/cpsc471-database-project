@@ -52,12 +52,11 @@ CREATE TABLE `users` (
 
 --
 -- Table structure for table `reservation`
--- 
-
+--
 CREATE TABLE `reservation` (
   `reservationNumber` int NOT NULL,
-  `start_date` time NOT NULL,
-  `end_date` time NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
   `reg_number` varchar(45) NOT NULL,
   `user` varchar(45) NOT NULL,
   `insurance` varchar(45) NOT NULL,
@@ -117,7 +116,3 @@ CREATE TABLE `review` (
   FOREIGN KEY (`car_reg`) REFERENCES cars(`regNumber`),
   FOREIGN KEY (`username`) REFERENCES users(`username`)
 );
-
-
-
-

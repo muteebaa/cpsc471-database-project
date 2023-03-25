@@ -8,7 +8,8 @@ import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} fr
 
 
 function CarDetails(props) {
-
+  var navigate = useNavigate();
+  const auth = useAuth();
   const { id }  = useParams();
 
   const [make, setMake] = useState("");
@@ -22,6 +23,9 @@ function CarDetails(props) {
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
 
 
 
@@ -49,6 +53,10 @@ function CarDetails(props) {
           setAddress(car.pickupAddress)
           setType(car.type)
           setDescription(car.description)
+          setEndDate(car.startDate)
+          setEndDate(car.endDate)
+
+          console.log(car.startDate)
         }
       }
          
@@ -59,6 +67,15 @@ function CarDetails(props) {
     
   })
 
+  function reservation() {
+    navigate('/reservation',
+      {
+        state: {
+          car_regNo: regNumber,
+        }
+      });
+
+}
 
   return (
       // <Router> 
@@ -80,7 +97,10 @@ function CarDetails(props) {
        <div className="Description">Description : {description}</div>
        <br></br>
        <div className="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
-        <div className="previousPage"><a href="/carsForRent">Back to the car search page?</a></div>
+       <button onClick={() => { reservation() }}> Make Reservation </button>
+       <div className="previousPage"><a href="/carsForRent">Back to the car search page?</a></div>
+
+       
       </>
   );}
 

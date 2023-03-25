@@ -42,7 +42,7 @@ var upload = multer({
 
 const db = mysql.createPool({
     host: "localhost",
-    user: "sqluser",
+    user: "root",
     password: "password",
     database: "rentmyridedb",
     connectionLimit: 10
@@ -193,7 +193,28 @@ app.post('/api/Login', (req, res)=>{
  });
 
 
+ app.post('/api/reserve',  (req, res)=>{
+    const reservationNumber = req.body.reservationNumber; 
+    const startDate = req.body.startDate;
+    const endDate = req.body.endDate;
+    const regNo = req.body.regNo;
+    const user = req.body.user;
+    const insurance = req.body.insurance;
 
+    const sqlInsert = "INSERT INTO reservation (reservationNumber, start_date, end_date, reg_number, user, insurance) VALUES (?, ?, ?, ?, ?, ?)";
+    
+    db.query(sqlInsert, [reservationNumber, startDate, endDate, regNo, user, insurance], (err, result)=>{
+        if(err){
+            res.send("Reservation failed");
+        }
+        else{
+            console.log(result);
+            console.log(err);
+            res.send("Successful reservation");
+        }
+    });
+
+}); 
 
 //// can use this code for registration
 app.post('/api/insert',  (req, res)=>{

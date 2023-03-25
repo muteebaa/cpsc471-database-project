@@ -14,6 +14,8 @@ import CarDetails from "./Pages/CarDetails";
 import { RequireAuth} from "./Pages/RequireAuth";
 import { AuthProvider } from "./Pages/auth";
 import Navbar from "./Pages/NavBar";
+import Reservation from "./Pages/ReservationPage";
+import ReservationPage from "./Pages/ReservationPage";
 
 
 function App() {
@@ -41,8 +43,10 @@ function App() {
         <Route path='/loaner-login' element={< LoanerLogin />} />
         <Route path='/renter-login' element={< RenterLogin />} />
         <Route path='/registration' element={< RegPage />} />
-        <Route path='/CarsForRent' element={< CarsForRent />} />
-        <Route path='/CarDetails/:id' element={< CarDetails />} />
+        <Route path='/reservation' element={ < ReservationPage /> } />
+        <Route path='/CarsForRent' element={ < CarsForRent /> } />
+        <Route path='/CarDetails/:id' element={ < CarDetails /> } />
+
 
         <Route path='*' element={< ErrorPage />} />
 
@@ -50,6 +54,9 @@ function App() {
         {/* <Route element={<ProtectedRoute  />}> */}
           <Route path='/loaner-page' element={<RequireAuth> < LoanerPage /> </RequireAuth> } exact/>
           <Route path='/renter-page' element={<RequireAuth> < RenterPage /> </RequireAuth> } exact/>
+          {/* <Route path='/reservation' element={<RequireAuth> < ReservationPage /> </RequireAuth> } exact/>
+          <Route path='/CarsForRent' element={<RequireAuth> < CarsForRent /> </RequireAuth>} exact/>
+          <Route path='/CarDetails/:id' element={<RequireAuth> < CarDetails /> </RequireAuth>} exact/> */}
 
         {/* </Route> */}
        

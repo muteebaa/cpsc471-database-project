@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} fr
 
 
 function CarsForRent() {
+  const auth = useAuth();
   
   const [data, setData] = useState([])
 
