@@ -3,14 +3,13 @@
 -- Host: 127.0.0.1    Database: rentmyridedb
 -- ------------------------------------------------------
 -- Server version	8.0.31
-
+DROP DATABASE if exists rentmyridedb;
+CREATE DATABASE rentmyridedb;
+USE rentmyridedb;
 --
 -- Table structure for table `cars`
 --
 
-USE rentmyridedb;
-
-DROP TABLE IF EXISTS `cars`;
 CREATE TABLE `cars` (
   `username` varchar(45) NOT NULL,
   `make` varchar(45) NOT NULL,
@@ -26,29 +25,20 @@ CREATE TABLE `cars` (
   `pickupAddress` varchar(200) NOT NULL,
   `description` varchar(3000) NOT NULL,
   `photo` varchar(450) NOT NULL,
-  
-  
+  `recalls` varchar(45) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `damage` varchar(3000),
   PRIMARY KEY (`regNumber`)
 );
 
---
--- Table structure for table `loaners`
---
 
-DROP TABLE IF EXISTS `loaners`;
-CREATE TABLE `loaners` (
-  `idusers` int NOT NULL DEFAULT '0',
-  `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL
-); 
 --
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `idusers` int NOT NULL AUTO_INCREMENT,
+  
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `type` int NOT NULL,
@@ -56,5 +46,78 @@ CREATE TABLE `users` (
   `LastName` varchar(45) NOT NULL,
   `PhoneNumber` varchar(45) NOT NULL,
   `EmailAddress` varchar(45) NOT NULL,
-  PRIMARY KEY (`idusers`)
-) 
+  
+  PRIMARY KEY (`username`)
+);
+
+--
+-- Table structure for table `reservation`
+-- 
+
+CREATE TABLE `reservation` (
+  `reservationNumber` int NOT NULL,
+  `start_date` time NOT NULL,
+  `end_date` time NOT NULL,
+  `reg_number` varchar(45) NOT NULL,
+  `user` varchar(45) NOT NULL,
+  `insurance` varchar(45) NOT NULL,
+  PRIMARY KEY (`reservationNumber`),
+  FOREIGN KEY (`reg_number`) REFERENCES cars(`regNumber`)
+  );
+
+
+-- --
+-- -- Table structure for table `renter_history`
+-- --
+
+
+
+CREATE TABLE `renter_history` (
+  `username` varchar(45) NOT NULL,
+  `car_reg` varchar(45) NOT NULL,
+  PRIMARY KEY (`username`),
+  FOREIGN KEY (`username`) REFERENCES users(`username`),
+  FOREIGN KEY (`car_reg`) REFERENCES cars(`regNumber`)
+  
+);
+
+
+--
+-- Table structure for table `renter_history`
+--
+CREATE TABLE `loaner_history` (
+  `username` varchar(45) NOT NULL,
+  `car_reg` varchar(45) NOT NULL,
+  PRIMARY KEY (`username`),
+  FOREIGN KEY (`username`) REFERENCES users(`username`),
+  FOREIGN KEY (`car_reg`) REFERENCES cars(`regNumber`)
+  
+);
+
+--
+-- Table structure for table `premium_plan`
+--
+CREATE TABLE `premium_plan` (
+  `username` varchar(45) NOT NULL,
+  `detailing` varchar(45) NOT NULL,
+  `car_wash` varchar(45) NOT NULL,
+  FOREIGN KEY (`username`) REFERENCES users(`username`)
+);
+
+
+--
+-- Table structure for table `review`
+--
+CREATE TABLE `review` (
+  `username` varchar(45) NOT NULL,
+  `location_rating` int NOT NULL,
+  `consdition_rating` int NOT NULL,
+  `writting_comments`  varchar(45) NOT NULL,
+  `car_reg` varchar(45) NOT NULL,
+  FOREIGN KEY (`car_reg`) REFERENCES cars(`regNumber`),
+  FOREIGN KEY (`username`) REFERENCES users(`username`)
+);
+
+
+
+
