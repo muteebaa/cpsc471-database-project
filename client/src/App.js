@@ -16,6 +16,7 @@ import { AuthProvider } from "./Pages/auth";
 import Navbar from "./Pages/NavBar";
 import Reservation from "./Pages/ReservationPage";
 import ReservationPage from "./Pages/ReservationPage";
+import AddCarPage from "./Pages/AddCarPage";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path='/reservation' element={ < ReservationPage /> } />
         <Route path='/CarsForRent' element={ < CarsForRent /> } />
         <Route path='/CarDetails/:id' element={ < CarDetails /> } />
+        <Route path='/add-car' element={ < AddCarPage /> } />
 
 
         <Route path='*' element={< ErrorPage />} />
