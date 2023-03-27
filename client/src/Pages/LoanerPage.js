@@ -15,48 +15,32 @@ function LoanerPage() {
     const [lastName, setLName] = useState("");
     const [phoneNumber, setPhoNumber] = useState("");
     const [emailAddress, setEmail] = useState("");
- 
-    const [regNo, setRegNo] = useState("");
+    const [premiumPlan, setPremiumPlan] = useState("true");
+    const [premiumPlanValue, setPremiumPlanValue] = useState("");
+    const [cardNumber,setCardNumber] = useState("");
+    const [cardName,setCardName] = useState("");
+    const [cardCvc,setCardCvc] = useState("");
+    const [cardExpiryDate,setCardExpiryDate] = useState("");
+    const [cardNumberError,setCardNumberError] = useState("");
+    const [cardNameError,setCardNameError] = useState("");
+    const [cardCvcError,setCardCvcError] = useState("");
+    const [cardExpiryDateError,setCardExpiryDateError] = useState("");
+    const [premiumPlanError, setPremiumPlanError] = useState("");
+    const [usernamee, setUsername] = useState("");
+    const [carWash, setCarWash] = useState("");
+    const [detail, setDetail] = useState("");
 
-    const [make,setMake] = useState("");
-    const [model,setModel] = useState("");
-    const [file,setFile] = useState("");
-    const [photoName,setPhotoName] = useState("");
-    const [price,setPrice] = useState("");
-    const [features,setFeatures] = useState("");
-    const [colour,setColour] = useState("");
-    const [pickupAddress,setAddress] = useState("");
-    const [year,setYear] = useState("");
-    const [description,setDescription] = useState("");
-    const [type,setType] = useState("");
-    const [startDate,setStartDate] = useState("");
-    const [endDate,setEndDate] = useState("");
-    const [recalls,setRecalls] = useState("");
-    const [status,setStatus] = useState("");
-    const [damage,setDamage] = useState("");
+    
+ 
+    
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth() + 1<10?`0${current.getMonth() + 1}`:`${current.getMonth() + 1}`}-${current.getDate()<10?`0${current.getDate()}`:`${current.getDate()}`}`;
     
 
-    const [regNoError, setRegNoError] = useState("");
-    const [makeError,setMakeError] = useState("");
-    const [modelError,setModelError] = useState("");
-    const [photoNameError,setPhotoNameError] = useState("");
-    const [priceError,setPriceError] = useState("");
-    const [featuresError,setFeaturesError] = useState("");
-    const [colourError,setColourError] = useState("");
-    const [pickupAddressError,setAddressError] = useState("");
-    const [yearError,setYearError] = useState("");
-    const [descriptionError,setDescriptionError] = useState("");
-    const [typeError,setTypeError] = useState("");
-    const [dateError,setDateError] = useState("");
-    const [recallsError,setRecallsError] = useState("");
-    const [statusError,setStatusError] = useState("");
-    const [damageError,setDamageError] = useState("");
-
     var navigate = useNavigate();
 
     const info = () => {
+      
       Axios.post("http://localhost:3001/api/UserInfo", {
       username: auth.user
     }).then((response) => {
@@ -65,192 +49,112 @@ function LoanerPage() {
       setLName(response.data[0].LastName);
       setPhoNumber(response.data[0].PhoneNumber);
       setEmail(response.data[0].EmailAddress);
+      setUsername(response.data[0].username);
+      
     }) 
 
   }
 
+  const planInfo = () => {
+      
+    Axios.post("http://localhost:3001/api/planInfo", {
+    username: usernamee
+  }).then((response) => {
+    if(response.data[0] != null){
+      setPremiumPlan("true");
+      setCarWash(response.data[0].car_wash);
+      setDetail(response.data[0].detailing);
+
+
+    }
+    else{
+      setPremiumPlan("false");
+    }
+    
+  }) 
+
+}
+
+  const handleLogout = () => {
+    auth.logout()
+    navigate('/')
+  }
 
   const validate = () => {
 
     var checker = true;
 
-    const SDate = startDate.split('-');
-    const EDate = endDate.split('-');
-
-    if(startDate != '' && endDate != ''){
-      if(SDate[0] > EDate[0]){
-        setDateError("End Date should be later than start date")
-        checker = false;
-
-      }
-      else if(SDate[0] < EDate[0]){
-        setDateError("");
-        checker = true;
-      }
-      else{
-        if(SDate[1] < EDate[1]){
-          setDateError("");
-          checker = true;
-        }
-        else if(SDate[1] > EDate[1]){
-          setDateError("End Date should be later than start date")
-          checker = false;
-        }
-        else{
-          if(SDate[2] > EDate[2]){
-            setDateError("End Date should be later than start date")
-            checker = false;
-          }
-          else{
-            setDateError("");
-            checker = true;
-
-          }
-        }
-
-        
-      }
-    }
-    else{
-      setDateError("Please enter the start and end date")
-      checker = false
-    }
-
-    
-
-
-    if(regNo == ""){
+    if(premiumPlanValue == ""){
       
-      setRegNoError("Please enter a registration number")
+      setPremiumPlanError("Please choose a plan")
       checker = false
     }
     else{
-      setRegNoError("")
+      setPremiumPlanError("")
     }
 
-    if(price == ""){
+    if(cardName == ""){
       
-      setPriceError("Please enter a price")
+      setCardNameError("Please enter the card holder's name")
       checker = false
     }
     else{
-      setPriceError("")
+      setCardNameError("")
     }
 
-    if(model == ""){
+    if(cardNumber == ""){
       
-      setModelError("Please enter a model")
+      setCardNumberError("Please enter your card number")
       checker = false
     }
     else{
-      setModelError("")
+      setCardNumberError("")
     }
 
-    if(year == ""){
+    if(cardExpiryDate == ""){
       
-      setYearError("Please enter a year")
+      setCardExpiryDateError("Please enter the expiry date")
       checker = false
     }
     else{
-      setYearError("")
+      setCardExpiryDateError("")
     }
 
-    if(features == ""){
+    if(cardCvc == ""){
       
-      setFeaturesError("Please enter features for your car")
+      setCardCvcError("Please enter the CVC")
       checker = false
     }
     else{
-      setFeaturesError("")
-    }
-
-    if(pickupAddress == ""){
-      
-      setAddressError("Please enter features of car")
-      checker = false
-    }
-    else{
-      setAddressError("")
-    }
-
-    if(description == ""){
-      
-      setDescriptionError("Please enter a description of your car")
-      checker = false
-    }
-    else{
-      setDescriptionError("")
-    }
-
-    if(photoName == ""){
-      
-      setPhotoNameError("Please upload a picture of your car")
-      checker = false
-    }
-    else{
-      setPhotoNameError("")
-    }
-
-    if(recalls == ""){
-      
-      setRecallsError("Please provide an answer")
-      checker = false
-    }
-    else{
-      setRecallsError("")
-    }
-
-    if(recalls == ""){
-      
-      setStatusError("Please provide the status of your car")
-      checker = false
-    }
-    else{
-      setStatusError("")
-    }
-
-    if(colour == ""){
-      
-      setColourError("Please select the colour of your car")
-      checker = false
-    }
-    else{
-      setColourError("")
-    }
-
-    if(damage == ""){
-      
-      setDamageError("Please write N/A if there is nothing wrong")
-      checker = false
-    }
-    else{
-      setDamageError("")
-    }
-
-    if(type == ""){
-      
-      setTypeError("Please select the type of your car")
-      checker = false
-    }
-    else{
-      setTypeError("")
-    }
-
-    if(make == ""){
-      
-      setMakeError("Please select the make of your car")
-      checker = false
-    }
-    else{
-      setMakeError("")
+      setCardCvcError("")
     }
 
     return checker
+
   }
 
-  const handleLogout = () => {
-    auth.logout()
-    navigate('/')
+  const cancelPremiumPlan = () => {
+    
+  }
+
+  const registerPremiumPlan = () => {
+
+    const isValid = validate();
+
+    if(isValid){
+      
+      
+      Axios.post("http://localhost:3001/api/registerpremiumplan", {
+        username: usernamee,
+        premiumPlan: premiumPlanValue
+
+      }).then((response) => {
+        
+      })
+      alert("Your plan was added to your account. Thank you!");
+      navigate('/loaner-page') 
+    }
+    
   }
 
   function addCarPage(){
@@ -265,6 +169,7 @@ function LoanerPage() {
 
     <><div>
       {info()}
+      {planInfo()}
     </div> <div className="App">
         <h1> Loaner Home Page </h1>
         <div> Welcome {auth.user} </div>
@@ -281,6 +186,70 @@ function LoanerPage() {
       
       <button onClick={addCarPage}>Add Car</button>
       <button onClick={handleLogout}>Logout</button>
+      
+      
+      <div>     
+            {
+                (() => {
+                    if(`${premiumPlan}`==="true") {
+                            return (
+                              <>
+                                <p>Your Premium Plan is active.</p>
+                                <p>Services:</p>
+
+                                  <p><strong>Detailing:</strong> {detail}</p>
+                                  <p><strong>Car Wash:</strong> {carWash}</p>
+
+
+                                <p>Please visit one of our following locations to use your active services</p>
+
+                                  <p><strong>Location: </strong>4624 Valiant Dr NW, Calgary, AB T3A 0X9 <strong> Time: </strong> 8:00 AM - 7:00 PM</p>
+                                  <p><strong>Location: </strong>5302 Northland Dr NW, Calgary, AB T2L 2K4 <strong> Time: </strong> 9:00 AM - 8:00 PM</p>
+                                  <p><strong>Location: </strong>150 Citadel Way NW, Calgary, AB T3G 5C1 <strong> Time: </strong> 8:00 AM - 5:00 PM</p>
+                                  <p><strong>Location: </strong>177 Country Hills Blvd NW, Calgary, AB T3K 5M6 <strong> Time: </strong> 10:00 AM - 7:00 PM</p>
+
+
+                                <p>Your plan will automatically renew next month unless you cancel it.</p>
+                                
+                                <p>To cancel your plan, please click the cancel button.</p>
+                                <button onClick={cancelPremiumPlan}>Cancel</button>
+
+                              </>
+                            )
+                        } else {
+                            return (
+                              <>
+                                <p>Tired of washing and detailing your car? Choose our premium plan and let us handle your worries</p>
+                                <div> Plan: </div>
+                                <select name="plan" id="plan" onChange={(e)=>{setPremiumPlanValue(e.target.value)}}>
+                                <option value=""></option>
+                                <option value="Car_wash">Car Wash</option>
+                                <option value="Detailing">Detailing</option>
+                                <option value="Both">Both</option>
+                                </select>
+                                <div style={{color: "red"}}>{premiumPlanError}</div>
+                                <div> Payment Details: </div>
+                                <label for='cardName'>Card Holder Name</label>
+                                <input type='text' id='cardName' onChange={(e)=>{setCardName(e.target.value)}}/>
+                                <div style={{color: "red"}}>{cardNameError}</div>
+                                <label for='cardNo'>Card Number</label>
+                                <input type='number' id='cardNo' onChange={(e)=>{setCardNumber(e.target.value)}}/>
+                                <div style={{color: "red"}}>{cardNumberError}</div>
+                                <label for='expiryDate'>ExpiryDate</label>
+                                <input type='date' id='expiryDate' onChange={(e)=>{setCardExpiryDate(e.target.value)}}/>
+                                <div style={{color: "red"}}>{cardExpiryDateError}</div>
+                                <label for='cvc'>CVC</label>
+                                <input type='text' id='cvc' onChange={(e)=>{setCardCvc(e.target.value)}}/>
+                                <div style={{color: "red"}}>{cardCvcError}</div>
+                                <button onClick={registerPremiumPlan}>Register</button>
+                              </>
+
+                            )
+                        }
+                })()  
+            }  
+        </div>
+
       </>
 
 

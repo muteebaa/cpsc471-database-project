@@ -42,7 +42,7 @@ var upload = multer({
 
 const db = mysql.createPool({
     host: "localhost",
-    user: "root",
+    user: "sqluser",
     password: "password",
     database: "rentmyridedb",
     connectionLimit: 10
@@ -69,6 +69,7 @@ app.get('/api/fetch', (req, res)=>{
 })
 
 app.post('/api/registerCar', upload.single('photo'), (req, res)=>{
+    
     const username = req.body.username;
     const make = req.body.make;
     const model = req.body.model;
@@ -100,6 +101,39 @@ app.post('/api/registerCar', upload.single('photo'), (req, res)=>{
     
 }); 
 
+
+app.post('/api/registerpremiumplan', (req, res)=>{
+    
+    const username = req.body.username;
+    const premiumPlan = req.body.premiumPlan;
+    var detailing = "";
+    var car_wash = "";
+    
+
+    if(premiumPlan == "Both"){
+        detailing = "Active";
+        car_wash = "Active"
+    } 
+    else if(premiumPlan == "Detailing"){
+        detailing = "Active";
+        car_wash = "Not Active"
+    } 
+    else if(premiumPlan == "Car_wash"){
+        detailing = "Not Active";
+        car_wash = "Active"
+    }  
+   
+    db.query("INSERT INTO premium_plan (username, detailing, car_wash) VALUES (?, ?, ?)", [username, detailing, car_wash ], (err, result)=>{
+        if(err) throw err;
+        else console.log("worked")
+    });
+
+   
+
+    
+}); 
+
+
 app.post("/api/UserInfo",(req, res)=>{
     const username = req.body.username
     
@@ -113,13 +147,28 @@ app.post("/api/UserInfo",(req, res)=>{
        else{
            console.log(result)
            res.send(result)
-           // if (result.length == 0) { 
-           //     console.log(result)
-           //     res.send({message: "Wrong username/password"})   
-           // } else {
-           //     console.log("found")
-           //     res.send(result)
-           // }
+           
+       }
+   }
+  
+   )
+
+});
+
+app.post("/api/planInfo",(req, res)=>{
+    const username = req.body.username
+    
+    db.query("SELECT * FROM rentmyridedb.premium_plan WHERE username = ?" , 
+    [username],
+    function(err,result){
+        
+       if(err){
+           res.send({err: err})
+       }
+       else{
+           console.log(result)
+           res.send(result)
+           
        }
    }
   
