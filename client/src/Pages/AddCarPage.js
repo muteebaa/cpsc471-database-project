@@ -315,6 +315,8 @@ function AddCarPage() {
           <br></br>
           <strong>Loan a car:</strong>
           <br></br>
+          <div> Please make sure that all the information entered is correct as it will not be editable later.  </div>
+          <br></br>
           <div class="RegistrationNumber">
             Registration Number 
             <input type="text" placeholder="Registration Number" name="regNo" 
