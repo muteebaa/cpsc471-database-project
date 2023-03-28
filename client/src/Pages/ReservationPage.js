@@ -56,7 +56,7 @@ function ReservationPage() {
 
     if(startDate != '' && endDate != ''){
       if(SDate[0] > EDate[0]){
-        setDateError("End Date should be later than start date")
+        setDateError("End Date should be later same or than start date")
         checker = false;
 
       }
@@ -70,12 +70,12 @@ function ReservationPage() {
           checker = true;
         }
         else if(SDate[1] > EDate[1]){
-          setDateError("End Date should be later than start date")
+          setDateError("End Date should be same or later than start date")
           checker = false;
         }
         else{
           if(SDate[2] > EDate[2]){
-            setDateError("End Date should be later than start date")
+            setDateError("End Date should be same or later than start date")
             checker = false;
           }
           else{
