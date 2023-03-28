@@ -25,6 +25,11 @@ function CarDetails(props) {
   const [type, setType] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [recalls, setRecalls] = useState("");
+  const [status, setStatus] = useState("");
+  const [damage, setDamage] = useState("");
+  
+
 
 
 
@@ -53,8 +58,11 @@ function CarDetails(props) {
           setAddress(car.pickupAddress)
           setType(car.type)
           setDescription(car.description)
-          setEndDate(car.startDate)
+          setStartDate(car.startDate)
           setEndDate(car.endDate)
+          setRecalls(car.recalls)
+          setDamage(car.damage)
+          setStatus(car.status)
 
           console.log(car.startDate)
         }
@@ -95,6 +103,9 @@ function CarDetails(props) {
        <div class="Pickup Address">Pickup Address : {address}</div>
        <div class="Price">Price : {price} per day</div>
        <div class="Description">Description : {description}</div>
+       <div class="Recalls">Number of pending recalls : {recalls}</div>
+       <div class="Status">The car has a {status} status</div>
+       <div class="Damage">Any damage on the car : {damage}</div>
        <br></br>
        <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
        <button onClick={() => { reservation() }}> Make Reservation </button>

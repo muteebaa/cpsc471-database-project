@@ -134,6 +134,15 @@ function LoanerPage() {
   }
 
   const cancelPremiumPlan = () => {
+
+    Axios.post("http://localhost:3001/api/cancelpremiumplan", {
+        username: usernamee
+
+      }).then((response) => {
+        
+      })
+      alert("Your plan was cancelled");
+      navigate('/loaner-page') 
     
   }
 

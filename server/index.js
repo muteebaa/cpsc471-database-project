@@ -133,6 +133,21 @@ app.post('/api/registerpremiumplan', (req, res)=>{
     
 }); 
 
+app.post('/api/cancelpremiumplan', (req, res)=>{
+    
+    const username = req.body.username;
+    
+   
+    db.query("DELETE FROM premium_plan WHERE username = ?", [username], (err, result)=>{
+        if(err) throw err;
+        else console.log("worked")
+    });
+
+   
+
+    
+}); 
+
 
 app.post("/api/UserInfo",(req, res)=>{
     const username = req.body.username

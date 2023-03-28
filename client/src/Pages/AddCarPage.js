@@ -289,6 +289,7 @@ function AddCarPage() {
         
       })
       alert("Your car was added to our website");
+      navigate('/loaner-page') 
       
       
 
