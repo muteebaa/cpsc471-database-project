@@ -79,7 +79,7 @@ function AddCarPage() {
 
     if(startDate != '' && endDate != ''){
       if(SDate[0] > EDate[0]){
-        setDateError("End Date should be later than start date")
+        setDateError("End Date should be the same or later than start date")
         checker = false;
 
       }
@@ -93,12 +93,12 @@ function AddCarPage() {
           checker = true;
         }
         else if(SDate[1] > EDate[1]){
-          setDateError("End Date should be later than start date")
+          setDateError("End Date should be the same or later than start date")
           checker = false;
         }
         else{
           if(SDate[2] > EDate[2]){
-            setDateError("End Date should be later than start date")
+            setDateError("End Date should be the same or later than start date")
             checker = false;
           }
           else{

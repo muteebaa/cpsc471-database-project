@@ -73,23 +73,23 @@ function EditSpecificCarPage() {
       
     })
 
-    /*const EditCar = () => {
+    const EditCar = () => {
 
         
         
       Axios.post("http://localhost:3001/api/editCarEndDate", {
-        reg: regNumber,
-        endDate: extendedEndDate
+        regNumber: regNumber,
+        extendedEndDate: extendedEndDate
         
   
       }).then((response) => {
           
       })
-      alert("Your plan was added to your account. Thank you!");
-      navigate('/loaner-page') 
+      alert(`Your car is now rentable till ${extendedEndDate}. Thank you!`);
+      navigate('/CarsForRent') 
       
       
-    }*/
+    }
 
 
  
@@ -123,6 +123,7 @@ function EditSpecificCarPage() {
         </div>
        <br></br>
        <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
+       <button onClick={EditCar}>Save the extended date</button>
        
        
        

@@ -11,6 +11,8 @@ function CarsForRent() {
   
   const [data, setData] = useState([])
 
+  const [startDateFilter, setStartDateFilter] = useState("");
+  const [endDateFilter, setEndDateFilter] = useState("");
   const [minPriceFilter, setMinPriceFilter] = useState("");
   const [maxPriceFilter, setMaxPriceFilter] = useState("");
   const [type, setTypeFilter] = useState("All");
@@ -19,6 +21,12 @@ function CarsForRent() {
   const [minYearFilter, setMinYearFilter] = useState("");
   const [maxYearFilter, setMaxYearFilter] = useState("");
   const [noResult, setNoResult] = useState("No Result");
+  const [dateRange, setDateRange] = useState("");
+  const moment = require('moment');
+  
+  const current = new Date();
+  const date = `${current.getFullYear()}-${current.getMonth() + 1<10?`0${current.getMonth() + 1}`:`${current.getMonth() + 1}`}-${current.getDate()<10?`0${current.getDate()}`:`${current.getDate()-1}`}`;
+  const date2 = `${current.getFullYear()}-${current.getMonth() + 1<10?`0${current.getMonth() + 1}`:`${current.getMonth() + 1}`}-${current.getDate()<10?`0${current.getDate()}`:`${current.getDate()}`}`;  
 
 
   const minPrice = (value) => parseInt(value.price) >= minPriceFilter; 
@@ -28,6 +36,9 @@ function CarsForRent() {
   const carType = (value) => value.type === type; 
   const carMake = (value) => value.make === make; 
   const carColour = (value) => value.colour === colour; 
+  const valid = (value) => moment(value.endDate).isAfter(date); 
+  const sDate = (value) => moment(value.startDate).isBefore(startDateFilter) || (value.startDate) === (startDateFilter); 
+  const eDate = (value) => moment(value.endDate).isAfter(endDateFilter) || (value.endDate) === (endDateFilter); 
   
     
    
@@ -42,6 +53,35 @@ function CarsForRent() {
     //setData(response.data)
     for(const car of response.data){
 
+      
+
+      tempData = tempData.filter(valid)
+      
+      if(moment(endDateFilter).isBefore(startDateFilter)){
+        setDateRange("End Date should be later than or same as the start date")
+      }
+      else{
+        if(endDateFilter !== "" && startDateFilter !== ""){
+        
+          tempData = tempData.filter(eDate)
+          tempData = tempData.filter(sDate)
+          setDateRange("")
+        }
+        else if(endDateFilter !== ""){
+          setDateRange("Please select an start date as well to see the results for the range")
+        }
+        else if(startDateFilter !== ""){
+          setDateRange("Please select an end date as well to see the results for the range")
+        }
+        else if(startDateFilter == "" && startDateFilter == ""){
+          setDateRange("")
+        }
+      }
+
+      
+       
+        
+      
       
 
       if(minPriceFilter !== ""){
@@ -115,6 +155,16 @@ function CarsForRent() {
         <h1> RentMyRide </h1>
         <div>
           Filters
+
+          <div class="StartDate">
+            Start Date: <input type="date" placeholder="Start Date" name="startDate" min={date2} onChange={(e)=>{setStartDateFilter(e.target.value)}} />
+          </div>
+
+          <div class="EndDate">
+            End Date: <input type="date" placeholder="End Date" name="endDtae" min={date2} onChange={(e)=>{setEndDateFilter(e.target.value)}} />
+          </div>
+
+          <div style={{color: "red"}}>{dateRange}</div>
         
           <div class="MinimumPrice">
             Minimum Price: <input type="number" placeholder="Minimum price" name="priceFilter"  onChange={(e)=>{setMinPriceFilter(e.target.value)}} />

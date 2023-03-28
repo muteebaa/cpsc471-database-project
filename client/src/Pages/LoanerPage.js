@@ -197,7 +197,7 @@ function LoanerPage() {
       </div>
       
       <button onClick={addCarPage}>Add Car</button>
-      <button onClick={editCarPage}>Edit Car</button>
+      <button onClick={editCarPage}>Extend the End Date for a Car</button>
       <button onClick={handleLogout}>Logout</button>
       
       

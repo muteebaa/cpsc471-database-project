@@ -55,6 +55,7 @@ function EditCarPage() {
     <> <div class="App">
         <h1> Rent Your Ride </h1>
         <div> Welcome {auth.user} </div>
+        <div> Please select one of your cars </div>
       
         {
           

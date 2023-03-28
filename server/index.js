@@ -148,6 +148,23 @@ app.post('/api/cancelpremiumplan', (req, res)=>{
     
 }); 
 
+app.post('/api/editCarEndDate', (req, res)=>{
+    
+    const regNumber = req.body.regNumber;
+    const extendedEndDate = req.body.extendedEndDate;
+    console.log(extendedEndDate)
+    
+   
+    db.query("UPDATE cars SET endDate=? WHERE regNumber = ?", [extendedEndDate, regNumber], (err, result)=>{
+        if(err) throw err;
+        else console.log("worked")
+    });
+
+   
+
+    
+}); 
+
 
 app.post("/api/UserInfo",(req, res)=>{
     const username = req.body.username
