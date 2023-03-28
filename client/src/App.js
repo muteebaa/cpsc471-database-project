@@ -17,6 +17,9 @@ import Navbar from "./Pages/NavBar";
 import Reservation from "./Pages/ReservationPage";
 import ReservationPage from "./Pages/ReservationPage";
 import AddCarPage from "./Pages/AddCarPage";
+import EditCarPage from "./Pages/EditCarPage";
+import EditSpecificCarPage from "./Pages/EditSpecificCarPage";
+
 
 
 function App() {
@@ -48,6 +51,8 @@ function App() {
         <Route path='/CarsForRent' element={ < CarsForRent /> } />
         <Route path='/CarDetails/:id' element={ < CarDetails /> } />
         <Route path='/add-car' element={ < AddCarPage /> } />
+        <Route path='/edit-car' element={ < EditCarPage /> } />
+        <Route path='/editYourCar/:id' element={ < EditSpecificCarPage /> } />
 
 
         <Route path='*' element={< ErrorPage />} />

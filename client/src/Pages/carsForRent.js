@@ -41,6 +41,7 @@ function CarsForRent() {
     let tempData = response.data
     //setData(response.data)
     for(const car of response.data){
+
       
 
       if(minPriceFilter !== ""){
@@ -99,8 +100,8 @@ function CarsForRent() {
     
   })
 
-  const MoreInfo = () => {
-    {info()}
+  const validate = () => {
+    
   }
   
 

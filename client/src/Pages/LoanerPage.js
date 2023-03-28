@@ -169,6 +169,9 @@ function LoanerPage() {
   function addCarPage(){
     navigate('/add-car');
   }
+  function editCarPage(){
+    navigate('/edit-car');
+  }
   function showRentHistory() {
     
   }
@@ -194,6 +197,7 @@ function LoanerPage() {
       </div>
       
       <button onClick={addCarPage}>Add Car</button>
+      <button onClick={editCarPage}>Edit Car</button>
       <button onClick={handleLogout}>Logout</button>
       
       
