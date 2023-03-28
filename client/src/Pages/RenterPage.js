@@ -50,11 +50,11 @@ function RenterPage() {
     
     <><div>
       {info()}
-    </div> <div className="App">
+    </div> <div class="App">
         <h1> Renter Home Page </h1>
         <div> Welcome {auth.user} </div>
       </div>
-      <div className="Information">
+      <div class="Information">
         <h1> About: </h1>
         <div> First Name : {firstName} </div>
         <div> Last Name : {lastName} </div>

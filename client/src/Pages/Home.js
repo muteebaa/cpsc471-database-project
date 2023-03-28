@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 function Home() {
   return (
     // <Router> 
-    <div className="App">  
+    <div class="App">  
       <h1> RentMyRide </h1>
       
        <nav>

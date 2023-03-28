@@ -126,13 +126,13 @@ function RegisterUser() {
 
   return (
     
-    <div className="App">  
+    <div class="App">  
       <h1> RentMyRide </h1>
       <nav>
         <Link to="/"> back </Link>
       </nav>  
 
-      <div className="login">
+      <div class="login">
       <div> First Name </div>
         <input 
           type="text" 

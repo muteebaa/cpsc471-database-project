@@ -44,13 +44,13 @@ function RenterLogin() {
 
   return (
     
-    <div className="App">  
+    <div class="App">  
       <h1> Renter Login </h1>
       <nav>
         <Link to="/"> back </Link>
       </nav>  
 
-      <div className="login">
+      <div class="login">
         <div> Username </div>
         <input 
           type="text" 
@@ -71,7 +71,7 @@ function RenterLogin() {
         
         <div> <button onClick={handleLogin}> Login </button> </div>
 
-        <div className="registerPage"><a href="/registration">Dont have an account? Register right now</a></div>
+        <div class="registerPage"><a href="/registration">Dont have an account? Register right now</a></div>
 
     
       </div>

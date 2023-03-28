@@ -304,17 +304,17 @@ function AddCarPage() {
 
     <><div>
       {info()}
-    </div> <div className="App">
+    </div> <div class="App">
         <h1> Rent Your Ride </h1>
         <div> Welcome {auth.user} </div>
       </div>
   
 
-      <div className="AddCar">
+      <div class="AddCar">
           <br></br>
           <strong>Loan a car:</strong>
           <br></br>
-          <div className="RegistrationNumber">
+          <div class="RegistrationNumber">
             Registration Number 
             <input type="text" placeholder="Registration Number" name="regNo" 
             onChange={
@@ -323,7 +323,7 @@ function AddCarPage() {
             <div style={{color: "red"}}>{regNoError}</div>
           </div>
           <br></br>
-          <div className="Price">
+          <div class="Price">
             Price Per Day 
             <input type="number" placeholder="Price Per Day" name="price"   onChange={
               (e) => {setPrice(e.target.value);
@@ -331,7 +331,7 @@ function AddCarPage() {
             <div style={{color: "red"}}>{priceError}</div>
           </div>
           <br></br>
-          <div className="Colour">
+          <div class="Colour">
             Colour 
             <select name="color" placeholder="Colour"  onChange={(e)=>{setColour(e.target.value)}}>
               <option value=""></option>
@@ -364,7 +364,7 @@ function AddCarPage() {
             <div style={{color: "red"}}>{colourError}</div>
           </div>
           <br></br>
-          <div className="Make">
+          <div class="Make">
             Make 
             <select name="make" placeholder="Make"  onChange={(e)=>{setMake(e.target.value)}}>
               <option value=""></option>
@@ -424,19 +424,19 @@ function AddCarPage() {
           </div>
           <br></br>
 
-          <div className="Model">
+          <div class="Model">
             Model 
             <input type="text" placeholder="Model" name="model"  onChange={(e)=>{setModel(e.target.value)}} />
             <div style={{color: "red"}}>{modelError}</div>
           </div>
           <br></br>
-          <div className="Year">
+          <div class="Year">
             Year 
             <input type="number" placeholder="Year" name="year"  onChange={(e)=>{setYear(e.target.value)}} />
             <div style={{color: "red"}}>{yearError}</div>
           </div>
           <br></br>
-          <div className="Type">
+          <div class="Type">
             Type 
             <select name="type" placeholder="Type"  onChange={(e)=>{setType(e.target.value)}}>
               <option value=""></option>
@@ -450,20 +450,20 @@ function AddCarPage() {
           </div>
           <br></br>
           
-          <div className="Features">
+          <div class="Features">
             Features 
             <input type="text" placeholder="Add a Feature with Comma" name="features"  onChange={(e)=>{setFeatures(e.target.value)}} />
             <div style={{color: "red"}}>{featuresError}</div>
           </div>
           <br></br>
-          <div className="Address">
+          <div class="Address">
             Pickup Address  
             <input type="text" placeholder="Pickup Address" name="pickupAddress"  onChange={(e)=>{setAddress(e.target.value)}} />
             <div style={{color: "red"}}>{pickupAddressError}</div>
           </div>
           <br></br>
 
-          <div className="Description">
+          <div class="Description">
             Description  
             <input type="text" placeholder="Description" name="description"  onChange={(e)=>{setDescription(e.target.value)}} />
             <div style={{color: "red"}}>{descriptionError}</div>
@@ -485,14 +485,14 @@ function AddCarPage() {
 
           <br></br>
           
-          <div className="Recalls">
+          <div class="Recalls">
             Please type the number of pending recalls 
             <input type="number" placeholder="Recalls" name="Recalls"  onChange={(e)=>{setRecalls(e.target.value)}} />
             <div style={{color: "red"}}>{recallsError}</div>
           </div>
           <br></br>
           
-          <div className="Status">
+          <div class="Status">
             Status 
             <select name="status" placeholder="Status"  onChange={(e)=>{setStatus(e.target.value)}}>
               <option value=""></option>
@@ -503,7 +503,7 @@ function AddCarPage() {
           </div>
           <br></br>
 
-          <div className="Damage">
+          <div class="Damage">
             Please describe any physical or mechanical problems with the car  
             <input type="text" name="damage"  onChange={(e)=>{setDamage(e.target.value)}} />
             <div style={{color: "red"}}>{damageError}</div>

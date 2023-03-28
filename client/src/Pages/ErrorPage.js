@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 
 function Error() {
   return (
-    <div className="App">  
+    <div class="App">  
       <h1> Error: Page doesn't exist </h1>
     </div>
   );

@@ -115,13 +115,13 @@ function CarsForRent() {
         <div>
           Filters
         
-          <div className="MinimumPrice">
+          <div class="MinimumPrice">
             Minimum Price: <input type="number" placeholder="Minimum price" name="priceFilter"  onChange={(e)=>{setMinPriceFilter(e.target.value)}} />
           </div>
-          <div className="MaximumPrice">
+          <div class="MaximumPrice">
             Maximum Price: <input type="number" placeholder="Maximum price" name="priceFilter"  onChange={(e)=>{setMaxPriceFilter(e.target.value)}} />
           </div>
-          <div className="Make">
+          <div class="Make">
             Make: <select name="make" placeholder="make"  onChange={(e)=>{setMakeFilter(e.target.value)}}>
                 <option value="All">All</option>
                 <option value="Acura">Acura</option>
@@ -177,7 +177,7 @@ function CarsForRent() {
               
               </select>
             </div>
-            <div className="Color">
+            <div class="Color">
               Colour: <select name="color" placeholder="color"  onChange={(e)=>{setColourFilter(e.target.value)}}>
                 <option value="All">All</option>
                 <option value="Amber">Amber</option>
@@ -207,13 +207,13 @@ function CarsForRent() {
                 <option value="Yellow">Yellow</option>
               </select>
             </div>
-          <div className="MinimumYear">
+          <div class="MinimumYear">
             Minimum Year: <input type="number" placeholder="Minimum year" name="priceFilter"  onChange={(e)=>{setMinYearFilter(e.target.value)}} />
           </div>
-          <div className="MaximumYear">
+          <div class="MaximumYear">
             Maximum Year: <input type="number" placeholder="Maximum year" name="priceFilter"  onChange={(e)=>{setMaxYearFilter(e.target.value)}} />
           </div>
-          <div className="Type">
+          <div class="Type">
             Type: <select name="type" placeholder="type"  onChange={(e)=>{setTypeFilter(e.target.value)}}>
               <option value="All">All</option>
               <option value="SUV">SUV</option>
@@ -226,7 +226,7 @@ function CarsForRent() {
         </div>
         
 
-        <div className="NoResult">
+        <div class="NoResult">
           {noResult}
         </div>
         
@@ -239,12 +239,12 @@ function CarsForRent() {
 
             
             <div key={getD.regNumber}>
-              <div className = "Car">
+              <div class = "Car">
               <a href={"/CarDetails/"+getD.regNumber}>{getD.make} {getD.model}</a>
               <br></br>
-                <div className="Price"><strong>Price: </strong>{  getD.price  } per day</div>
+                <div class="Price"><strong>Price: </strong>{  getD.price  } per day</div>
                 <br></br>
-                <div className="Picture"><strong></strong><img src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
+                <div class="Picture"><strong></strong><img src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
                 <br></br>
                 <br></br>
               </div>

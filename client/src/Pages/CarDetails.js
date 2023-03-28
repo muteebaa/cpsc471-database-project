@@ -85,20 +85,20 @@ function CarDetails(props) {
       
         <h1> Car Detail Page </h1>
 
-       <div className="Registraion Number">Registration Number : {regNumber}</div>
-       <div className="Make">Make : {make}</div>
-       <div className="Model">Model : {model}</div>
-       <div className="Year">Year : {year}</div>
-       <div className="Type">Type : {type}</div>
-       <div className="Colour">Colour : {colour}</div>
-       <div className="Features">Features : {features}</div>
-       <div className="Pickup Address">Pickup Address : {address}</div>
-       <div className="Price">Price : {price} per day</div>
-       <div className="Description">Description : {description}</div>
+       <div class="Registraion Number">Registration Number : {regNumber}</div>
+       <div class="Make">Make : {make}</div>
+       <div class="Model">Model : {model}</div>
+       <div class="Year">Year : {year}</div>
+       <div class="Type">Type : {type}</div>
+       <div class="Colour">Colour : {colour}</div>
+       <div class="Features">Features : {features}</div>
+       <div class="Pickup Address">Pickup Address : {address}</div>
+       <div class="Price">Price : {price} per day</div>
+       <div class="Description">Description : {description}</div>
        <br></br>
-       <div className="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
+       <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
        <button onClick={() => { reservation() }}> Make Reservation </button>
-       <div className="previousPage"><a href="/carsForRent">Back to the car search page?</a></div>
+       <div class="previousPage"><a href="/carsForRent">Back to the car search page?</a></div>
 
        
       </>
