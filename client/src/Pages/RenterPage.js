@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"; 
 //import './App.css';
+import "../styles/RenterPage.css"
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 import { useAuth } from "./auth";
 import Axios from 'axios';
@@ -50,19 +51,24 @@ function RenterPage() {
     
     <><div>
       {info()}
-    </div> <div class="App">
-        <h1> Renter Home Page </h1>
+    </div> <div class="Page">
+    <div class="Welcome">
+        <h1 class="Heading"> Renter Home Page </h1>
         <div> Welcome {auth.user} </div>
       </div>
+    
       <div class="Information">
-        <h1> About: </h1>
+        <h1 class="Heading"> About: </h1>
         <div> First Name : {firstName} </div>
         <div> Last Name : {lastName} </div>
         <div> PhoneNumber : {phoneNumber} </div>
         <div> Email : {emailAddress} </div>
       </div>
+      <div class="button">
       <button onClick={handleLogout}>Logout</button>
       <button onClick={carsForRent}>Look for cars</button>
+      </div>
+      </div>
       </>
   );
 }

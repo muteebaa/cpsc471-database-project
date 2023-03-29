@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+    
+}
+
+
+
+.App{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 60%;  
+
+}
+
+
+button{
+    
+    padding: 0.4%;
+    color: white;
+    background-color: #333;
+    border-radius: 4px;
+    border-style: solid;
+    
+}
+
+.App button:hover {
+    background-color: #777;
+}
+
+.link{
+    background-color: #333;
+    border-radius: 4px;
+    padding: 0.4%;
+}
+
+
+

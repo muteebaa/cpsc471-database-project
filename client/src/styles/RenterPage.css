@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+    
+}
+.Heading{
+    font-family: Brush Script MT, Brush Script Std, cursive;
+}
+
+.Heading1{
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 150%;
+}
+
+
+.Page{
+    background-size: cover;
+    font-family: Verdana;
+    color: lightgray;
+    display: flexbox;
+    align-items: center;
+    
+    gap: 3rem;
+    padding: 1rem;
+    width: 100%;
+    height: 100vh;
+    background-image: url(HomeBackground.jpg);
+}
+
+
+.Information{
+    color: lightgray;
+    gap: 3rem;
+    padding: 1rem;
+    margin-left: 10%;
+    
+}
+
+
+
+
+.Welcome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+
+}
+
+
+.App a{
+    color: inherit;
+    text-decoration: none;
+    
+    
+}

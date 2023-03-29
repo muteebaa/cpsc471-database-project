@@ -3,10 +3,13 @@
 }
 
 body {
+    
     margin: 0;
 }
 
 .navbar{
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 150%;
     background-color: #333;
     color: white;
     display: flex;

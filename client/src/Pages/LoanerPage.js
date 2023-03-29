@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"; 
 //import './App.css';
 import Axios from 'axios';
-
+import "../styles/LoanerPage.css"
 import { useAuth } from "./auth";
 
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
@@ -182,12 +182,14 @@ function LoanerPage() {
     <><div>
       {info()}
       {planInfo()}
-    </div> <div class="App">
-        <h1> Loaner Home Page </h1>
+    </div>
+    <div class="Page">
+     <div class="Welcome">
+        <h1 class="Heading"> Loaner Home Page </h1>
         <div> Welcome {auth.user} </div>
       </div>
       <div class="Information">
-        <h1> About: </h1>
+        <h1 class="Heading"> About: </h1>
         <div> First Name : {firstName} </div>
         <div> Last Name : {lastName} </div>
         <div> PhoneNumber : {phoneNumber} </div>
@@ -195,31 +197,33 @@ function LoanerPage() {
 
     
       </div>
+      <div class="button">
+        <button class="button1" onClick={addCarPage}>Add Car</button>
+        <button class="button2" onClick={editCarPage}>Extend the End Date for a Car</button>
+        <button class="button3" onClick={handleLogout}>Logout</button>
+      </div>
       
-      <button onClick={addCarPage}>Add Car</button>
-      <button onClick={editCarPage}>Extend the End Date for a Car</button>
-      <button onClick={handleLogout}>Logout</button>
       
-      
-      <div>     
+      <div class="premiumplan">
+      <h1 class="Heading"> Premium Plan: </h1>     
             {
                 (() => {
                     if(`${premiumPlan}`==="true") {
                             return (
                               <>
                                 <p>Your Premium Plan is active.</p>
-                                <p>Services:</p>
+                                <p><strong class="Heading1">Services:</strong></p>
 
-                                  <p><strong>Detailing:</strong> {detail}</p>
-                                  <p><strong>Car Wash:</strong> {carWash}</p>
+                                  <p><strong class="Heading1">Detailing:</strong> {detail}</p>
+                                  <p><strong class="Heading1">Car Wash:</strong> {carWash}</p>
 
 
                                 <p>Please visit one of our following locations to use your active services</p>
 
-                                  <p><strong>Location: </strong>4624 Valiant Dr NW, Calgary, AB T3A 0X9 <strong> Time: </strong> 8:00 AM - 7:00 PM</p>
-                                  <p><strong>Location: </strong>5302 Northland Dr NW, Calgary, AB T2L 2K4 <strong> Time: </strong> 9:00 AM - 8:00 PM</p>
-                                  <p><strong>Location: </strong>150 Citadel Way NW, Calgary, AB T3G 5C1 <strong> Time: </strong> 8:00 AM - 5:00 PM</p>
-                                  <p><strong>Location: </strong>177 Country Hills Blvd NW, Calgary, AB T3K 5M6 <strong> Time: </strong> 10:00 AM - 7:00 PM</p>
+                                  <p><strong class="Heading1">Location: </strong>4624 Valiant Dr NW, Calgary, AB T3A 0X9 <strong> Time: </strong> 8:00 AM - 7:00 PM</p>
+                                  <p><strong class="Heading1">Location: </strong>5302 Northland Dr NW, Calgary, AB T2L 2K4 <strong> Time: </strong> 9:00 AM - 8:00 PM</p>
+                                  <p><strong class="Heading1">Location: </strong>150 Citadel Way NW, Calgary, AB T3G 5C1 <strong> Time: </strong> 8:00 AM - 5:00 PM</p>
+                                  <p><strong class="Heading1">Location: </strong>177 Country Hills Blvd NW, Calgary, AB T3K 5M6 <strong> Time: </strong> 10:00 AM - 7:00 PM</p>
 
 
                                 <p>Your plan will automatically renew next month unless you cancel it.</p>
@@ -234,7 +238,7 @@ function LoanerPage() {
                               <>
                                 <p>Tired of washing and detailing your car? Choose our premium plan and let us handle your worries</p>
                                 <div> Plan: </div>
-                                <select name="plan" id="plan" onChange={(e)=>{setPremiumPlanValue(e.target.value)}}>
+                                <select class="Input" name="plan" id="plan" onChange={(e)=>{setPremiumPlanValue(e.target.value)}}>
                                 <option value=""></option>
                                 <option value="Car_wash">Car Wash</option>
                                 <option value="Detailing">Detailing</option>
@@ -243,16 +247,16 @@ function LoanerPage() {
                                 <div style={{color: "red"}}>{premiumPlanError}</div>
                                 <div> Payment Details: </div>
                                 <label for='cardName'>Card Holder Name</label>
-                                <input type='text' id='cardName' onChange={(e)=>{setCardName(e.target.value)}}/>
+                                <input class="Input" type='text' id='cardName' onChange={(e)=>{setCardName(e.target.value)}}/>
                                 <div style={{color: "red"}}>{cardNameError}</div>
                                 <label for='cardNo'>Card Number</label>
-                                <input type='number' id='cardNo' onChange={(e)=>{setCardNumber(e.target.value)}}/>
+                                <input class="Input" type='number' id='cardNo' onChange={(e)=>{setCardNumber(e.target.value)}}/>
                                 <div style={{color: "red"}}>{cardNumberError}</div>
                                 <label for='expiryDate'>ExpiryDate</label>
-                                <input type='date' id='expiryDate' onChange={(e)=>{setCardExpiryDate(e.target.value)}}/>
+                                <input class="Input" type='date' id='expiryDate' onChange={(e)=>{setCardExpiryDate(e.target.value)}}/>
                                 <div style={{color: "red"}}>{cardExpiryDateError}</div>
                                 <label for='cvc'>CVC</label>
-                                <input type='text' id='cvc' onChange={(e)=>{setCardCvc(e.target.value)}}/>
+                                <input class="Input" type='text' id='cvc' onChange={(e)=>{setCardCvc(e.target.value)}}/>
                                 <div style={{color: "red"}}>{cardCvcError}</div>
                                 <button onClick={registerPremiumPlan}>Register</button>
                               </>
@@ -261,6 +265,7 @@ function LoanerPage() {
                         }
                 })()  
             }  
+        </div>
         </div>
 
       </>

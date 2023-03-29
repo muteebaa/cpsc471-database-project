@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"; 
-//import './App.css';
+import "../styles/LoanerLogin.css"
 import Axios from 'axios';
+
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
 import { useAuth } from "./auth";
@@ -45,10 +46,12 @@ function LoanerLogin() {
   return (
     
     <div class="App">  
-      <h1> Loaner Login </h1>
+      <h1 class="Heading"> Loaner Login </h1>
+      <br></br>
       <nav>
-        <Link to="/"> back </Link>
-      </nav>  
+        <Link class="link" to="/"> back </Link>
+      </nav> 
+      <br></br> 
 
       <div class="login">
         <div> Username </div>
@@ -59,6 +62,7 @@ function LoanerLogin() {
             (e) => {setUsername(e.target.value);
           }}
         />
+        <br></br>
 
         <div> Password </div>
         <input 
@@ -69,10 +73,12 @@ function LoanerLogin() {
             (e) => {setPW(e.target.value);
           }}  
         />
+        <br></br>
         
         <div> <button onClick={handleLogin}> Login </button> </div>
+        <br></br>
 
-        <div class="registerPage"><a href="/registration">Dont have an account? Register right now</a></div>
+        <div class="link2"><a href="/registration">Dont have an account? Register right now</a></div>
     
       </div>
 
