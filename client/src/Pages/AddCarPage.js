@@ -62,7 +62,7 @@ function AddCarPage() {
       Axios.post("http://localhost:3001/api/UserInfo", {
       username: auth.user
     }).then((response) => {
-      console.log(response.data)
+
       setFName(response.data[0].FirstName);
       setLName(response.data[0].LastName);
       setPhoNumber(response.data[0].PhoneNumber);

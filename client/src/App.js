@@ -49,18 +49,20 @@ function App() {
         <Route path='/registration' element={< RegPage />} />
         <Route path='/reservation' element={ < ReservationPage /> } />
         <Route path='/CarsForRent' element={ < CarsForRent /> } />
-        <Route path='/CarDetails/:id' element={ < CarDetails /> } />
-        <Route path='/add-car' element={ < AddCarPage /> } />
-        <Route path='/edit-car' element={ < EditCarPage /> } />
-        <Route path='/editYourCar/:id' element={ < EditSpecificCarPage /> } />
+
 
 
         <Route path='*' element={< ErrorPage />} />
 
         {/* protected routes */}
         {/* <Route element={<ProtectedRoute  />}> */}
+          <Route path='/add-car' element={<RequireAuth> < AddCarPage /> </RequireAuth> } exact/>
           <Route path='/loaner-page' element={<RequireAuth> < LoanerPage /> </RequireAuth> } exact/>
           <Route path='/renter-page' element={<RequireAuth> < RenterPage /> </RequireAuth> } exact/>
+          <Route path='/CarDetails/:id' element={<RequireAuth>< CarDetails /></RequireAuth>  } exact/>
+          <Route path='/edit-car' element={<RequireAuth> < EditCarPage /></RequireAuth> } exact/>
+          <Route path='/editYourCar/:id' element={<RequireAuth>< EditSpecificCarPage /></RequireAuth>} exact/>
+          
           {/* <Route path='/reservation' element={<RequireAuth> < ReservationPage /> </RequireAuth> } exact/>
           <Route path='/CarsForRent' element={<RequireAuth> < CarsForRent /> </RequireAuth>} exact/>
           <Route path='/CarDetails/:id' element={<RequireAuth> < CarDetails /> </RequireAuth>} exact/> */}

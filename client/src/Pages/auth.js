@@ -14,7 +14,7 @@ export const AuthProvider = ({children}) => {
         setPW(pw)
         setAuthState(new Boolean(true))
         
-        console.log(user);
+        console.log("user"+user);
         console.log(pw);
         
     }

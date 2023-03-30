@@ -6,9 +6,10 @@ import { useAuth } from "./auth";
 
 
 export const RequireAuth = ({children}) => {
+  console.log("REQUIREEE AUTHh")
   const auth = useAuth()
 
-  console.log(auth.user)
+  console.log("userrrrr"+auth.user)
   if (!auth.user) {
     return <Navigate to='/' />
   }
