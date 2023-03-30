@@ -4,7 +4,7 @@ import Axios from 'axios';
 import "../styles/RenterLogin.css"
 import Nav from "./NavBar";
 
-import videoBG from "../styles/background2.mp4";
+import videoBG from "../styles/background9.mp4";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
 import { useAuth } from "./auth";
@@ -49,7 +49,7 @@ function RenterLogin() {
   return (
     <body>
 
-    <video class="Video" src={videoBG} autoPlay loop muted playsInline />
+    <video class="Video" src={videoBG} autoPlay loop playsInline />
      <Nav></Nav> 
     <div class="HomePage">
 

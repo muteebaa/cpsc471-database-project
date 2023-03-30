@@ -1,19 +1,24 @@
-import React, {useState, useEffect} from "react"; 
+import React, {useState, useEffect} from "react";
+import Sound from "react-sound"; 
 import "../styles/Home.css";
 import Nav from "./NavBar";
 import "../styles/Navbar.css";
 import videoBG from "../styles/background3.mp4";
+import soundBG from "../styles/background9.mp3";
+import post from "../styles/HomeBackground.jpg"
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
  import LoanerLogin from './LoanerLogin'
 import Navbar from "./NavBar";
 // import ErrorPage from "./Pages/ErrorPafe";
 
 function Home() {
-
+  
 
   return (
+    
     <body>
-      <video class="Video" src={videoBG} autoPlay loop muted playsInline />
+      <video class="Video" src={videoBG} autoPlay muted loop playsInline/>
+      
      <Nav></Nav> 
     <div class="HomePage">
     
