@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from "react"; 
 //import './App.css';
 import Axios from 'axios';
+import "../styles/CarsForRent.css";
+import Nav from "./NavBar";
 import DatePicker from "react-datepicker";
+import videoBG from "../styles/background5.mp4";
 import { useAuth } from "./auth";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
@@ -148,32 +151,40 @@ function CarsForRent() {
 
   return (
       // <Router> 
-      <><div>
-      
-    </div>
-      
-        <h1> RentMyRide </h1>
-        <div>
-          Filters
+      <body>
+      <>
+      <video class="Video" src={videoBG} autoPlay loop muted playsInline />
+      <Nav></Nav> 
 
+      <div class="CarPage">
+      
+      <div class="container">
+      <h1 class="CarHeader"> RentMyRide </h1>
+      </div>
+        <div>
+
+          
+          <div class="Filters">
+          <br></br>
+          <div class="Filter1">
           <div class="StartDate">
-            Start Date: <input type="date" placeholder="Start Date" name="startDate" min={date2} onChange={(e)=>{setStartDateFilter(e.target.value)}} />
+            Start Date: <input class="Input" type="date" placeholder="Start Date" name="startDate" min={date2} onChange={(e)=>{setStartDateFilter(e.target.value)}} />
           </div>
 
           <div class="EndDate">
-            End Date: <input type="date" placeholder="End Date" name="endDtae" min={date2} onChange={(e)=>{setEndDateFilter(e.target.value)}} />
+            End Date: <input class="Input" type="date" placeholder="End Date" name="endDtae" min={date2} onChange={(e)=>{setEndDateFilter(e.target.value)}} />
           </div>
-
+          
           <div style={{color: "red"}}>{dateRange}</div>
         
           <div class="MinimumPrice">
-            Minimum Price: <input type="number" placeholder="Minimum price" name="priceFilter"  onChange={(e)=>{setMinPriceFilter(e.target.value)}} />
+            Minimum Price: <input class="Input" type="number" placeholder="Minimum price" name="priceFilter"  onChange={(e)=>{setMinPriceFilter(e.target.value)}} />
           </div>
           <div class="MaximumPrice">
-            Maximum Price: <input type="number" placeholder="Maximum price" name="priceFilter"  onChange={(e)=>{setMaxPriceFilter(e.target.value)}} />
+            Maximum Price: <input class="Input" type="number" placeholder="Maximum price" name="priceFilter"  onChange={(e)=>{setMaxPriceFilter(e.target.value)}} />
           </div>
           <div class="Make">
-            Make: <select name="make" placeholder="make"  onChange={(e)=>{setMakeFilter(e.target.value)}}>
+            Make: <select class="Input" name="make" placeholder="make"  onChange={(e)=>{setMakeFilter(e.target.value)}}>
                 <option value="All">All</option>
                 <option value="Acura">Acura</option>
                 <option value="Audi">Audi</option>
@@ -228,8 +239,11 @@ function CarsForRent() {
               
               </select>
             </div>
+            </div>
+            <div class="Filter2">
+
             <div class="Color">
-              Colour: <select name="color" placeholder="color"  onChange={(e)=>{setColourFilter(e.target.value)}}>
+              Colour: <select class="Input" name="color" placeholder="color"  onChange={(e)=>{setColourFilter(e.target.value)}}>
                 <option value="All">All</option>
                 <option value="Amber">Amber</option>
                 <option value="Beige">Beige</option>
@@ -258,14 +272,15 @@ function CarsForRent() {
                 <option value="Yellow">Yellow</option>
               </select>
             </div>
+            
           <div class="MinimumYear">
-            Minimum Year: <input type="number" placeholder="Minimum year" name="priceFilter"  onChange={(e)=>{setMinYearFilter(e.target.value)}} />
+            Minimum Year: <input class="Input" type="number" placeholder="Minimum year" name="priceFilter"  onChange={(e)=>{setMinYearFilter(e.target.value)}} />
           </div>
           <div class="MaximumYear">
-            Maximum Year: <input type="number" placeholder="Maximum year" name="priceFilter"  onChange={(e)=>{setMaxYearFilter(e.target.value)}} />
+            Maximum Year: <input class="Input" type="number" placeholder="Maximum year" name="priceFilter"  onChange={(e)=>{setMaxYearFilter(e.target.value)}} />
           </div>
           <div class="Type">
-            Type: <select name="type" placeholder="type"  onChange={(e)=>{setTypeFilter(e.target.value)}}>
+            Type: <select class="Input" name="type" placeholder="type"  onChange={(e)=>{setTypeFilter(e.target.value)}}>
               <option value="All">All</option>
               <option value="SUV">SUV</option>
               <option value="Sedan">Sedan</option>
@@ -275,14 +290,17 @@ function CarsForRent() {
             </select>
           </div>
         </div>
-        
+
+        </div>
+        <br></br>
+        </div>
 
         <div class="NoResult">
           {noResult}
         </div>
         
 
-
+        <div class="Cars">
 
         {
           
@@ -295,7 +313,7 @@ function CarsForRent() {
               <br></br>
                 <div class="Price"><strong>Price: </strong>{  getD.price  } per day</div>
                 <br></br>
-                <div class="Picture"><strong></strong><img src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
+                <div class="Picture"><strong></strong><img class="Picture" src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
                 <br></br>
                 <br></br>
               </div>
@@ -311,9 +329,12 @@ function CarsForRent() {
           
           )
         }
+        </div>
 
-      
+        </div>
       </>
+      </body>
+      
   );}
 
 

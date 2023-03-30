@@ -317,7 +317,7 @@ function AddCarPage() {
 
       <div class="AddCar">
           <br></br>
-          <strong>Loan a car:</strong>
+          <strong class="Heading2">Loan a car:</strong>
           <br></br>
           <div> Please make sure that all the information entered is correct as it will not be editable later.  </div>
           <br></br>
@@ -330,7 +330,7 @@ function AddCarPage() {
             <div style={{color: "red"}}>{regNoError}</div>
           </div>
           <br></br>
-          <div class="Price">
+          <div class="price">
             Price Per Day 
             <input class="Input" type="number" placeholder="Price Per Day" name="price"   onChange={
               (e) => {setPrice(e.target.value);
@@ -340,7 +340,7 @@ function AddCarPage() {
           <br></br>
           <div class="Colour">
             Colour 
-            <select name="color" placeholder="Colour"  onChange={(e)=>{setColour(e.target.value)}}>
+            <select class="Input" name="color" placeholder="Colour"  onChange={(e)=>{setColour(e.target.value)}}>
               <option value=""></option>
               <option value="Amber">Amber</option>
               <option value="Beige">Beige</option>
@@ -373,7 +373,7 @@ function AddCarPage() {
           <br></br>
           <div class="Make">
             Make 
-            <select name="make" placeholder="Make"  onChange={(e)=>{setMake(e.target.value)}}>
+            <select class="Input" name="make" placeholder="Make"  onChange={(e)=>{setMake(e.target.value)}}>
               <option value=""></option>
               <option value="Acura">Acura</option>
               <option value="Audi">Audi</option>
@@ -445,7 +445,7 @@ function AddCarPage() {
           <br></br>
           <div class="Type">
             Type 
-            <select name="type" placeholder="Type"  onChange={(e)=>{setType(e.target.value)}}>
+            <select class="Input" name="type" placeholder="Type"  onChange={(e)=>{setType(e.target.value)}}>
               <option value=""></option>
               <option value="SUV">SUV</option>
               <option value="Sedan">Sedan</option>
@@ -501,7 +501,7 @@ function AddCarPage() {
           
           <div class="Status">
             Status 
-            <select name="status" placeholder="Status"  onChange={(e)=>{setStatus(e.target.value)}}>
+            <select class="Input" name="status" placeholder="Status"  onChange={(e)=>{setStatus(e.target.value)}}>
               <option value=""></option>
               <option value="Active">Active</option>
               <option value="Rebuilt">Rebuilt</option>
@@ -518,7 +518,7 @@ function AddCarPage() {
           <br></br>
 
           Upload a picture
-          <input class="Input" type="file"  onChange={
+          <input  type="file"  onChange={
             (e) => { setFile(e.target.files[0] )
               setPhotoName(e.target.files[0].name )
           }}  />

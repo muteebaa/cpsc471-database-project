@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"; 
 //import './App.css';
 import Axios from 'axios';
+import Nav from "./NavBar";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
 import { useAuth } from "./auth";
@@ -127,13 +128,12 @@ function RegisterUser() {
   return (
     
     <div class="App">  
+         <Nav></Nav> 
       <h1> RentMyRide </h1>
-      <nav>
-        <Link to="/"> back </Link>
-      </nav>  
+ 
 
       <div class="login">
-      <div> First Name </div>
+      <div class="Reg"> First Name </div>
         <input 
           type="text" 
           name="user"
@@ -143,7 +143,7 @@ function RegisterUser() {
         />
         <div style={{color: "red"}}>{fNameError}</div>
 
-        <div> Last Name </div>
+        <div class="Reg"> Last Name </div>
         <input 
           type="text" 
           name="user"
@@ -153,7 +153,7 @@ function RegisterUser() {
         />
         <div style={{color: "red"}}>{lNameError}</div>
 
-     <div> Phone Number </div>
+     <div class="Reg"> Phone Number </div>
         <input 
           type="number" 
           name="user"
@@ -163,7 +163,7 @@ function RegisterUser() {
         />
         <div style={{color: "red"}}>{phoneError}</div>
 
-    <div> Email </div>
+    <div class="Reg"> Email </div>
         <input 
           type="text" 
           name="user"
@@ -173,7 +173,7 @@ function RegisterUser() {
         />
         <div style={{color: "red"}}>{emailError}</div>
 
-        <div> Username </div>
+        <div class="Reg"> Username </div>
         <input 
           type="text" 
           name="user"
@@ -183,7 +183,7 @@ function RegisterUser() {
         />
         <div style={{color: "red"}}>{usernameError}</div>
 
-        <div> Password </div>
+        <div class="Reg"> Password </div>
         <input 
           type="password" 
           name="pw"
@@ -193,7 +193,7 @@ function RegisterUser() {
         />
         <div style={{color: "red"}}>{pwError}</div>
 
-        <div> User Type </div>
+        <div  class="Reg"> User Type </div>
         <select id="userType">
             <option value="0" >Loaner</option>
             <option value="1">Renter</option>

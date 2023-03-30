@@ -20,6 +20,7 @@ Nav{
 
 
 .Page{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-size: cover;
     font-family: Verdana;
     color: lightgray;
@@ -37,6 +38,7 @@ Nav{
 
 
 .Information{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: lightgray;
     gap: 3rem;
     padding: 1rem;
@@ -51,6 +53,7 @@ Nav{
 }
 
 .premiumplan{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: lightgray;
     gap: 3rem;
     padding: 1rem;
@@ -60,6 +63,7 @@ Nav{
 }
 
 .Welcome{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,6 +80,7 @@ Nav{
 }
 
 .button1, .button2, .button3{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 1%;
     padding: 0.3%;
     color: lightgray;

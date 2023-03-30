@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"; 
 //import './App.css';
+import Nav from "./NavBar";
 import "../styles/RenterPage.css"
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 import { useAuth } from "./auth";
@@ -52,6 +53,7 @@ function RenterPage() {
     <><div>
       {info()}
     </div> <div class="Page">
+    <Nav></Nav> 
     <div class="Welcome">
         <h1 class="Heading"> Renter Home Page </h1>
         <div> Welcome {auth.user} </div>

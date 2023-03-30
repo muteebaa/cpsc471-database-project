@@ -4,13 +4,25 @@
     
     
 }
+.Heading2{
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 150%;
+}
 
+.Heading4{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.Reg{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 
 .App{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-size: cover;
-    font-family: Verdana;
-    color: lightgray;
+
+    color: white;
     display: flexbox;
     
     gap: 3rem;
@@ -22,6 +34,7 @@
 }
 
 .infoCar{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: 10%;
     display: flex;
     position: relative;
@@ -35,6 +48,7 @@
 
 
 .Welcome{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;

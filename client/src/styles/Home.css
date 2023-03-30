@@ -12,6 +12,7 @@ Nav {
 
 
 .HomePage {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100%;
     height: 90vh;
     position: relative;
@@ -37,7 +38,7 @@ Nav {
 
 
 .Appp{
-    font-family: Verdana;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-size: cover;
     color: white;
     gap: 3rem;
