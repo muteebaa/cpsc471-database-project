@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 import Nav from "./NavBar";
 import "../styles/AddCarPage.css";
-
+import videoBG from "../styles/background13.mp4";
 import { useAuth } from "./auth";
 
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
@@ -305,13 +305,19 @@ function AddCarPage() {
   return (
     
 
-    <><div>
+    <body>
+      <div>
       {info()}
       
-    </div> <div class="App">
-        <Nav></Nav> 
+    </div> 
+    <video class="Video" src={videoBG} autoPlay loop playsInline/>
+    <Nav></Nav> 
+    <div class="HomePage">
+    <div class="Page2">
+        <div class="Welcome">
         <h1> Rent Your Ride </h1>
         <div> Welcome {auth.user} </div>
+        </div>
       
       <div class="infoCar">
 
@@ -319,7 +325,7 @@ function AddCarPage() {
           <br></br>
           <strong class="Heading2">Loan a car:</strong>
           <br></br>
-          <div> Please make sure that all the information entered is correct as it will not be editable later.  </div>
+          <div> Note : Please make sure that all the information entered is correct as it will not be editable later.  </div>
           <br></br>
           <div class="RegistrationNumber">
             Registration Number 
@@ -531,8 +537,8 @@ function AddCarPage() {
       </div>
       </div>
       </div>
-      
-      </>
+      </div>
+      </body>
 
 
 

@@ -4,6 +4,7 @@ import Axios from 'axios';
 import Nav from "./NavBar";
 import "../styles/CarsForRent.css";
 import { useAuth } from "./auth";
+import videoBG from "../styles/background13.mp4";
 
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
@@ -53,11 +54,17 @@ function EditCarPage() {
   return (
     
 
-    <> <div class="App">
-      <Nav></Nav>
+    <body>
+
+      <video class="Video" src={videoBG} autoPlay loop playsInline />
+      <Nav></Nav> 
+
+      <div class="CarPage">
+        <div class="Welcome">
         <h1> Rent Your Ride </h1>
-        <div class="Heading4"> Welcome {auth.user} </div>
-        <div class="Heading4"> Please select one of your cars </div>
+        <div> Welcome {auth.user} </div>
+        <div> Please select one of your cars </div>
+        </div>
         <div class="Cars">
       
         {
@@ -93,7 +100,7 @@ function EditCarPage() {
       </div>
       </div>
       
-      </>
+      </body>
 
 
 

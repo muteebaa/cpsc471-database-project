@@ -4,6 +4,7 @@ import Axios from 'axios';
 import "../styles/LoanerPage.css"
 import Nav from "./NavBar";
 import { useAuth } from "./auth";
+import videoBG from "../styles/background12.mp4";
 
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
@@ -180,13 +181,17 @@ function LoanerPage() {
   return (
     
 
-    <><div>
+    <body>
+    <div>
       {info()}
       {planInfo()}
     </div>
-    
-    <div class="Page">
+    <video class="Video" src={videoBG} autoPlay loop playsInline/>
     <Nav></Nav>
+
+    <div class="HomePage">
+    <div class="Page2">
+    
 
     <div class="Welcome">
         <h1 class="Heading"> Loaner Home Page </h1>
@@ -271,8 +276,9 @@ function LoanerPage() {
             }  
         </div>
         </div>
+        </div>
 
-      </>
+        </body>
 
 
 

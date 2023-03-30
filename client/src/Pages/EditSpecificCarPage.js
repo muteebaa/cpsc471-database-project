@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react"; 
 //import './App.css';
 import Axios from 'axios';
-
+import videoBG from "../styles/background13.mp4";
 import { useAuth } from "./auth";
+import Nav from "./NavBar";
+import "../styles/EditSpecificCarPage.css";
 
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
@@ -97,19 +99,30 @@ function EditSpecificCarPage() {
   return (
     
 
-    <> <div class="App">
-        <h1> Extend your {year} {make} {model}'s time on our website </h1>
-        
+    <body> 
+
+      <video class="Video" src={videoBG} autoPlay loop playsInline/>
       
+      <Nav></Nav> 
+    <div class="HomePage">
+    <div class="Page2">
+      <br></br>
+      <div class="Welcome">
+        <h1> Extend your {year} {make} {model}'s time on our website </h1>
+        </div> 
+        <div class="PageInfoAll">
+        <div class="carInfoAll">
         <div class="Registraion Number">Registration Number : {regNumber}</div>
+ 
        <div class="Make">Make : {make}</div>
+ 
        <div class="Model">Model : {model}</div>
        <div class="Year">Year : {year}</div>
        <div class="Type">Type : {type}</div>
        <div class="Colour">Colour : {colour}</div>
        <div class="Features">Features : {features}</div>
        <div class="Pickup Address">Pickup Address : {address}</div>
-       <div class="Price">Price : {price} per day</div>
+       <div class="price">Price : {price} per day</div>
        <div class="Description">Description : {description}</div>
        <div class="Recalls">Number of pending recalls : {recalls}</div>
        <div class="Status">The car has a {status} status</div>
@@ -118,12 +131,21 @@ function EditSpecificCarPage() {
        <div class="Damage">Current End Date : {endDate}</div>
        <div class="EndDate">
             Extended End Date:
-            <input type="date" placeholder="EndDate" name="EndDate" min={endDate}  onChange={(e)=>{setExtendedEndDate(e.target.value)}} />
+            <input class="Input" type="date" placeholder="EndDate" name="EndDate" min={endDate}  onChange={(e)=>{setExtendedEndDate(e.target.value)}} />
             
         </div>
        <br></br>
+       
+
        <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
+       <br></br>
        <button onClick={EditCar}>Save the extended date</button>
+       </div>
+        <div class="Qoute1">
+          <p>If you dont look back at your car after you park it, you own the wrong car.</p>
+        </div>
+       </div>
+       
        
        
        
@@ -131,8 +153,9 @@ function EditSpecificCarPage() {
     
         
       </div>
+      </div>
       
-      </>
+      </body>
 
 
 
