@@ -47,7 +47,6 @@ function App() {
         <Route path='/loaner-login' element={< LoanerLogin />} />
         <Route path='/renter-login' element={< RenterLogin />} />
         <Route path='/registration' element={< RegPage />} />
-        <Route path='/reservation' element={ < ReservationPage /> } />
         <Route path='/CarsForRent' element={ < CarsForRent /> } />
         <Route path='/CarDetails/:id' element={< CarDetails /> } />
 
@@ -62,6 +61,7 @@ function App() {
           <Route path='/renter-page' element={<RequireAuth> < RenterPage /> </RequireAuth> } exact/>
           <Route path='/edit-car' element={<RequireAuth> < EditCarPage /></RequireAuth> } exact/>
           <Route path='/editYourCar/:id' element={<RequireAuth>< EditSpecificCarPage /></RequireAuth>} exact/>
+          <Route path='/reservation' element={<RequireAuth>< ReservationPage /></RequireAuth>} exact/>
           
           {/* <Route path='/reservation' element={<RequireAuth> < ReservationPage /> </RequireAuth> } exact/>
           <Route path='/CarsForRent' element={<RequireAuth> < CarsForRent /> </RequireAuth>} exact/>
