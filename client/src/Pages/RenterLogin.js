@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 //import './App.css';
 import Axios from 'axios';
 import "../styles/RenterLogin.css"
+import Nav from "./NavBar";
+
 import videoBG from "../styles/background2.mp4";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
@@ -45,17 +47,16 @@ function RenterLogin() {
 
 
   return (
+    <body>
 
+    <video class="Video" src={videoBG} autoPlay loop muted playsInline />
+     <Nav></Nav> 
     <div class="HomePage">
 
-      <video class="Video" src={videoBG} autoPlay loop muted playsInline />
     
     <div class="Appp">  
       <h1 class="Heading"> Renter Login </h1>
-      <br></br>
-      <nav>
-        <Link class="link" to="/"> back </Link>
-      </nav>  
+
       <br></br>
       <div class="login">
         <div> Username </div>
@@ -87,6 +88,7 @@ function RenterLogin() {
 
     </div>
     </div>
+    </body>
   );
 }
 

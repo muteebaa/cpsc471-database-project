@@ -39,7 +39,7 @@ function App() {
 
   return (
     <AuthProvider>
-    <Navbar></Navbar>
+
     <Router> 
     
       <Routes>

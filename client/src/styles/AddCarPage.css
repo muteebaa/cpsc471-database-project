@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+    
+}
+
+
+
+.App{
+    background-size: cover;
+    font-family: Verdana;
+    color: lightgray;
+    display: flexbox;
+    
+    gap: 3rem;
+    padding: 1rem;
+    width: 100%;
+    height: 100vh;
+    background-image: url(HomeBackground.jpg);
+    overflow: scroll;
+}
+
+.infoCar{
+    margin-left: 10%;
+    display: flex;
+    position: relative;
+    align-items: left;
+    text-align: left;
+}
+
+
+
+
+
+
+.Welcome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+
+}
+
+

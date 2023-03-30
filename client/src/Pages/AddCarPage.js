@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react"; 
 //import './App.css';
 import Axios from 'axios';
+import Nav from "./NavBar";
+import "../styles/AddCarPage.css";
 
 import { useAuth } from "./auth";
 
@@ -305,11 +307,13 @@ function AddCarPage() {
 
     <><div>
       {info()}
+      
     </div> <div class="App">
+        <Nav></Nav> 
         <h1> Rent Your Ride </h1>
         <div> Welcome {auth.user} </div>
-      </div>
-  
+      
+      <div class="infoCar">
 
       <div class="AddCar">
           <br></br>
@@ -319,7 +323,7 @@ function AddCarPage() {
           <br></br>
           <div class="RegistrationNumber">
             Registration Number 
-            <input type="text" placeholder="Registration Number" name="regNo" 
+            <input class="Input" type="text" placeholder="Registration Number" name="regNo" 
             onChange={
               (e) => {setRegNo(e.target.value);
             }}/>
@@ -328,7 +332,7 @@ function AddCarPage() {
           <br></br>
           <div class="Price">
             Price Per Day 
-            <input type="number" placeholder="Price Per Day" name="price"   onChange={
+            <input class="Input" type="number" placeholder="Price Per Day" name="price"   onChange={
               (e) => {setPrice(e.target.value);
             }}/>
             <div style={{color: "red"}}>{priceError}</div>
@@ -429,13 +433,13 @@ function AddCarPage() {
 
           <div class="Model">
             Model 
-            <input type="text" placeholder="Model" name="model"  onChange={(e)=>{setModel(e.target.value)}} />
+            <input class="Input" type="text" placeholder="Model" name="model"  onChange={(e)=>{setModel(e.target.value)}} />
             <div style={{color: "red"}}>{modelError}</div>
           </div>
           <br></br>
           <div class="Year">
             Year 
-            <input type="number" placeholder="Year" name="year"  onChange={(e)=>{setYear(e.target.value)}} />
+            <input class="Input" type="number" placeholder="Year" name="year"  onChange={(e)=>{setYear(e.target.value)}} />
             <div style={{color: "red"}}>{yearError}</div>
           </div>
           <br></br>
@@ -455,34 +459,34 @@ function AddCarPage() {
           
           <div class="Features">
             Features 
-            <input type="text" placeholder="Add a Feature with Comma" name="features"  onChange={(e)=>{setFeatures(e.target.value)}} />
+            <input class="Input" type="text" placeholder="Add a Feature with Comma" name="features"  onChange={(e)=>{setFeatures(e.target.value)}} />
             <div style={{color: "red"}}>{featuresError}</div>
           </div>
           <br></br>
           <div class="Address">
             Pickup Address  
-            <input type="text" placeholder="Pickup Address" name="pickupAddress"  onChange={(e)=>{setAddress(e.target.value)}} />
+            <input class="Input" type="text" placeholder="Pickup Address" name="pickupAddress"  onChange={(e)=>{setAddress(e.target.value)}} />
             <div style={{color: "red"}}>{pickupAddressError}</div>
           </div>
           <br></br>
 
           <div class="Description">
             Description  
-            <input type="text" placeholder="Description" name="description"  onChange={(e)=>{setDescription(e.target.value)}} />
+            <input class="Input" type="text" placeholder="Description" name="description"  onChange={(e)=>{setDescription(e.target.value)}} />
             <div style={{color: "red"}}>{descriptionError}</div>
           </div>
           <br></br>
 
           <div class="StartDate">
             Start Date
-            <input type="date" placeholder="StartDate" name="StartDate" min={date} onChange={(e)=>{setStartDate(e.target.value)}} />
+            <input class="Input" type="date" placeholder="StartDate" name="StartDate" min={date} onChange={(e)=>{setStartDate(e.target.value)}} />
           </div>
 
           <br></br>
 
           <div class="EndDate">
             End Date
-            <input type="date" placeholder="EndDate" name="EndDate" min={date}  onChange={(e)=>{setEndDate(e.target.value)}} />
+            <input class="Input" type="date" placeholder="EndDate" name="EndDate" min={date}  onChange={(e)=>{setEndDate(e.target.value)}} />
             <div style={{color: "red"}}>{dateError}</div> 
           </div>
 
@@ -490,7 +494,7 @@ function AddCarPage() {
           
           <div class="Recalls">
             Please type the number of pending recalls 
-            <input type="number" placeholder="Recalls" name="Recalls"  onChange={(e)=>{setRecalls(e.target.value)}} />
+            <input class="Input" type="number" placeholder="Recalls" name="Recalls"  onChange={(e)=>{setRecalls(e.target.value)}} />
             <div style={{color: "red"}}>{recallsError}</div>
           </div>
           <br></br>
@@ -508,13 +512,13 @@ function AddCarPage() {
 
           <div class="Damage">
             Please describe any physical or mechanical problems with the car  
-            <input type="text" name="damage"  onChange={(e)=>{setDamage(e.target.value)}} />
+            <input class="Input" type="text" name="damage"  onChange={(e)=>{setDamage(e.target.value)}} />
             <div style={{color: "red"}}>{damageError}</div>
           </div>
           <br></br>
 
           Upload a picture
-          <input type="file"  onChange={
+          <input class="Input" type="file"  onChange={
             (e) => { setFile(e.target.files[0] )
               setPhotoName(e.target.files[0].name )
           }}  />
@@ -524,6 +528,8 @@ function AddCarPage() {
           <button onClick={addCar}>Add car</button>
           <br></br>
         
+      </div>
+      </div>
       </div>
       
       </>

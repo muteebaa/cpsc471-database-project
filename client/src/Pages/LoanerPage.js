@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 //import './App.css';
 import Axios from 'axios';
 import "../styles/LoanerPage.css"
+import Nav from "./NavBar";
 import { useAuth } from "./auth";
 
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
@@ -183,8 +184,11 @@ function LoanerPage() {
       {info()}
       {planInfo()}
     </div>
+    
     <div class="Page">
-     <div class="Welcome">
+    <Nav></Nav>
+
+    <div class="Welcome">
         <h1 class="Heading"> Loaner Home Page </h1>
         <div> Welcome {auth.user} </div>
       </div>

@@ -10,8 +10,6 @@ body {
 .navbar{
     font-family: Brush Script MT, Brush Script Std, cursive;
     font-size: 150%;
-    background-color:#333;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,7 +26,7 @@ body {
 }
 
 .navbar a{
-    color: inherit;
+    color: white;
     text-decoration: none;
 }
 
