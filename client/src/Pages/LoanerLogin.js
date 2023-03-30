@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"; 
 import "../styles/LoanerLogin.css"
 import Axios from 'axios';
+import videoBG from "../styles/background2.mp4";
 
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
@@ -45,8 +46,13 @@ function LoanerLogin() {
 
   return (
     
-    <div class="App">  
-      <h1 class="Heading"> Loaner Login </h1>
+    <div class="HomePage">
+    <video class="Video" src={videoBG} autoPlay loop muted playsInline />
+    
+    <div class="Appp"> 
+ 
+      <h1 > Loaner Login </h1>
+    
       <br></br>
       <nav>
         <Link class="link" to="/"> back </Link>
@@ -83,6 +89,8 @@ function LoanerLogin() {
       </div>
 
     </div>
+    </div>
+    
   );
 }
 

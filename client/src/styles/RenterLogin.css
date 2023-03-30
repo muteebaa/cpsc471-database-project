@@ -7,9 +7,12 @@
 
 
 
-.App{
+
+
+.Appp{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 60%;  
+    width: fit-content;
 
 }
 
@@ -24,7 +27,7 @@ button{
     
 }
 
-.App button:hover {
+.Appp button:hover {
     background-color: #777;
 }
 

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"; 
-import "../styles/Home.css"
+import "../styles/Home.css";
+import videoBG from "../styles/background3.mp4";
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
  import LoanerLogin from './LoanerLogin'
 // import ErrorPage from "./Pages/ErrorPafe";
@@ -9,9 +10,16 @@ function Home() {
 
   return (
     <body>
-     
-    <div class="App">  
+
+    <div class="HomePage">
+
+      <video class="Video" src={videoBG} autoPlay loop muted playsInline />
+    
+    <div class="Appp">
+    
+     <div class="container">
       <h1 class="line-1"> RentMyRide </h1>
+      </div>
       <br></br>
        <nav>
         <a class="link" href="/loaner-login"> Loaner Login </a>
@@ -28,8 +36,13 @@ function Home() {
       <nav>
         <a class="link" href="/CarsForRent"> Search for cars as a guest </a>
       </nav>  
+      
 
     </div>
+    </div>
+  
+    
+    
 
     </body>
       
