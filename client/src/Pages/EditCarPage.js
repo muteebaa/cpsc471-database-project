@@ -47,6 +47,10 @@ function EditCarPage() {
       info()
       
     })
+    function DetailPage(link){
+    
+      navigate(link)
+    }
 
 
  
@@ -74,13 +78,17 @@ function EditCarPage() {
             
             <div key={getD.regNumber}>
               <div class = "Car">
-              <a href={"/editYourCar/"+getD.regNumber}>{getD.make} {getD.model}</a>
+              <a>{getD.make} {getD.model}</a>
               <br></br>
-                <div class="Price"><strong>Price: </strong>{  getD.price  } per day</div>
+                <div class="Price">Price: {  getD.price  } per day</div>
                 <br></br>
-                <div class="Picture"><strong></strong><img src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
+                <div class="Picture"><strong></strong><img class="Picture" src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
                 <br></br>
+                <div class="button">
+                <button class="button4" onClick={() => DetailPage("/editYourCar/"+getD.regNumber)}>Reserve / Find out more</button>
+                </div>
                 <br></br>
+
               </div>
               <br>
               
