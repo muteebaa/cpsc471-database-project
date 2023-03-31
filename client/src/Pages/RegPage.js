@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 //import './App.css';
 import Axios from 'axios';
 import Nav from "./NavBar";
+import "../styles/RegPage.css";
+import videoBG from "../styles/background12.mp4";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
 import { useAuth } from "./auth";
@@ -127,10 +129,17 @@ function RegisterUser() {
 
   return (
     
-    <div class="App">  
-         <Nav></Nav> 
+
+    <body>
+
+    <video class="Video" src={videoBG} autoPlay loop playsInline/>
+    <Nav></Nav>
+     <div class="HomePage">  
+    <div class="Page3"> 
+
+    <div class="Welcome"> 
       <h1> RentMyRide </h1>
- 
+      </div>
 
       <div class="login">
       <div class="Reg"> First Name </div>
@@ -203,8 +212,10 @@ function RegisterUser() {
         <div> <button onClick={regUser}> Register </button> </div>
     
       </div>
+      </div>
 
     </div>
+    </body>
   );
 }
 

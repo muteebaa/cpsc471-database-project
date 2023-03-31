@@ -7,7 +7,7 @@ import videoBG from "../styles/background3.mp4";
 import soundBG from "../styles/background9.mp3";
 import post from "../styles/HomeBackground.jpg"
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
- import LoanerLogin from './LoanerLogin'
+import LoanerLogin from './LoanerLogin'
 import Navbar from "./NavBar";
 // import ErrorPage from "./Pages/ErrorPafe";
 

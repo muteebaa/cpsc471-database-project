@@ -20,6 +20,7 @@ export const AuthProvider = ({children}) => {
     }
 
     const logout = () => {
+        console.log("set to null")
         setUser(null)
     }
 

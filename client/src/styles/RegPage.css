@@ -6,17 +6,25 @@
 }
 
 
-
-
-
-.Appp{
+.Page3{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 60%;  
-    width: fit-content;
+    background-size: cover;
+    font-family: Verdana;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15%;
+    gap: 3rem;
+    padding: 1rem;
+    width: 100%;
+    height: 100vh;
 
 }
+
 .Video {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
     right: 0;
@@ -36,9 +44,7 @@ button{
     
 }
 
-.Appp button:hover {
-    background-color: #777;
-}
+
 
 .link{
     background-color: #333;

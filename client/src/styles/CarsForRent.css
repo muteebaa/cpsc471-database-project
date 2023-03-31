@@ -78,6 +78,29 @@ Nav {
     
 }
 
+.button{
+    margin-left: 10%;
+    display: flex;
+    color: white;
+    text-decoration: none;
+     
+}
+
+.button4{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 1%;
+    padding: 0.1rem;
+    color: white;
+    background-color: #777;
+    border-radius: 6px;
+    border-style: solid;
+    
+}
+
+.button .button4:hover {
+    background-color: #333;
+}
+
 .Price{
     color: white;
     width: max-content;

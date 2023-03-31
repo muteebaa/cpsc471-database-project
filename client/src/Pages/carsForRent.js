@@ -13,7 +13,7 @@ function CarsForRent() {
   const auth = useAuth();
   
   const [data, setData] = useState([])
-
+  var navigate = useNavigate();
   const [startDateFilter, setStartDateFilter] = useState("");
   const [endDateFilter, setEndDateFilter] = useState("");
   const [minPriceFilter, setMinPriceFilter] = useState("");
@@ -52,6 +52,7 @@ function CarsForRent() {
     Axios.post("http://localhost:3001/api/Cars", {
     
   }).then((response) => {
+    console.log("userrrrr CARR PAGE" + auth.user)
     let tempData = response.data
     //setData(response.data)
     for(const car of response.data){
@@ -145,6 +146,11 @@ function CarsForRent() {
 
   const validate = () => {
     
+  }
+
+  function DetailPage(link){
+    
+    navigate(link)
   }
   
 
@@ -309,13 +315,17 @@ function CarsForRent() {
             
             <div key={getD.regNumber}>
               <div class = "Car">
-              <a href={"/CarDetails/"+getD.regNumber}>{getD.make} {getD.model}</a>
+              <a>{getD.make} {getD.model}</a>
               <br></br>
-                <div class="Price"><strong>Price: </strong>{  getD.price  } per day</div>
+                <div class="Price">Price: {  getD.price  } per day</div>
                 <br></br>
                 <div class="Picture"><strong></strong><img class="Picture" src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
                 <br></br>
+                <div class="button">
+                <button class="button4" onClick={() => DetailPage("/CarDetails/"+getD.regNumber)}>Reserve / Find out more</button>
+                </div>
                 <br></br>
+
               </div>
               <br>
               

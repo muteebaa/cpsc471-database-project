@@ -17,12 +17,18 @@ body {
     padding: 1rem;
 }
 
+
+
 .navbar ul{
     padding: 0;
     margin: 0;
     list-style: none;
     display: flex;
     gap: 1rem;
+    
+}
+.navB{
+    font-size: 100%;
 }
 
 .navbar a{
@@ -32,4 +38,5 @@ body {
 
 .navbar li:hover {
     background-color: #777;
+    border-radius: 6px;
 }

@@ -41,7 +41,7 @@ function CarDetails(props) {
       Axios.post("http://localhost:3001/api/Cars", {
       
     }).then((response) => {
-
+      console.log("userrrrr DETAILL PAGE" + auth.user)
       
       console.log(response.data.length)
       for(const car of response.data){
@@ -109,7 +109,7 @@ function CarDetails(props) {
        <br></br>
        <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
        <button onClick={() => { reservation() }}> Make Reservation </button>
-       <div class="previousPage"><a href="/carsForRent">Back to the car search page?</a></div>
+
 
        
       </>

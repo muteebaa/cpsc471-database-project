@@ -26,6 +26,7 @@ function RenterPage() {
       username: auth.user
     }).then((response) => {
       console.log(response.data)
+      console.log("userrrrr RENTER PAGE" + auth.user)
       setFName(response.data[0].FirstName);
       setLName(response.data[0].LastName);
       setPhoNumber(response.data[0].PhoneNumber);
@@ -75,7 +76,7 @@ function RenterPage() {
       </div>
       <div class="button">
       <button onClick={handleLogout}>Logout</button>
-      <button onClick={carsForRent}>Look for cars</button>
+      <button onClick={carsForRent}>Reserve / Look for cars</button>
       </div>
       </div>
       </div>
