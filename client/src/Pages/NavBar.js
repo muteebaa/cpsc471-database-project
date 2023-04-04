@@ -22,10 +22,6 @@ export default function Navbar(){
         
         <a href="/" class="Title">Home</a>
         <ul>
-            <li>
-                <button class="navB" onClick={() => Pages("/carsForRent")}>Rent</button>
-
-            </li>
             <br></br>
             <li>
             {

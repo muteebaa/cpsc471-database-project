@@ -42,7 +42,7 @@ var upload = multer({
 
 const db = mysql.createPool({
     host: "localhost",
-    user: "sqluser",
+    user: "root",
     password: "password",
     database: "rentmyridedb",
     connectionLimit: 10
@@ -208,6 +208,37 @@ app.post("/api/planInfo",(req, res)=>{
 
 });
 
+// app.post("/api/getHistory",(req, res)=>{
+//     db.query("SELECT * FROM rentmyridedb.users WHERE ",
+//     function(err,result){
+         
+//         if(err){
+//             res.send({err: err})
+//         }
+//         else{
+//             res.send(result)
+            
+//         }
+//     }
+//     )
+// });
+
+app.post("/api/getHistory",(req, res)=>{
+    const reg_number = req.body.reg_number
+    db.query("SELECT * FROM rentmyridedb.reservation WHERE reg_number = ?", [reg_number],
+    function(err,result){
+         
+        if(err){
+            res.send({err: err})
+        }
+        else{
+            res.send(result)
+            
+        }
+    }
+    )
+});
+
 app.post("/api/Cars",(req, res)=>{
     db.query("SELECT * FROM rentmyridedb.cars",
     function(err,result){
@@ -221,8 +252,6 @@ app.post("/api/Cars",(req, res)=>{
         }
     }
     )
-
-
 });
 
 app.post('/api/Login', (req, res)=>{

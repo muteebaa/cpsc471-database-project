@@ -136,12 +136,10 @@ function ReservationPage() {
     
 
   function reserve(){
-
-    
-
     const isValid = validate();
     if (isValid){
       console.log("VALIDDD")
+      
 
       var insurance = document.getElementById("insurance").value;
       console.log(insurance);
@@ -151,7 +149,7 @@ function ReservationPage() {
         startDate: startDate, 
         endDate: endDate,
         regNo: state.car_regNo,
-        user: "temp-value",
+        user: auth.user,
         insurance: insurance
         }).then((response)=>{    
             // if (response.data == "Successful reservation"){
@@ -163,6 +161,7 @@ function ReservationPage() {
    
   }
 
+  
 
   return (
     <>

@@ -17,10 +17,8 @@ import Navbar from "./Pages/NavBar";
 import Reservation from "./Pages/ReservationPage";
 import ReservationPage from "./Pages/ReservationPage";
 import AddCarPage from "./Pages/AddCarPage";
-import EditCarPage from "./Pages/EditCarPage";
+import LoanersListingsPage from "./Pages/LoanersListingsPage";
 import EditSpecificCarPage from "./Pages/EditSpecificCarPage";
-
-
 
 function App() {
   const [username, setUsername] = useState("");
@@ -59,10 +57,10 @@ function App() {
           <Route path='/add-car' element={<RequireAuth> < AddCarPage /> </RequireAuth> } exact/>
           <Route path='/loaner-page' element={<RequireAuth> < LoanerPage /> </RequireAuth> } exact/>
           <Route path='/renter-page' element={<RequireAuth> < RenterPage /> </RequireAuth> } exact/>
-          <Route path='/edit-car' element={<RequireAuth> < EditCarPage /></RequireAuth> } exact/>
+          <Route path='/listings' element={<RequireAuth> < LoanersListingsPage /></RequireAuth> } exact/>
           <Route path='/editYourCar/:id' element={<RequireAuth>< EditSpecificCarPage /></RequireAuth>} exact/>
           <Route path='/reservation' element={<RequireAuth>< ReservationPage /></RequireAuth>} exact/>
-          
+    
           {/* <Route path='/reservation' element={<RequireAuth> < ReservationPage /> </RequireAuth> } exact/>
           <Route path='/CarsForRent' element={<RequireAuth> < CarsForRent /> </RequireAuth>} exact/>
           <Route path='/CarDetails/:id' element={<RequireAuth> < CarDetails /> </RequireAuth>} exact/> */}
