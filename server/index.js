@@ -209,7 +209,7 @@ app.post("/api/planInfo",(req, res)=>{
 });
 
 // app.post("/api/getHistory",(req, res)=>{
-//     db.query("SELECT * FROM rentmyridedb.users WHERE ",
+//     db.query("SELECT * FROM rentmyridedb.users WHERE ?",
 //     function(err,result){
          
 //         if(err){
@@ -232,6 +232,7 @@ app.post("/api/getHistory",(req, res)=>{
             res.send({err: err})
         }
         else{
+            console.log(result)
             res.send(result)
             
         }

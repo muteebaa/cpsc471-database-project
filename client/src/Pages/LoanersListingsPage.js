@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"; 
+import React, {useState, useEffect, useRef} from "react"; 
 //import './App.css';
 import Axios from 'axios';
 import Nav from "./NavBar";
@@ -7,16 +7,17 @@ import { useAuth } from "./auth";
 import videoBG from "../styles/background13.mp4";
 
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
-
+import ReservationsPopup from "../components/ReservationsPopup";
 
 function LoanersListingsPage() {
     var navigate = useNavigate();
     var { username } = useParams();
+    const [resPopup, setResPopup] = useState(false);
     const auth = useAuth();
     const [data, setData] = useState([])
     const [reservations, setReservations] = useState([]);
     
-  
+    const [isActive, setIsActive] = useState(false);
     const idMatch = (value) => value.username === auth.user;
 
     var navigate = useNavigate();
@@ -52,6 +53,17 @@ function LoanersListingsPage() {
       navigate(link)
     }
 
+    function handleClick(e) {
+      console.log("HANDLING");
+      setResPopup(true);
+  
+      // 👇️ add class on click
+      // event.currentTarget.classList.add('bg-salmon');
+  
+      // 👇️ remove class on click
+      // event.currentTarget.classList.remove('bg-salmon');
+    };
+
     function history(reg_number) {
       
       Axios.post("http://localhost:3001/api/getHistory", {
@@ -59,11 +71,15 @@ function LoanersListingsPage() {
     }).then((response) => {
       console.log(response.data);
       setReservations(response.data);
+      setIsActive(true);
       
     }) 
   
   }
+  function test(str) {
+    console.log(str);
 
+}
   function renterInfo() {
       
     Axios.post("http://localhost:3001/api/reneterDetails", {
@@ -76,14 +92,16 @@ function LoanersListingsPage() {
 
 }
 
- 
+useEffect(()=>{
+  info();
+}, [])
 
   return (
     
 
     <body>
        <div>
-      {info()}
+     
      
       
     </div>
@@ -109,46 +127,40 @@ function LoanersListingsPage() {
               <a>{getD.make} {getD.model}</a>
               <div class="button">
               <br></br>
-                <div class="Price">Price: {  getD.price  } per day</div>
                 <br></br>
-                <button class="button4" onClick={() => DetailPage("/editYourCar/"+getD.regNumber)}>Click to view live lsiting</button>
                 </div>
                 <div class="Picture"><strong></strong><img class="Picture" src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
                 <br></br>
-                
-                <div> Reservations: {history(getD.regNumber)} </div>
-                <div>
-                  {
-                reservations.map( (getR)=> (
-                  <div key={getR.regNumber}>
-      <div class = "Car">
-      {/* <a>{getR.make} {getR.model}</a> */}
-      <br></br>
-        <div> Renter: {  getR.user  } </div>
-        <div> Start date: {getR.start_date.substring(0, 10)} </div>
-        <div> End date: {getR.end_date.substring(0, 10)} </div>
+                <button class="button4" onClick={() => DetailPage("/editYourCar/"+getD.regNumber)}>Edit Listing</button>
+                <button class="button4" onClick={() => DetailPage("/CarDetails/"+getD.regNumber)}>View Live Listing</button>
 
-        <div> Contact: </div>
-        <div> Phone: {getR.start_date.substring(0, 10)} </div>
-        <div> Email: {getR.end_date.substring(0, 10)} </div>
-        
-        
-        <br></br>
-        <div class="button">
-        {/* <button class="button4" onClick={() => DetailPage("/CarDetails/"+getD.regNumber)}>Reserve / Find out more</button> */}
-        </div>
-        <br></br>
+              
+                <button class="button4" onClick={() =>{ history(getD.regNumber); handleClick();}}>View reservations</button>
+               
 
-      </div>
-      <br>
-      
-      </br>
-        
-    
-    </div>
-)  )}
+                <div className='.res' >
+                <ReservationsPopup trigger={resPopup} setTrigger={setResPopup}>
+                <div className="renterinfo"> 
+                <h1>Reservations for: {getD.make} {getD.model}</h1>
+                {reservations.map( (getR)=>(
+                  
+                 <div>
+                  <>------------------</>
+                  <div> Renter: {  getR.user  } </div> 
+                  <div> Start date: {getR.start_date.substring(0, 10)} </div>
+                  <div> End date: {getR.end_date.substring(0, 10)} </div>
 
+                  <div> Contact: </div>
+                  <div> Phone: {getR.start_date.substring(0, 10)} </div>
+                  <div> Email: {getR.end_date.substring(0, 10)} </div>
+                 
                 </div>
+                
+                 
+                ))}  </div></ReservationsPopup>
+                
+                </div>
+                <div id="overlay"></div>
                 
 
                 <br></br>
