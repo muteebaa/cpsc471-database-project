@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 //import './App.css';
 import Axios from 'axios';
 import Nav from "./NavBar";
-import "../styles/CarsForRent.css";
+import "../styles/LoanersListingPage.css";
 import { useAuth } from "./auth";
 import videoBG from "../styles/background13.mp4";
 
@@ -76,21 +76,6 @@ function LoanersListingsPage() {
     }) 
   
   }
-  function test(str) {
-    console.log(str);
-
-}
-  function renterInfo() {
-      
-    Axios.post("http://localhost:3001/api/reneterDetails", {
-    username: auth.user
-  }).then((response) => {
-    console.log(response.data);
-    setReservations(response.data);
-    
-  }) 
-
-}
 
 useEffect(()=>{
   info();
@@ -140,13 +125,12 @@ useEffect(()=>{
 
                 <div className='.res' >
                 <ReservationsPopup trigger={resPopup} setTrigger={setResPopup}>
-                <h1>Reservations for: {getD.make} {getD.model}</h1>
-                <div className="renterinfo"> 
+                <h1>Reservations</h1>
+                <div className="allReservations"> 
                
                 {reservations.map( (getR)=>(
                   
-                 <div>
-                  <>------------------</>
+                 <div className="reservationInfo">
                   <div> Renter: {  getR.user  } </div> 
                   <div> Start date: {getR.start_date.substring(0, 10)} </div>
                   <div> End date: {getR.end_date.substring(0, 10)} </div>
