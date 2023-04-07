@@ -1,0 +1,12 @@
+.allcomments{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* padding: 10% 10%; */
+    min-height: 0px;
+}
+
+.comment{
+    background-color: gray;
+    padding: 5px;
+}

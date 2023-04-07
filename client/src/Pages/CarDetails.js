@@ -3,7 +3,7 @@ import React, {useState, useEffect, Suspense} from "react";
 import Axios from 'axios';
 
 import ReviewForm from "../components/ReviewForm";
-import ReviewSubmitted from "../components/ReviewSubmitted";
+import "../styles/CarDetails.css";
 
 import { useAuth } from "./auth";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
@@ -36,9 +36,12 @@ function CarDetails(props) {
   const [comment, setComment] = useState("");
   const [revState, setRevState] = useState(false);
   const [subState, setSubState] = useState(false);
+  const [prevRenter, setPrevRenter] = useState(false);
+  const [renter, setRenter] = useState(false);
+  const [allReviews, setAllReviews] = useState([]);
+    
 
-
-//  useEffect(() => {
+ useEffect(() => {
     const info = async () => {
     
 
@@ -73,11 +76,18 @@ function CarDetails(props) {
       }
          
       
-    })}
+    })
+    Axios.post("http://localhost:3001/api/getReviews", {
+      regNumber: id
+    }).then((response) => {
+      setAllReviews(response.data)
+    })
+    
+  }
 
     info()
     
- // }, [])
+ }, [])
  
   function reservation() {
     navigate('/reservation',
@@ -88,17 +98,39 @@ function CarDetails(props) {
       });
 
   }
+
+  function prevRenterCheck() {
+   
+    Axios.post('http://localhost:3001/api/prevRenter', {
+      username: auth.user
+    }).then((response)=>{
+          if(response.data){
+            setPrevRenter(true)
+          }  
+    });
+}
   function reviewCheck() {
    
-      Axios.post('http://localhost:3001/api/reviewCheck', {
+      Axios.post('http://localhost:3001/api/alreadyReviewed', {
         username: auth.user
       }).then((response)=>{
-            if(response.data[0]['COUNT(1)'] != 0){
+            if(response.data== "reviewed"){
               setRevState(true)
-            }
-            
+            }  
       });
   }
+
+  function renterCheck() {
+   
+    Axios.post('http://localhost:3001/api/renterCheck', {
+      username: auth.user
+    }).then((response)=>{
+          if(response.data){
+            setRenter(true)
+          }  
+    });
+}
+  
   function submitReview() {
     if(subState == false)
       {Axios.post('http://localhost:3001/api/submitReview', {
@@ -106,13 +138,17 @@ function CarDetails(props) {
         location: locationRate,
         cond: conditionRate,
         comment: comment,
-        regNo: regNumber
+        regNo: id
       }).then((response)=>{
             console.log(response.data);
             setSubState(true)
       });}
   }
+  renterCheck()
+  prevRenterCheck()
   reviewCheck()
+  console.log(allReviews)
+
   return (
       // <Router> 
       <><div>
@@ -141,18 +177,37 @@ function CarDetails(props) {
       <div className="reviewsection">
       
         <div>Reviews </div>
+        <div className="allcomments">
+        {allReviews.map( (getR)=>(
+                  
+          <div className="comment">
+            <div> Renter: {  getR.username  } </div> 
+            <div> comment: {  getR.writting_comments  } </div> 
+          </div>
+                 
+                  
+        ))} 
+        </div>
+
           {auth.user ?
-              revState ? 
-                <div>
-                    <ReviewSubmitted></ReviewSubmitted> 
-                    
-                    {submitReview()}
-                </div>
-                : 
-                <div> 
-                  <ReviewForm cond={setConditionRate} loc={setLocationRate} comment={setComment} sub={setRevState}>
-                  </ReviewForm> 
-                </div> 
+              renter ?
+                prevRenter ?
+                  revState ? 
+                    <div>
+                        <div className="noreviewmessage">  You have submitted a review for this car.</div>
+                        {submitReview()}
+                        {useEffect}
+                    </div>
+                    : 
+                    <div> 
+                      <ReviewForm cond={setConditionRate} loc={setLocationRate} comment={setComment} sub={setRevState}>
+                      </ReviewForm> 
+                    </div> 
+                :
+                <div className="noreviewmessage"> Rent the car to leave a review :)</div>
+              :
+              <div className="noreviewmessage"> Must be a renter to leave a review :)</div>
+
             : 
             <button
               onClick={()=>

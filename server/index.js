@@ -233,11 +233,72 @@ app.post("/api/submitReview",(req, res)=>{
    )
 
 });
-app.post("/api/reviewCheck",(req, res)=>{
+app.post("/api/alreadyReviewed",(req, res)=>{
     const username = req.body.username
-
     db.query("SELECT COUNT(1) FROM rentmyridedb.review WHERE username = ?", 
     [username], 
+    function(err,result){      
+        if(err){
+            console.log(err)
+           res.send({err: err})
+        }
+        else{
+            if(result[0]['COUNT(1)'] == 0){
+                res.send("notreviewed")  
+            }
+            else{   
+                res.send("reviewed")  
+            }            
+       }
+    })
+});
+
+app.post("/api/prevRenter",(req, res)=>{
+    const username = req.body.username
+    db.query("SELECT COUNT(1) FROM rentmyridedb.reservation WHERE user = ?", 
+    [username], 
+    function(err,result){      
+       if(err){
+            console.log(err)
+           res.send({err: err})
+       }
+       else{
+            if(result[0]['COUNT(1)'] == 0){
+                res.send(false)  
+            }
+            else{   
+                res.send(true)  
+            }            
+       }
+    })
+});
+
+app.post("/api/renterCheck",(req, res)=>{
+    const username = req.body.username
+    db.query("SELECT COUNT(1) FROM rentmyridedb.users WHERE username = ? AND type = 1", 
+    [username], 
+    function(err,result){      
+       if(err){
+            console.log(err)
+           res.send({err: err})
+       }
+       else{
+        console.log(result[0]['COUNT(1)'])
+            if(result[0]['COUNT(1)'] == 0){
+                res.send(false)  
+            }
+            else{   
+                res.send(true)  
+            }            
+       }
+    })
+});
+
+app.post("/api/getReviews",(req, res)=>{
+    const reg_number = req.body.regNumber
+
+    db.query("SELECT * FROM rentmyridedb.review WHERE car_reg = ?", 
+    [reg_number], 
 
     function(err,result){
         
