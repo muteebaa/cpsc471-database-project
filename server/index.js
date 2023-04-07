@@ -207,7 +207,54 @@ app.post("/api/planInfo",(req, res)=>{
    )
 
 });
+app.post("/api/submitReview",(req, res)=>{
+    const username = req.body.username
+    const location = req.body.location
+    const condition = req.body.cond
+    const comment = req.body.comment
+    const regNo = req.body.regNo
 
+    db.query("INSERT INTO rentmyridedb.review (username, location_rating, consdition_rating, writting_comments, car_reg) VALUES (?, ?, ?, ?, ?)", 
+    [username, location, condition, comment, regNo], 
+
+    function(err,result){
+        
+       if(err){
+            console.log(err)
+           res.send({err: err})
+       }
+       else{
+           console.log(result)
+           res.send(result)
+           
+       }
+   }
+  
+   )
+
+});
+app.post("/api/reviewCheck",(req, res)=>{
+    const username = req.body.username
+
+    db.query("SELECT COUNT(1) FROM rentmyridedb.review WHERE username = ?", 
+    [username], 
+
+    function(err,result){
+        
+       if(err){
+            console.log(err)
+           res.send({err: err})
+       }
+       else{
+           console.log(result)
+           res.send(result)
+           
+       }
+   }
+  
+   )
+
+});
 // app.post("/api/getHistory",(req, res)=>{
 //     db.query("SELECT * FROM rentmyridedb.users WHERE ?",
 //     function(err,result){

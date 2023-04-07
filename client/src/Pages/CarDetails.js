@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from "react"; 
+import React, {useState, useEffect, Suspense} from "react"; 
 //import './App.css';
 import Axios from 'axios';
 
+import ReviewForm from "../components/ReviewForm";
+import ReviewSubmitted from "../components/ReviewSubmitted";
 
 import { useAuth } from "./auth";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
@@ -29,12 +31,14 @@ function CarDetails(props) {
   const [status, setStatus] = useState("");
   const [damage, setDamage] = useState("");
   
+  const [conditionRate, setConditionRate] = useState("");
+  const [locationRate, setLocationRate] = useState("");
+  const [comment, setComment] = useState("");
+  const [revState, setRevState] = useState(false);
+  const [subState, setSubState] = useState(false);
 
 
-
-
-
-  useEffect(() => {
+//  useEffect(() => {
     const info = async () => {
     
 
@@ -73,8 +77,8 @@ function CarDetails(props) {
 
     info()
     
-  })
-
+ // }, [])
+ 
   function reservation() {
     navigate('/reservation',
       {
@@ -83,8 +87,32 @@ function CarDetails(props) {
         }
       });
 
-}
-
+  }
+  function reviewCheck() {
+   
+      Axios.post('http://localhost:3001/api/reviewCheck', {
+        username: auth.user
+      }).then((response)=>{
+            if(response.data[0]['COUNT(1)'] != 0){
+              setRevState(true)
+            }
+            
+      });
+  }
+  function submitReview() {
+    if(subState == false)
+      {Axios.post('http://localhost:3001/api/submitReview', {
+        username: auth.user, 
+        location: locationRate,
+        cond: conditionRate,
+        comment: comment,
+        regNo: regNumber
+      }).then((response)=>{
+            console.log(response.data);
+            setSubState(true)
+      });}
+  }
+  reviewCheck()
   return (
       // <Router> 
       <><div>
@@ -109,7 +137,35 @@ function CarDetails(props) {
        <br></br>
        <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
        <button onClick={() => { reservation() }}> Make Reservation </button>
+     
+      <div className="reviewsection">
+      
+        <div>Reviews </div>
+          {auth.user ?
+              revState ? 
+                <div>
+                    <ReviewSubmitted></ReviewSubmitted> 
+                    
+                    {submitReview()}
+                </div>
+                : 
+                <div> 
+                  <ReviewForm cond={setConditionRate} loc={setLocationRate} comment={setComment} sub={setRevState}>
+                  </ReviewForm> 
+                </div> 
+            : 
+            <button
+              onClick={()=>
+                navigate('/renter-login')
+              }>
+              Sign in to review
+            </button>
+          }
 
+       
+   
+        
+      </div>
 
        
       </>

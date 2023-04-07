@@ -140,8 +140,9 @@ useEffect(()=>{
 
                 <div className='.res' >
                 <ReservationsPopup trigger={resPopup} setTrigger={setResPopup}>
-                <div className="renterinfo"> 
                 <h1>Reservations for: {getD.make} {getD.model}</h1>
+                <div className="renterinfo"> 
+               
                 {reservations.map( (getR)=>(
                   
                  <div>
