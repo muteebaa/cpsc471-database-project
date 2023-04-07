@@ -155,7 +155,7 @@ function CarDetails(props) {
       
     </div>
       
-        <h1> Car Detail Page </h1>
+      <h1> Car Detail Page </h1>
 
        <div class="Registraion Number">Registration Number : {regNumber}</div>
        <div class="Make">Make : {make}</div>
@@ -172,8 +172,12 @@ function CarDetails(props) {
        <div class="Damage">Any damage on the car : {damage}</div>
        <br></br>
        <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
-       <button onClick={() => { reservation() }}> Make Reservation </button>
-     
+       
+      {renter ? 
+        <button onClick={() => { reservation() }}> Make Reservation </button> 
+        :
+        <div></div>
+      }
       <div className="reviewsection">
       
         <div>Reviews </div>
