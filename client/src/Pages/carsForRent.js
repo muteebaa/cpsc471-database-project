@@ -171,8 +171,7 @@ function CarsForRent() {
 
           
           <div class="Filters">
-          <br></br>
-          <div class="Filter1">
+          {/* <div class="Filter1"> */}
           <div class="StartDate">
             Start Date: <input class="Input" type="date" placeholder="Start Date" name="startDate" min={date2} onChange={(e)=>{setStartDateFilter(e.target.value)}} />
           </div>
@@ -245,8 +244,8 @@ function CarsForRent() {
               
               </select>
             </div>
-            </div>
-            <div class="Filter2">
+            {/* </div>
+            <div class="Filter2"> */}
 
             <div class="Color">
               Colour: <select class="Input" name="color" placeholder="color"  onChange={(e)=>{setColourFilter(e.target.value)}}>
@@ -295,7 +294,7 @@ function CarsForRent() {
               <option value="Other">Other</option>
             </select>
           </div>
-        </div>
+        {/* </div> */}
 
         </div>
         <br></br>

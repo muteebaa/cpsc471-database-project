@@ -16,9 +16,7 @@ function LoanersListingsPage() {
     const auth = useAuth();
     const [data, setData] = useState([])
     const [reservations, setReservations] = useState([]);
-    const [renterName, setRenterName] = useState("");
-    const [renterPhone, setRenterPhone] = useState("");
-    const [renterEmail, setRenterEmail] = useState("");
+  
     
     const [isActive, setIsActive] = useState(false);
     const idMatch = (value) => value.username === auth.user;
@@ -80,17 +78,7 @@ function LoanersListingsPage() {
   
   }
 
-  function getContact(user) {
-      
-    Axios.post("http://localhost:3001/api/UserInfo", {
-      username: user
-  }).then((response) => {
-    setRenterName(response.data[0].FirstName);
-    setRenterPhone(response.data[0].PhoneNumber);
-    setRenterEmail(response.data[0].EmailAddress);
-  }) 
-
-}  
+ 
 
 
 useEffect(()=>{
