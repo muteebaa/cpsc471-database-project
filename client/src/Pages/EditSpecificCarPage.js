@@ -88,7 +88,7 @@ function EditSpecificCarPage() {
           
       })
       alert(`Your car is now rentable till ${extendedEndDate}. Thank you!`);
-      navigate('/CarsForRent') 
+      navigate('/loaner-page') 
       
       
     }

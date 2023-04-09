@@ -7,6 +7,9 @@ import { useAuth } from "./auth";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams, useLocation} from 'react-router-dom';
 import 'react-datetime/css/react-datetime.css';
 import '../components/Calendar.css'
+import "../styles/ReservationPage.css"
+import videoBG from "../styles/background3.mp4";
+import Nav from "./NavBar";
 function ReservationPage() {
   var navigate = useNavigate();
   const auth = useAuth();
@@ -14,6 +17,9 @@ function ReservationPage() {
   const [tes,setTes] = useState("");
   const [rangeLength,setRangeLength] = useState("");
   const { state } = useLocation();
+  const [make,setMake] = useState("");
+  const [model,setModel] = useState("");
+  const [year,setYear] = useState("");
   const [availableStartDate,setAvailableStartDate] = useState("");
   const [availableEndDate,setAvailableEndDate] = useState("");
   const [startDate,setStartDate] = useState("");
@@ -45,7 +51,9 @@ function ReservationPage() {
           if (car.regNumber == state.car_regNo){
             setAvailableStartDate(car.startDate)
             setAvailableEndDate(car.endDate)
-            console.log(car.startDate)
+            setYear(car.year)
+            setMake(car.make)
+            setModel(car.model)
           }
         }
            
@@ -147,9 +155,6 @@ function ReservationPage() {
   }
 
 
-  console.log("esrdftgyhujklxddfghjk");
-  console.log(ranges);
-
 
  
 
@@ -171,7 +176,8 @@ function ReservationPage() {
         insurance: insurance
         }).then((response)=>{    
             // if (response.data == "Successful reservation"){
-              alert(response.data);
+              alert(`Your reservation was successfull. Thank you!`);
+              navigate('/renter-page') 
             // }
         });
 
@@ -179,53 +185,67 @@ function ReservationPage() {
    
   }
 
-  const customDates = ['2023-04-8', '2023-04-04', '2023-04-02'];
+  
   
   
   //   !customDates.includes(current.format('YYYY-MM-DD'));
   // }
   return (
-    <>
-    <div>
-      {/* {carInfo()} */}
-    </div>
-    <div>
+    <body>
+    <video class="Video" src={videoBG} autoPlay loop playsInline/>
+    <Nav></Nav>
+    <div class="HomePage">
+    <div class="Page2">
+    <div class="Welcome">
     <h1> Make Car Reservation </h1>
-    {/* <div>{state.car_regNo}</div> */}
-    <div> Start Date: </div>
-      <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setStartDate} setEnd={setEndDate}></Calendar>
-  
-    <div> End Date: </div>
-    <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setEndDate}></Calendar>
+    </div>
+    <br></br>
+    <div class="Information">
+    <div>Car Reservation for {year} {make} {model} </div>
+    <br></br>
 
+    <div> Start Date: </div>
+    <div class="Calendar">
+    <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setStartDate} setEnd={setEndDate}></Calendar>
+      </div>
+      <br></br>
+    <div> End Date: </div>
+    <div class="Calendar">
+    <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setEndDate}></Calendar>
+    </div>
+    <br></br>
     <div style={{color: "red"}}>{dateError}</div> 
-    
     <div> Insurance: </div>
-    <select name="insurance" id="insurance">
+    <select class="Input" name="insurance" id="insurance">
     <option value="comprehensive">Comprehensive</option>
     <option value="third-party">Third-party</option>
     </select>
-    
-
+    <br></br>
+    <br></br>
     <div> Payment Details: </div>
+    <br></br>
     <label for='cardName'>Card Holder Name</label>
-    <input type='text' id='cardName' onChange={(e)=>{setCardName(e.target.value)}}/>
+    <input class="Input" type='text' id='cardName' onChange={(e)=>{setCardName(e.target.value)}}/>
     <div style={{color: "red"}}>{cardNameError}</div>
+    <br></br>
     <label for='cardNo'>Card Number</label>
-    <input type='number' id='cardNo' onChange={(e)=>{setCardNumber(e.target.value)}}/>
+    <input class="Input" type='number' id='cardNo' onChange={(e)=>{setCardNumber(e.target.value)}}/>
     <div style={{color: "red"}}>{cardNumberError}</div>
+    <br></br>
     <label for='expiryDate'>ExpiryDate</label>
-    <input type='date' id='expiryDate' onChange={(e)=>{setCardExpiryDate(e.target.value)}}/>
+    <input class="Input" type='date' id='expiryDate' onChange={(e)=>{setCardExpiryDate(e.target.value)}}/>
     <div style={{color: "red"}}>{cardExpiryDateError}</div>
+    <br></br>
     <label for='cvc'>CVC</label>
-    <input type='text' id='cvc' onChange={(e)=>{setCardCvc(e.target.value)}}/>
+    <input class="Input" type='text' id='cvc' onChange={(e)=>{setCardCvc(e.target.value)}}/>
     <div style={{color: "red"}}>{cardCvcError}</div>
- 
+    <br></br>
 
     <button onClick={reserve}> Reserve </button>
-            
+    </div>    
+    </div>
     </div>  
-    </>
+    </body>
   );}
 
 

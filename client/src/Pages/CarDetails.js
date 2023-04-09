@@ -208,9 +208,9 @@ function CarDetails(props) {
                       </ReviewForm> 
                     </div> 
                 :
-                <div className="noreviewmessage"> Rent the car to leave a review :)</div>
+                <div className="noreviewmessage"> Rent the car to leave a review :</div>
               :
-              <div className="noreviewmessage"> Must be a renter to leave a review :)</div>
+              <div className="noreviewmessage"> Must be a renter to leave a review :</div>
 
             : 
             <button
