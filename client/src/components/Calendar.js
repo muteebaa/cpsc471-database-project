@@ -8,7 +8,10 @@ import '../components/Calendar.css'
 
 function Calendar(props){
     const [prevReservations,setPrevReservations] = useState([]);
+    const [min,setMin] = useState("");
+    const [max,setMax] = useState("");
     const [date, setDate] = useState(new Date());
+
 
     const getReservations = () =>{
         Axios.post('http://localhost:3001/api/unavailableDates', {
@@ -17,32 +20,71 @@ function Calendar(props){
             setPrevReservations(response.data)
         });    
     }
+
+    const getMinMax = () =>{
+        Axios.post('http://localhost:3001/api/maxminDates', {
+        regNo:  props.regNumber
+        }).then((response)=>{    
+            setMin(response.data[0].startDate)
+            setMax(response.data[0].endDate)
+
+        });    
+    }
     const disableDates = date => {
-        const s = new Date("2023-04-01");
-        const e = new Date("2023-04-30");
+       // console.log(props.sDate)
+        const s = new Date(min);
+        const e = new Date(max);
         if (date < s || date > e) {
             return false;
         }
-        
-        for (let i = 0; i < prevReservations.length; i++) {
-            const start = new Date(prevReservations[i].start_date);
-            const end = new Date(prevReservations[i].end_date);
-            if (date >= start  && date <= end) {
-                return false;
+        if (props.sDate == "start"){
+
+            for (let i = 0; i < prevReservations.length; i++) {
+                const start = new Date(prevReservations[i].start_date);
+                const end = new Date(prevReservations[i].end_date);
+                const nStart = new Date(props.sDate)
+                
+                if (date >= start  && date <= end) {
+                    return false;
+                }
+                
+            } 
+            return true;  
+        }
+        else{
+            for (let i = 0; i < prevReservations.length; i++) {
+                const start = new Date(prevReservations[i].start_date);
+                const end = new Date(prevReservations[i].end_date);
+                const nStart = new Date(props.sDate)
+                
+                if (date< nStart) {
+                    
+                    return false;
+                }
+                else if(date >= start && start > nStart){
+                    return false;
+                }
+                
+                
             }
-        }     
-        return true;
+
+            return true;
+
+        }
+          
+        
     };
     const handleDateChange = (date) => {
         props.setDate(date.toISOString().substring(0, 10));
     }
     const [startDate, setStartDate] = useState(new Date());
     getReservations()
+    getMinMax()
     return (
         <div >
             <DatePicker
                 onChange={handleDateChange}
-                // mode="range"
+                mode="range"
                 timeFormat={false}
                 isValidDate={disableDates}
                 placeholder="Select date"
