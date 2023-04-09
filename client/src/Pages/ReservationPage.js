@@ -211,7 +211,9 @@ function ReservationPage() {
       <br></br>
     <div> End Date: </div>
     <div class="Calendar">
-    <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setEndDate} selectedStartDate={startDate}></Calendar>
+      {startDate=="" ? <div>Please select start date.</div>:
+      <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setEndDate} selectedStartDate={startDate} isDisabled="true">  </Calendar>
+      }
     </div>
     <br></br>
     <div style={{color: "red"}}>{dateError}</div> 

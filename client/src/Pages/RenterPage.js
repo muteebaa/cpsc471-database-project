@@ -21,19 +21,29 @@ function RenterPage() {
     const [fname,setFileName] = useState("");
     const [file,setFile] = useState("");
 
+    const [reservations, setReservations] = useState([])
+
     const info = () => {
       Axios.post("http://localhost:3001/api/UserInfo", {
       username: auth.user
-    }).then((response) => {
-      console.log(response.data)
-      console.log("userrrrr RENTER PAGE" + auth.user)
-      setFName(response.data[0].FirstName);
-      setLName(response.data[0].LastName);
-      setPhoNumber(response.data[0].PhoneNumber);
-      setEmail(response.data[0].EmailAddress);
-    })
-      
-    
+      }).then((response) => {
+        console.log(response.data)
+        console.log("userrrrr RENTER PAGE" + auth.user)
+        setFName(response.data[0].FirstName);
+        setLName(response.data[0].LastName);
+        setPhoNumber(response.data[0].PhoneNumber);
+        setEmail(response.data[0].EmailAddress);
+      }
+
+    )
+
+    Axios.post("http://localhost:3001/api/renterHistory", {
+      username: auth.user
+      }).then((response) => {
+          setReservations(response.data);
+          console.log(response.data);
+      }
+    )
 
   }
 
@@ -49,11 +59,12 @@ function RenterPage() {
               navigate(test);
   }
 
- 
+ info();
   return (
     
     <body><div>
-      {info()}
+      
+
 
       
     </div> 
@@ -75,7 +86,7 @@ function RenterPage() {
         <div> Email : {emailAddress} </div>
       </div>
       <div class="button">
-      <button onClick={handleLogout}>Logout</button>
+ 
       <button onClick={carsForRent}>Reserve / Look for cars</button>
       </div>
       </div>

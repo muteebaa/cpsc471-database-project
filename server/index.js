@@ -134,17 +134,22 @@ app.post('/api/registerpremiumplan', (req, res)=>{
 }); 
 
 app.post('/api/cancelpremiumplan', (req, res)=>{
-    
     const username = req.body.username;
     
-   
     db.query("DELETE FROM premium_plan WHERE username = ?", [username], (err, result)=>{
         if(err) throw err;
         else console.log("worked")
     });
+    
+}); 
 
-   
+app.post('/api/renterHistory', (req, res)=>{
+    const username = req.body.username;
 
+    db.query("SELECT * FROM reservation WHERE user = ?", [username], (err, result)=>{
+        if(err) throw err;
+        else res.send(result);
+    });
     
 }); 
 
@@ -177,7 +182,6 @@ app.post("/api/UserInfo",(req, res)=>{
            res.send({err: err})
        }
        else{
-           console.log(result)
            res.send(result)
            
        }
@@ -198,7 +202,6 @@ app.post("/api/planInfo",(req, res)=>{
            res.send({err: err})
        }
        else{
-           console.log(result)
            res.send(result)
            
        }
@@ -224,7 +227,6 @@ app.post("/api/submitReview",(req, res)=>{
            res.send({err: err})
        }
        else{
-           console.log(result)
            res.send(result)
            
        }
@@ -283,7 +285,6 @@ app.post("/api/renterCheck",(req, res)=>{
            res.send({err: err})
        }
        else{
-        console.log(result[0]['COUNT(1)'])
             if(result[0]['COUNT(1)'] == 0){
                 res.send(false)  
             }
@@ -307,7 +308,6 @@ app.post("/api/getReviews",(req, res)=>{
            res.send({err: err})
        }
        else{
-           console.log(result)
            res.send(result)
            
        }
@@ -340,7 +340,6 @@ app.post("/api/getHistory",(req, res)=>{
             res.send({err: err})
         }
         else{
-            console.log(result)
             res.send(result)
             
         }
