@@ -96,6 +96,7 @@ function Calendar(props){
                 timeFormat={false}
                 isValidDate={disableDates}
                 placeholder="Select date"
+                className="test"
             />
          
             

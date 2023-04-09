@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams, us
 // import 'react-datetime/css/react-datetime.css';
 import '../components/Calendar.css'
 import "../styles/ReservationPage.css"
+import '../components/Calendar.css'
 import videoBG from "../styles/background3.mp4";
 import Nav from "./NavBar";
 function ReservationPage() {

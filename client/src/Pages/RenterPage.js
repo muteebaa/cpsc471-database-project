@@ -8,7 +8,7 @@ import { useAuth } from "./auth";
 import DatePicker from 'react-datetime';
 import Axios from 'axios';
 import RentersReservations from "../components/RentersReservations";
-import '../components/ReservationsCalendar.css'
+
 
 function RenterPage() {
     var navigate = useNavigate();

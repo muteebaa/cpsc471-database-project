@@ -4,7 +4,7 @@ import Axios from 'axios';
 // import DatePicker from 'react-datepicker';
 import DatePicker from 'react-datetime';
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams, useLocation} from 'react-router-dom';
-import '../components/Calendar.css'
+import '../components/ReservationsCalendar.css'
 import DetailsPopup from "./DetailsPopup";
 function RentersReservations(props){
     const [prevReservations,setPrevReservations] = useState([]);

@@ -7,6 +7,11 @@
   color: white;
   background-color: rgb(3, 12, 18);
 }
+.test .rdt {
+  position: relative;
+  color: pink;
+  background-color: rgb(3, 12, 18);
+}
 .form-control{
   pointer-events: none; 
   display: none;
