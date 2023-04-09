@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import Sound from "react-sound"; 
 import "../styles/Home.css";
 import Nav from "./NavBar";
 import "../styles/Navbar.css";

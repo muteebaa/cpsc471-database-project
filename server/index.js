@@ -411,6 +411,21 @@ app.post('/api/Login', (req, res)=>{
    
  });
 
+ app.post('/api/unavailableDates',  (req, res)=>{
+    const reservationNumber = req.body.regNo; 
+
+    const sqlSelect = "SELECT start_date, end_date FROM reservation WHERE reg_number = ?";
+    
+    db.query(sqlSelect, [reservationNumber], (err, result)=>{
+        if(err){
+            res.send("Reservation failed");
+        }
+        else{
+            res.send(result);
+        }
+    });
+
+}); 
 
  app.post('/api/reserve',  (req, res)=>{
     const reservationNumber = req.body.reservationNumber; 
@@ -424,11 +439,12 @@ app.post('/api/Login', (req, res)=>{
     
     db.query(sqlInsert, [reservationNumber, startDate, endDate, regNo, user, insurance], (err, result)=>{
         if(err){
+            console.log(err);
             res.send("Reservation failed");
         }
         else{
             console.log(result);
-            console.log(err);
+           
             res.send("Successful reservation");
         }
     });

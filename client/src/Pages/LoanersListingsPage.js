@@ -132,6 +132,7 @@ useEffect(()=>{
                   
                  <div className="reservationInfo">
                   <div> Renter: {  getR.user  } </div> 
+                  {console.log(getR.start_date)}
                   <div> Start date: {getR.start_date.substring(0, 10)} </div>
                   <div> End date: {getR.end_date.substring(0, 10)} </div>
 

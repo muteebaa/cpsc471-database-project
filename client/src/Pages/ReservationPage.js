@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from "react"; 
 //import './App.css';
 import Axios from 'axios';
-
-
+// import DatePicker from 'react-datetime';
+import Calendar from "../components/Calendar";
 import { useAuth } from "./auth";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams, useLocation} from 'react-router-dom';
-
-
+import 'react-datetime/css/react-datetime.css';
+import '../components/Calendar.css'
 function ReservationPage() {
   var navigate = useNavigate();
   const auth = useAuth();
-  const reservationNumber = 555;
+ 
+  const [tes,setTes] = useState("");
+  const [rangeLength,setRangeLength] = useState("");
   const { state } = useLocation();
   const [availableStartDate,setAvailableStartDate] = useState("");
   const [availableEndDate,setAvailableEndDate] = useState("");
@@ -26,26 +28,37 @@ function ReservationPage() {
   const [cardExpiryDateError,setCardExpiryDateError] = useState("");
   const [dateError,setDateError] = useState("");
   
+  const [ranges, setRanges] = useState([]);
 
-  function carInfo()   {
+  useEffect(() => {
+    const carInfo = async () => {
+      
     
 
-    Axios.post("http://localhost:3001/api/Cars", {
+        Axios.post("http://localhost:3001/api/Cars", {
+        
+      }).then((response) => {
     
-  }).then((response) => {
-
-    
-    console.log(response.data.length)
-    for(const car of response.data){
-      if (car.regNumber == state.car_regNo){
-        setAvailableStartDate(car.startDate)
-        setAvailableEndDate(car.endDate)
-        console.log(car.startDate)
-      }
+        
+        console.log(response.data.length)
+        for(const car of response.data){
+          if (car.regNumber == state.car_regNo){
+            setAvailableStartDate(car.startDate)
+            setAvailableEndDate(car.endDate)
+            console.log(car.startDate)
+          }
+        }
+           
+        
+      })
+      
     }
-       
-    
-  })}
+   
+    carInfo()
+
+  }, [])
+
+  
 
   const validate = () => {
 
@@ -133,7 +146,12 @@ function ReservationPage() {
     
   }
 
-    
+
+  console.log("esrdftgyhujklxddfghjk");
+  console.log(ranges);
+
+
+ 
 
   function reserve(){
     const isValid = validate();
@@ -161,21 +179,25 @@ function ReservationPage() {
    
   }
 
+  const customDates = ['2023-04-8', '2023-04-04', '2023-04-02'];
   
-
+  
+  //   !customDates.includes(current.format('YYYY-MM-DD'));
+  // }
   return (
     <>
     <div>
-      {carInfo()}
+      {/* {carInfo()} */}
     </div>
     <div>
     <h1> Make Car Reservation </h1>
     {/* <div>{state.car_regNo}</div> */}
     <div> Start Date: </div>
-    <input type="date" placeholder="StartDate" name="StartDate" min={availableStartDate} max={availableEndDate} onChange={(e)=>{setStartDate(e.target.value)}} />
-
+      <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setStartDate} setEnd={setEndDate}></Calendar>
+  
     <div> End Date: </div>
-    <input type="date" placeholder="StartDate" name="StartDate" min={availableStartDate} max={availableEndDate} onChange={(e)=>{setEndDate(e.target.value)}} />
+    <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setEndDate}></Calendar>
+
     <div style={{color: "red"}}>{dateError}</div> 
     
     <div> Insurance: </div>
