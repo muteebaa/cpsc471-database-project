@@ -16,6 +16,9 @@ function LoanersListingsPage() {
     const auth = useAuth();
     const [data, setData] = useState([])
     const [reservations, setReservations] = useState([]);
+    const [renterName, setRenterName] = useState("");
+    const [renterPhone, setRenterPhone] = useState("");
+    const [renterEmail, setRenterEmail] = useState("");
     
     const [isActive, setIsActive] = useState(false);
     const idMatch = (value) => value.username === auth.user;
@@ -77,6 +80,19 @@ function LoanersListingsPage() {
   
   }
 
+  function getContact(user) {
+      
+    Axios.post("http://localhost:3001/api/UserInfo", {
+      username: user
+  }).then((response) => {
+    setRenterName(response.data[0].FirstName);
+    setRenterPhone(response.data[0].PhoneNumber);
+    setRenterEmail(response.data[0].EmailAddress);
+  }) 
+
+}  
+
+
 useEffect(()=>{
   info();
 }, [])
@@ -124,26 +140,10 @@ useEffect(()=>{
                
 
                 <div className='.res' >
-                <ReservationsPopup trigger={resPopup} setTrigger={setResPopup}>
+                <ReservationsPopup trigger={resPopup} setTrigger={setResPopup} reservations={reservations}>
                 <h1>Reservations</h1>
                 <div className="allReservations"> 
-               
-                {reservations.map( (getR)=>(
-                  
-                 <div className="reservationInfo">
-                  <div> Renter: {  getR.user  } </div> 
-                  {console.log(getR.start_date)}
-                  <div> Start date: {getR.start_date.substring(0, 10)} </div>
-                  <div> End date: {getR.end_date.substring(0, 10)} </div>
-
-                  <div> Contact: </div>
-                  <div> Phone: {getR.start_date.substring(0, 10)} </div>
-                  <div> Email: {getR.end_date.substring(0, 10)} </div>
-                 
-                </div>
-                
-                 
-                ))}  </div></ReservationsPopup>
+                </div></ReservationsPopup>
                 
                 </div>
                 <div id="overlay"></div>

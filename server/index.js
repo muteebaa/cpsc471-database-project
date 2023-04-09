@@ -182,6 +182,7 @@ app.post("/api/UserInfo",(req, res)=>{
            res.send({err: err})
        }
        else{
+            console.log(result)
            res.send(result)
            
        }
