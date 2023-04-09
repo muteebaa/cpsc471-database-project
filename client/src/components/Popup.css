@@ -25,10 +25,25 @@
     overflow: hidden;
     overflow-y: scroll;
 }
+.error{
+    background-color: rgb(194, 68, 68);
+    color: white;
+    font-weight: bold;
+    max-width: fit-content;
+    overflow-y: hidden;
+}
+
+.errorPopup{
+    top: 5%;
+    left: 5%;
+}
 
 .inner .close{
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 5px;
+    right: 5px;
 }
 
+.button{
+    background-color: white;
+}

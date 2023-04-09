@@ -5,10 +5,11 @@ import Axios from 'axios';
 import DatePicker from 'react-datetime';
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams, useLocation} from 'react-router-dom';
 import '../components/Calendar.css'
-
+import InvalidDatePopup from "./InvalidDatePopup";
 function Calendar(props){
     const [prevReservations,setPrevReservations] = useState([]);
     const [date, setDate] = useState(new Date());
+    const [popup, setPopup] = useState(false);
 
     const getReservations = () =>{
         Axios.post('http://localhost:3001/api/unavailableDates', {
@@ -18,8 +19,8 @@ function Calendar(props){
         });    
     }
     const disableDates = date => {
-        const s = new Date("2023-04-01");
-        const e = new Date("2023-04-30");
+        const s = new Date(props.availableStart);
+        const e = new Date(props.availableEnd);
         if (date < s || date > e) {
             return false;
         }
@@ -33,8 +34,29 @@ function Calendar(props){
         }     
         return true;
     };
+
+    const checkDate = (selected, check) => {
+        for (let i = 0; i < prevReservations.length; i++) {
+            const start = new Date(prevReservations[i].start_date);
+            const end = new Date(prevReservations[i].end_date);
+            console.log(start)
+            if (new Date(selected) < start  && check > start) {
+                console.log("we in here")     
+                return false;
+            }
+            else{return true;}
+        }     
+    }
     const handleDateChange = (date) => {
-        props.setDate(date.toISOString().substring(0, 10));
+        console.log(props.selectedStartDate);
+        if(checkDate(props.selectedStartDate, date) || props.selectedStartDate =='null'){
+            setPopup(false);
+            props.setDate(date.toISOString().substring(0, 10));
+        }
+        else{
+            setPopup(true);
+        }
+
     }
     const [startDate, setStartDate] = useState(new Date());
     getReservations()
@@ -47,6 +69,10 @@ function Calendar(props){
                 isValidDate={disableDates}
                 placeholder="Select date"
             />
+            <InvalidDatePopup trigger={popup} setTrigger={setPopup}>
+                Your date range is invalid.
+            </InvalidDatePopup>
+            
             {/* <DatePicker selected={startDate}  />                      */}
         </div>
     ) ;
