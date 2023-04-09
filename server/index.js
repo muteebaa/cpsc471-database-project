@@ -236,9 +236,10 @@ app.post("/api/submitReview",(req, res)=>{
 
 });
 app.post("/api/alreadyReviewed",(req, res)=>{
-    const username = req.body.username
-    db.query("SELECT COUNT(1) FROM rentmyridedb.review WHERE username = ?", 
-    [username], 
+    const username = req.body.username;
+    const regNo = req.body.regNo;
+    db.query("SELECT COUNT(1) FROM rentmyridedb.review WHERE username = ? AND car_reg = ?", 
+    [username, regNo], 
     function(err,result){      
         if(err){
             console.log(err)
@@ -256,15 +257,17 @@ app.post("/api/alreadyReviewed",(req, res)=>{
 });
 
 app.post("/api/prevRenter",(req, res)=>{
-    const username = req.body.username
-    db.query("SELECT COUNT(1) FROM rentmyridedb.reservation WHERE user = ?", 
-    [username], 
+    const username = req.body.username;
+    const regNo = req.body.regNo;
+    db.query("SELECT COUNT(1) FROM rentmyridedb.reservation WHERE user = ? and reg_number = ?", 
+    [username, regNo], 
     function(err,result){      
        if(err){
             console.log(err)
            res.send({err: err})
        }
        else{
+        console.log(result);
             if(result[0]['COUNT(1)'] == 0){
                 res.send(false)  
             }
@@ -436,7 +439,6 @@ app.post('/api/reservationDetails',  (req, res)=>{
             res.send("Reservation failed");
         }
         else{
-            console.log(result.length);
             res.send(result);
         }
     });

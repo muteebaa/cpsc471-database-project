@@ -102,7 +102,8 @@ function CarDetails(props) {
   function prevRenterCheck() {
    
     Axios.post('http://localhost:3001/api/prevRenter', {
-      username: auth.user
+      username: auth.user,
+      regNo: regNumber
     }).then((response)=>{
           if(response.data){
             setPrevRenter(true)
@@ -112,7 +113,8 @@ function CarDetails(props) {
   function reviewCheck() {
    
       Axios.post('http://localhost:3001/api/alreadyReviewed', {
-        username: auth.user
+        username: auth.user,
+        regNo: regNumber
       }).then((response)=>{
             if(response.data== "reviewed"){
               setRevState(true)
