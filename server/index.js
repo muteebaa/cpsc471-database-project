@@ -426,21 +426,22 @@ app.post('/api/Login', (req, res)=>{
 
 }); 
 
-app.post('/api/maxminDates',  (req, res)=>{
-    const reservationNumber = req.body.regNo; 
+app.post('/api/reservationDetails',  (req, res)=>{
+    const day = req.body.date; 
 
-    const sqlSelect = "SELECT startDate, endDate FROM cars WHERE regNumber = ?";
+    const sqlSelect = "SELECT reservationNumber, start_date, end_date, reg_number, insurance FROM reservation WHERE start_date <= ? AND end_date >= ?";
     
-    db.query(sqlSelect, [reservationNumber], (err, result)=>{
+    db.query(sqlSelect, [day, day], (err, result)=>{
         if(err){
             res.send("Reservation failed");
         }
         else{
+            console.log(result.length);
             res.send(result);
         }
     });
 
-});
+}); 
 
  app.post('/api/reserve',  (req, res)=>{
     const reservationNumber = req.body.reservationNumber; 

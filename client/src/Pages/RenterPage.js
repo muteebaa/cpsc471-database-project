@@ -5,9 +5,11 @@ import "../styles/RenterPage.css"
 import videoBG from "../styles/background12.mp4";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 import { useAuth } from "./auth";
+import DatePicker from 'react-datetime';
 import Axios from 'axios';
+import RentersReservations from "../components/RentersReservations";
+import '../components/ReservationsCalendar.css'
 
-import '../components/Calendar.css'
 function RenterPage() {
     var navigate = useNavigate();
     var { username } = useParams();
@@ -24,18 +26,8 @@ function RenterPage() {
 
     const [reservations, setReservations] = useState([])
 
-    const bookings = [
-      {
-        from: new Date('01-16-2022'),
-        to: new Date('01-27-2022'),
-        middayCheckout: true,
-      },
-      {
-        from: '06-25-2022',
-        to: '07-03-2022',
-        middayCheckout: false,
-      }
-    ]
+    const [list, setList] = useState(true);
+
 
     const info = () => {
       Axios.post("http://localhost:3001/api/UserInfo", {
@@ -49,16 +41,9 @@ function RenterPage() {
         setEmail(response.data[0].EmailAddress);
       }
 
-    )
+      
 
-    Axios.post("http://localhost:3001/api/renterHistory", {
-      username: auth.user
-      }).then((response) => {
-          setReservations(response.data);
-          console.log(response.data);
-      }
     )
-
   }
 
   const handleLogout = () => {
@@ -73,13 +58,25 @@ function RenterPage() {
               navigate(test);
   }
 
+  function handleView(){
+    setList(!list);
+  }
+
+  const getReservations = () =>{
+    Axios.post("http://localhost:3001/api/renterHistory", {
+        username: auth.user
+        }).then((response) => {
+            setReservations(response.data);
+            console.log(response.data);
+        }
+    );
+}
+
  info();
+ getReservations();
   return (
     
     <body><div>
-      
-
-
       
     </div> 
     <video class="Video" src={videoBG} autoPlay loop playsInline/>
@@ -99,14 +96,30 @@ function RenterPage() {
         <div> PhoneNumber : {phoneNumber} </div>
         <div> Email : {emailAddress} </div>
       </div>
-      {reservations.map( (getR)=>(
-                  
-        <div className="comment">
-          <div> Reservation Number: {  getR.reservationNumber  } </div> 
-          <div> Start date: {  getR.start_date  } </div> 
-          <div> Start date: {  getR.start_date  } </div> 
-        </div>
-      ))} 
+
+      <button onClick={handleView}> Change View </button>
+      
+      {list ? <div> 
+            {reservations.map( (getR)=>(
+              <div className="reservationInfo">
+                <div> Reservation Details </div> 
+                <div> Cars Registration Number: {getR.reg_number} </div>
+                <div> Reservation Number: {getR.reservationNumber} </div>
+                <div> Start date: {getR.start_date.substring(0, 10)} </div>
+                <div> End date: {getR.end_date.substring(0, 10)} </div> 
+
+                <br></br>        
+              </div>
+            ))} 
+      </div> :
+      <div>
+         <RentersReservations user={auth.user}>
+
+         </RentersReservations>
+         
+      </div>
+      }
+     
      
       <div class="button">
  

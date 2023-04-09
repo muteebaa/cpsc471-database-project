@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "compass-mixins": "^0.12.12",
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.7",
     "moment": "^2.29.4",
