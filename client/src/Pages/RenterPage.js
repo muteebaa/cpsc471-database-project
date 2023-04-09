@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} fr
 import { useAuth } from "./auth";
 import Axios from 'axios';
 
+import '../components/Calendar.css'
 function RenterPage() {
     var navigate = useNavigate();
     var { username } = useParams();
@@ -22,6 +23,19 @@ function RenterPage() {
     const [file,setFile] = useState("");
 
     const [reservations, setReservations] = useState([])
+
+    const bookings = [
+      {
+        from: new Date('01-16-2022'),
+        to: new Date('01-27-2022'),
+        middayCheckout: true,
+      },
+      {
+        from: '06-25-2022',
+        to: '07-03-2022',
+        middayCheckout: false,
+      }
+    ]
 
     const info = () => {
       Axios.post("http://localhost:3001/api/UserInfo", {
@@ -85,6 +99,15 @@ function RenterPage() {
         <div> PhoneNumber : {phoneNumber} </div>
         <div> Email : {emailAddress} </div>
       </div>
+      {reservations.map( (getR)=>(
+                  
+        <div className="comment">
+          <div> Reservation Number: {  getR.reservationNumber  } </div> 
+          <div> Start date: {  getR.start_date  } </div> 
+          <div> Start date: {  getR.start_date  } </div> 
+        </div>
+      ))} 
+     
       <div class="button">
  
       <button onClick={carsForRent}>Reserve / Look for cars</button>

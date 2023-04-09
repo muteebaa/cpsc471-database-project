@@ -5,7 +5,7 @@ import Axios from 'axios';
 import Calendar from "../components/Calendar";
 import { useAuth } from "./auth";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams, useLocation} from 'react-router-dom';
-import 'react-datetime/css/react-datetime.css';
+// import 'react-datetime/css/react-datetime.css';
 import '../components/Calendar.css'
 import "../styles/ReservationPage.css"
 import videoBG from "../styles/background3.mp4";
@@ -14,7 +14,7 @@ function ReservationPage() {
   var navigate = useNavigate();
   const auth = useAuth();
  
-  const [tes,setTes] = useState("");
+  const [Drange,setDrange] = useState(null);
   const [rangeLength,setRangeLength] = useState("");
   const { state } = useLocation();
   const [make,setMake] = useState("");
@@ -203,16 +203,16 @@ function ReservationPage() {
     <div class="Information">
     <div>Car Reservation for {year} {make} {model} </div>
     <br></br>
-
+    {availableStartDate} {availableEndDate}
     <div> Start Date: </div>
     <div class="Calendar">
-    <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setStartDate} setEnd={setEndDate} selectedStartDate="null"></Calendar>
+    <Calendar regNumber={state.car_regNo} sDate="start" availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setStartDate} setEnd={setEndDate}></Calendar>
       </div>
       <br></br>
     <div> End Date: </div>
     <div class="Calendar">
-      {startDate=="" ? <div>Please select start date.</div>:
-      <Calendar regNumber={state.car_regNo} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setEndDate} selectedStartDate={startDate} isDisabled="true">  </Calendar>
+      {startDate=="" ? <div style={{color:"white"}}>Please select start date.</div>:
+      <Calendar regNumber={state.car_regNo} sDate={startDate} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setEndDate} selectedStartDate={startDate} isDisabled="true">  </Calendar>
       }
     </div>
     <br></br>

@@ -426,6 +426,22 @@ app.post('/api/Login', (req, res)=>{
 
 }); 
 
+app.post('/api/maxminDates',  (req, res)=>{
+    const reservationNumber = req.body.regNo; 
+
+    const sqlSelect = "SELECT startDate, endDate FROM cars WHERE regNumber = ?";
+    
+    db.query(sqlSelect, [reservationNumber], (err, result)=>{
+        if(err){
+            res.send("Reservation failed");
+        }
+        else{
+            res.send(result);
+        }
+    });
+
+});
+
  app.post('/api/reserve',  (req, res)=>{
     const reservationNumber = req.body.reservationNumber; 
     const startDate = req.body.startDate;

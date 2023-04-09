@@ -8,8 +8,10 @@ import '../components/Calendar.css'
 import InvalidDatePopup from "./InvalidDatePopup";
 function Calendar(props){
     const [prevReservations,setPrevReservations] = useState([]);
+    const min = props.availableStart;
+    const max = props.availableEnd;
     const [date, setDate] = useState(new Date());
-    const [popup, setPopup] = useState(false);
+
 
     const getReservations = () =>{
         Axios.post('http://localhost:3001/api/unavailableDates', {
@@ -18,21 +20,50 @@ function Calendar(props){
             setPrevReservations(response.data)
         });    
     }
+
+   
     const disableDates = date => {
         const s = new Date(props.availableStart);
         const e = new Date(props.availableEnd);
         if (date < s || date > e) {
             return false;
         }
-        
-        for (let i = 0; i < prevReservations.length; i++) {
-            const start = new Date(prevReservations[i].start_date);
-            const end = new Date(prevReservations[i].end_date);
-            if (date >= start  && date <= end) {
-                return false;
+        if (props.sDate == "start"){
+
+            for (let i = 0; i < prevReservations.length; i++) {
+                const start = new Date(prevReservations[i].start_date);
+                const end = new Date(prevReservations[i].end_date);
+                const nStart = new Date(props.sDate)
+                
+                if (date >= start  && date <= end) {
+                    return false;
+                }
+                
+            } 
+            return true;  
+        }
+        else{
+            for (let i = 0; i < prevReservations.length; i++) {
+                const start = new Date(prevReservations[i].start_date);
+                const end = new Date(prevReservations[i].end_date);
+                const nStart = new Date(props.sDate)
+                
+                if (date< nStart) {
+                    
+                    return false;
+                }
+                else if(date >= start && start > nStart){
+                    return false;
+                }
+                
+                
             }
-        }     
-        return true;
+
+            return true;
+
+        }
+          
+        
     };
 
     const checkDate = (selected, check) => {
@@ -46,32 +77,27 @@ function Calendar(props){
             }
             else{return true;}
         }     
-    }
+        return true;
+    };
     const handleDateChange = (date) => {
-        console.log(props.selectedStartDate);
-        if(checkDate(props.selectedStartDate, date) || props.selectedStartDate =='null'){
-            setPopup(false);
+       
             props.setDate(date.toISOString().substring(0, 10));
-        }
-        else{
-            setPopup(true);
-        }
-
+        
+        
     }
     const [startDate, setStartDate] = useState(new Date());
     getReservations()
+ 
     return (
         <div >
             <DatePicker
                 onChange={handleDateChange}
-                // mode="range"
+                mode="range"
                 timeFormat={false}
                 isValidDate={disableDates}
                 placeholder="Select date"
             />
-            <InvalidDatePopup trigger={popup} setTrigger={setPopup}>
-                Your date range is invalid.
-            </InvalidDatePopup>
+         
             
             {/* <DatePicker selected={startDate}  />                      */}
         </div>
