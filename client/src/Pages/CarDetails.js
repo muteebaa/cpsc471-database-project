@@ -132,8 +132,11 @@ function CarDetails(props) {
 }
   
   function submitReview() {
+
     if(subState == false)
-      {Axios.post('http://localhost:3001/api/submitReview', {
+    
+    {setSubState(true);
+        Axios.post('http://localhost:3001/api/submitReview', {
         username: auth.user, 
         location: locationRate,
         cond: conditionRate,
@@ -141,7 +144,6 @@ function CarDetails(props) {
         regNo: id
       }).then((response)=>{
             console.log(response.data);
-            setSubState(true)
       });}
   }
   renterCheck()

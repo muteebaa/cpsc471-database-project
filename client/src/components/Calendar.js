@@ -8,8 +8,8 @@ import '../components/Calendar.css'
 
 function Calendar(props){
     const [prevReservations,setPrevReservations] = useState([]);
-    const [min,setMin] = useState("");
-    const [max,setMax] = useState("");
+    const min = props.availableStart;
+    const max = props.availableEnd;
     const [date, setDate] = useState(new Date());
 
 
@@ -21,15 +21,7 @@ function Calendar(props){
         });    
     }
 
-    const getMinMax = () =>{
-        Axios.post('http://localhost:3001/api/maxminDates', {
-        regNo:  props.regNumber
-        }).then((response)=>{    
-            setMin(response.data[0].startDate)
-            setMax(response.data[0].endDate)
-
-        });    
-    }
+   
     const disableDates = date => {
        // console.log(props.sDate)
         const s = new Date(min);
@@ -79,7 +71,7 @@ function Calendar(props){
     }
     const [startDate, setStartDate] = useState(new Date());
     getReservations()
-    getMinMax()
+ 
     return (
         <div >
             <DatePicker
