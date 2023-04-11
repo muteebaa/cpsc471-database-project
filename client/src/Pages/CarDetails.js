@@ -7,6 +7,7 @@ import "../styles/CarDetails.css";
 
 import { useAuth } from "./auth";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
+import { isEqual } from "date-fns";
 
 
 function CarDetails(props) {
@@ -88,6 +89,19 @@ function CarDetails(props) {
     info()
     
  }, [])
+
+ function deleteComment(usernameDelete){
+
+    Axios.post("http://localhost:3001/api/DeleteReviews", {
+      usernameDelete: usernameDelete,
+      regNumber: regNumber
+      
+    }).then((response) => {
+      
+    })
+    alert("Your comment was deleted");
+    navigate('/carsForRent') 
+ }
  
   function reservation() {
     navigate('/reservation',
@@ -146,12 +160,13 @@ function CarDetails(props) {
         regNo: id
       }).then((response)=>{
             console.log(response.data);
+            
       });}
   }
   renterCheck()
   prevRenterCheck()
   reviewCheck()
-  console.log(allReviews)
+  
 
   return (
       // <Router> 
@@ -193,8 +208,15 @@ function CarDetails(props) {
             <div> Location Rating: {  getR.location_rating  } </div> 
             <div> Condition Rating: {  getR.consdition_rating  } </div> 
             <div> comment: {  getR.writting_comments  } </div> 
+
+            <div>     
+              {
+                  auth.user === getR.username && <button onClick={() => deleteComment(getR.username)}>Delete Comment</button>
+              } 
+            </div>
+           
           </div>
-                 
+                
                   
         ))} 
         </div>

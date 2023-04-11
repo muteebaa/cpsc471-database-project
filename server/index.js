@@ -143,6 +143,17 @@ app.post('/api/cancelpremiumplan', (req, res)=>{
     
 }); 
 
+app.post('/api/DeleteReviews', (req, res)=>{
+    const usernameDelete = req.body.usernameDelete;
+    const regNumber = req.body.regNumber;
+    console.log(usernameDelete)
+    db.query("DELETE FROM review WHERE username = ? AND car_reg", [usernameDelete, regNumber], (err, result)=>{
+        if(err) throw err;
+        else console.log("worked")
+    });
+    
+});
+
 app.post('/api/renterHistory', (req, res)=>{
     const username = req.body.username;
 

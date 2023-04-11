@@ -82,11 +82,6 @@ function CarsForRent() {
         }
       }
 
-      
-       
-        
-      
-      
 
       if(minPriceFilter !== ""){
         tempData = tempData.filter(minPrice)
@@ -144,9 +139,6 @@ function CarsForRent() {
     
   })
 
-  const validate = () => {
-    
-  }
 
   function DetailPage(link){
     
