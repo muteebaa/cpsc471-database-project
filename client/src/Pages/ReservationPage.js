@@ -210,7 +210,6 @@ function ReservationPage() {
     <div class="Information">
     <div>Car Reservation for {year} {make} {model} </div>
     <br></br>
-    {availableStartDate} {availableEndDate}
     <div> Start Date: </div>
     <div class="Calendar">
     <Calendar regNumber={state.car_regNo} sDate="start" availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setStartDate} setEnd={setEndDate}></Calendar>

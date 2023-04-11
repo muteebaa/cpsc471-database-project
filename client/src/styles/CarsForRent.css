@@ -36,6 +36,11 @@ Nav {
     outline: 0.1rem solid white;
 }
 
+.NoResult{
+    color: white;
+    font-size: 150%;
+}
+
 .Filters>* {
     flex: 0 0 10px;
 }

@@ -40,6 +40,7 @@ function RentersReservations(props){
 
     const displayDetails = (date) =>{
         Axios.post("http://localhost:3001/api/reservationDetails", {
+            user: props.user,
             date: date.toISOString().substring(0, 10)
             }).then((response) => {
                 console.log(response.data.length)

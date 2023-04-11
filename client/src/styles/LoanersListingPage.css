@@ -145,6 +145,9 @@ Nav {
     
 }
 
+.popup{
+    backdrop-filter: blur(5px);
+}
 
 .reservationInfo{
     outline: 0.1rem solid white;

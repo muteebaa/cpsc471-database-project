@@ -170,9 +170,10 @@ function CarsForRent() {
 
           <div class="EndDate">
             End Date: <input class="Input" type="date" placeholder="End Date" name="endDtae" min={date2} onChange={(e)=>{setEndDateFilter(e.target.value)}} />
+            <div style={{color: "red"}}>{dateRange}</div>
           </div>
           
-          <div style={{color: "red"}}>{dateRange}</div>
+          
         
           <div class="MinimumPrice">
             Minimum Price: <input class="Input" type="number" placeholder="Minimum price" name="priceFilter"  onChange={(e)=>{setMinPriceFilter(e.target.value)}} />

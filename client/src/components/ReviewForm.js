@@ -10,7 +10,7 @@ function ReviewForm(props){
     
     return (
         <div >
-            <div style={{display: "flex", flexDirection:"column", gap:"10px", padding:"10% 10%"}}>
+            <div class="comment">
                 <div>
                     <label for="location">Location Rating</label>
                     <input type="range" min='0' max='100' id='location' />
@@ -23,6 +23,7 @@ function ReviewForm(props){
                     <label for="written">Written Comments</label>
                     <input type="textarea" id='written'/>
                 </div>
+                <div class="centerAlign">
                <button 
                 style={{maxWidth:"50px"}} 
                 onClick={()=>
@@ -33,6 +34,7 @@ function ReviewForm(props){
                 >
                 submit
                 </button>
+                </div>
             </div>
 
         </div>

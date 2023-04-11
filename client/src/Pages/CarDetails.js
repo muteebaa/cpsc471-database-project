@@ -210,12 +210,13 @@ function CarDetails(props) {
         <div></div>
       }
       <div className="reviewsection">
-      
-        <div>Reviews </div>
+        <div class="ReviewHeading">
+        <h1>Reviews </h1>
+        </div>
         <div className="allcomments">
         {allReviews.map( (getR)=>(
                   
-          <div className="comment">
+          <div class="comment">
             <div> Renter: {  getR.username  } </div> 
             <div> Location Rating: {  getR.location_rating  } </div> 
             <div> Condition Rating: {  getR.consdition_rating  } </div> 
@@ -238,27 +239,32 @@ function CarDetails(props) {
                 prevRenter ?
                   revState ? 
                     <div>
-                        <div className="noreviewmessage">  You have submitted a review for this car.</div>
+                        <div className="centerAlign">  You have submitted a review for this car.</div>
                         {submitReview()}
                         {useEffect}
                     </div>
                     : 
                     <div> 
+                      <div class="ReviewHeading">
+                      <h1>Leave A Review </h1>
+                      </div>
                       <ReviewForm cond={setConditionRate} loc={setLocationRate} comment={setComment} sub={setRevState}>
                       </ReviewForm> 
                     </div> 
                 :
-                <div className="noreviewmessage"> Rent the car to leave a review </div>
+                <div className="centerAlign"> Rent the car to leave a review </div>
               :
-              <div className="noreviewmessage"> Must be a renter to leave a review </div>
+              <div className="centerAlign"> Must be a renter to leave a review </div>
 
             : 
-            <button
-              onClick={()=>
-                navigate('/renter-login')
-              }>
-              Sign in to review
-            </button>
+            <div class="centerAlign">
+              <button
+                onClick={()=>
+                  navigate('/renter-login')
+                }>
+                Sign in to review
+              </button>
+            </div>
           }
 
        

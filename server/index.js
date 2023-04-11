@@ -427,10 +427,12 @@ app.post('/api/Login', (req, res)=>{
 
 app.post('/api/reservationDetails',  (req, res)=>{
     const day = req.body.date; 
+    const user = req.body.user;
+    console.log(user)
 
-    const sqlSelect = "SELECT reservationNumber, start_date, end_date, reg_number, insurance FROM reservation WHERE start_date <= ? AND end_date >= ?";
+    const sqlSelect = "SELECT reservationNumber, start_date, end_date, reg_number, insurance FROM reservation WHERE start_date <= ? AND end_date >= ? AND user = ?";
     
-    db.query(sqlSelect, [day, day], (err, result)=>{
+    db.query(sqlSelect, [day, day, user], (err, result)=>{
         if(err){
             res.send("Reservation failed");
         }
