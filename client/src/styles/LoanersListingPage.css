@@ -57,6 +57,7 @@ Nav {
     padding: 1rem;
     justify-content: space-around;
     flex-wrap: wrap;
+
 }
 
 .Car{
@@ -132,7 +133,22 @@ Nav {
     flex-direction: column;
     gap: 10px;
 }
+
+
+.inner{
+    background-image: url(PopWallpaper.jpg);
+    background-size: cover;
+    outline: 0.3rem solid white;
+    border-radius: 20px;
+    color: white;
+    height: 100vh;
+    
+}
+
+
 .reservationInfo{
-    background-color: lightgray;
-    color: black;
+    outline: 0.1rem solid white;
+    padding: 2%;
+    background-color: transparent;
+    color: white;
 }

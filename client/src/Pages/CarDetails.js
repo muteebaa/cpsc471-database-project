@@ -4,7 +4,9 @@ import Axios from 'axios';
 
 import ReviewForm from "../components/ReviewForm";
 import "../styles/CarDetails.css";
-
+import Nav from "./NavBar";
+import "../styles/Navbar.css";
+import videoBG from "../styles/background3.mp4";
 import { useAuth } from "./auth";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 import { isEqual } from "date-fns";
@@ -170,12 +172,20 @@ function CarDetails(props) {
 
   return (
       // <Router> 
-      <><div>
-      
-    </div>
-      
-      <h1> Car Detail Page </h1>
+      <body>
+      <video class="Video" src={videoBG} autoPlay loop playsInline/>
+      <Nav></Nav>
+  
+      <div class="HomePage">
+      <div class="Page2">
+      <div class="Welcome">
+        <h1> Car Detail Page </h1>
 
+      </div>
+      
+      <div class="content">
+      <div class="PageInfoAll">
+        <div class="carInfoAll">
        <div class="Registraion Number">Registration Number : {regNumber}</div>
        <div class="Make">Make : {make}</div>
        <div class="Model">Model : {model}</div>
@@ -184,14 +194,16 @@ function CarDetails(props) {
        <div class="Colour">Colour : {colour}</div>
        <div class="Features">Features : {features}</div>
        <div class="Pickup Address">Pickup Address : {address}</div>
-       <div class="Price">Price : {price} per day</div>
-       <div class="Description">Description : {description}</div>
+       <div class="price">Price : {price} per day</div>
        <div class="Recalls">Number of pending recalls : {recalls}</div>
        <div class="Status">The car has a {status} status</div>
        <div class="Damage">Any damage on the car : {damage}</div>
-       <br></br>
+       <div class="Description">Description : {description}</div>
+       </div>
+       <div class="picture">
        <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
-       
+       </div>
+       </div>
       {renter ? 
         <button onClick={() => { reservation() }}> Make Reservation </button> 
         :
@@ -251,11 +263,13 @@ function CarDetails(props) {
 
        
    
-        
+      </div>
+      </div>
+      </div>
       </div>
 
        
-      </>
+      </body>
   );}
 
 

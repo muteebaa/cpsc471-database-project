@@ -115,8 +115,8 @@ CREATE TABLE `review` (
   `username` varchar(45) NOT NULL,
   `location_rating` int NOT NULL,
   `consdition_rating` int NOT NULL,
-  `writting_comments`  varchar(45) NOT NULL,
+  `writting_comments`  varchar(3000) NOT NULL,
   `car_reg` varchar(45) NOT NULL,
   FOREIGN KEY (`car_reg`) REFERENCES cars(`regNumber`),
-  FOREIGN KEY (`username`) REFERENCES users(`username`)
+  CONSTRAINT PK_review PRIMARY KEY (`username`, `car_reg`)
 );

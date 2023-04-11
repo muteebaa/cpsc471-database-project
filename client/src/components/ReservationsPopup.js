@@ -25,7 +25,7 @@ function ReservationsPopup(props){
                    <div> Phone: {renterPhone} </div>
                    <div> Email: {renterEmail} </div> */}
 
-                   <br></br>
+                   
                   
                  </div>))
                  } 
