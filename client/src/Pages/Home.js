@@ -25,9 +25,9 @@ function Home() {
     
     <div class="Appp">
     
-     <div class="container">
+     <div class="containerLinks">
       <h1 class="line-1"> RentMyRide </h1>
-      </div>
+      
       <br></br>
       
        <nav>
@@ -45,7 +45,7 @@ function Home() {
       <nav>
         <a class="link" href="/CarsForRent"> Search for cars as a guest </a>
       </nav>  
-      
+      </div>
 
     </div>
     </div>

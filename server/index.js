@@ -42,7 +42,7 @@ var upload = multer({
 
 const db = mysql.createPool({
     host: "localhost",
-    user: "root",
+    user: "sqluser",
     password: "password",
     database: "rentmyridedb",
     connectionLimit: 10
@@ -430,7 +430,7 @@ app.post('/api/reservationDetails',  (req, res)=>{
     const user = req.body.user;
     console.log(user)
 
-    const sqlSelect = "SELECT reservationNumber, start_date, end_date, reg_number, insurance FROM reservation WHERE start_date <= ? AND end_date >= ? AND user = ?";
+    const sqlSelect = "SELECT reservationNumber, start_date, end_date, reg_number, insurance, year, model, make, pickUp FROM reservation WHERE start_date <= ? AND end_date >= ? AND user = ?";
     
     db.query(sqlSelect, [day, day, user], (err, result)=>{
         if(err){
@@ -504,17 +504,6 @@ app.post('/api/insert',  (req, res)=>{
 
 
 
-// app.get("/api/get", (req, res) => {
-//     res.send("hello");
-//    // const sqlSelect = "INSERT INTO users (username, password) VALUES ('er', 'et');";
-
-//     const sqlSelect = 'select * from users';
-//     db.query(sqlSelect, (req, res) => {
-//     //  if (err)  res.send(err);
-//        console.log(res);
-//      //   else { res.send("hello !!!");}
-//     });
-// });
 
 app.listen(3001, () => {
     console.log("running on port 3001");

@@ -262,7 +262,7 @@ function CarDetails(props) {
                 onClick={()=>
                   navigate('/renter-login')
                 }>
-                Sign in to review
+                Sign in to review and reserve
               </button>
             </div>
           }

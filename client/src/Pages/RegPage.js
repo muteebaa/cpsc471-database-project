@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 import Nav from "./NavBar";
 import "../styles/RegPage.css";
-import videoBG from "../styles/background12.mp4";
+import videoBG from "../styles/background15.mp4";
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
 
 import { useAuth } from "./auth";

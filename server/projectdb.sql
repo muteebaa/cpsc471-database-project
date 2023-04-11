@@ -69,34 +69,6 @@ CREATE TABLE `reservation` (
   );
 
 
--- --
--- -- Table structure for table `renter_history`
--- --
-
-
-
-CREATE TABLE `renter_history` (
-  `username` varchar(45) NOT NULL,
-  `car_reg` varchar(45) NOT NULL,
-  PRIMARY KEY (`username`),
-  FOREIGN KEY (`username`) REFERENCES users(`username`),
-  FOREIGN KEY (`car_reg`) REFERENCES cars(`regNumber`)
-  
-);
-
-
---
--- Table structure for table `renter_history`
---
-CREATE TABLE `loaner_history` (
-  `username` varchar(45) NOT NULL,
-  `car_reg` varchar(45) NOT NULL,
-  PRIMARY KEY (`username`),
-  FOREIGN KEY (`username`) REFERENCES users(`username`),
-  FOREIGN KEY (`car_reg`) REFERENCES cars(`regNumber`)
-  
-);
-
 --
 -- Table structure for table `premium_plan`
 --

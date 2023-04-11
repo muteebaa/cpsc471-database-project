@@ -72,7 +72,8 @@ function RentersReservations(props){
                     
                     <div className="reservationInfo">
                     <div> Reservation Details </div>
-                    
+                    <div> Car: {getR.year} {getR.make} {getR.model} </div>
+                    <div> PickUp Address: {getR.pickUp} </div>
                     <div> Cars Registration Number: {getR.reg_number} </div>
                     <div> Reservation Number: {getR.reservationNumber} </div>
                     <div> Start date: {getR.start_date.substring(0, 10)} </div>
