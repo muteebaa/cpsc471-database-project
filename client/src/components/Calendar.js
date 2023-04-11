@@ -28,6 +28,7 @@ function Calendar(props){
     const disableDates = date => {
         const s = new Date(props.availableStart);
         const e = new Date(props.availableEnd);
+        e.setDate(e.getDate() + 1);
         if (date < s || date > e || date < new Date(date2)) {
             return false;
         }
