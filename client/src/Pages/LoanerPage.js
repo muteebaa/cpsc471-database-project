@@ -206,7 +206,7 @@ function LoanerPage() {
 
     
       </div>
-      <div class="button">
+      <div class="buttonClass">
         <button class="button1" onClick={addCarPage}>Add Car</button>
         <button class="button2" onClick={listingsPage}>View Listings</button>
         <button class="button3" onClick={handleLogout}>Logout</button>

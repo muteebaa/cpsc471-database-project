@@ -42,7 +42,7 @@ var upload = multer({
 
 const db = mysql.createPool({
     host: "localhost",
-    user: "root",
+    user: "sqluser",
     password: "password",
     database: "rentmyridedb",
     connectionLimit: 10
@@ -157,7 +157,6 @@ app.post('/api/editCarEndDate', (req, res)=>{
     
     const regNumber = req.body.regNumber;
     const extendedEndDate = req.body.extendedEndDate;
-    console.log(extendedEndDate)
     
    
     db.query("UPDATE cars SET endDate=? WHERE regNumber = ?", [extendedEndDate, regNumber], (err, result)=>{
@@ -182,7 +181,6 @@ app.post("/api/UserInfo",(req, res)=>{
            res.send({err: err})
        }
        else{
-            console.log(result)
            res.send(result)
            
        }
@@ -268,7 +266,7 @@ app.post("/api/prevRenter",(req, res)=>{
            res.send({err: err})
        }
        else{
-        console.log(result);
+        
             if(result[0]['COUNT(1)'] == 0){
                 res.send(false)  
             }
@@ -320,20 +318,29 @@ app.post("/api/getReviews",(req, res)=>{
    )
 
 });
-// app.post("/api/getHistory",(req, res)=>{
-//     db.query("SELECT * FROM rentmyridedb.users WHERE ?",
-//     function(err,result){
-         
-//         if(err){
-//             res.send({err: err})
-//         }
-//         else{
-//             res.send(result)
-            
-//         }
-//     }
-//     )
-// });
+
+app.post("/api/getCarData",(req, res)=>{
+    const regNo = req.body.regNo
+
+    db.query("SELECT * FROM rentmyridedb.cars WHERE regNumber = ?", 
+    [regNo], 
+
+    function(err,result){
+        
+       if(err){
+            console.log(err)
+           res.send({err: err})
+       }
+       else{
+           res.send(result)
+           
+       }
+   }
+  
+   )
+
+});
+
 
 app.post("/api/getHistory",(req, res)=>{
     const reg_number = req.body.reg_number
@@ -371,11 +378,7 @@ app.post('/api/Login', (req, res)=>{
     const password = req.body.pw
     const type = req.body.type
 
-    console.log("in the backend")
-    console.log(username)
-    console.log("in the backend")
-    console.log(password)
-
+ 
      db.query("SELECT * FROM rentmyridedb.users WHERE username = ? AND password = ? AND type = ?" , 
      [username, password, type],
      function(err,result){
@@ -383,31 +386,12 @@ app.post('/api/Login', (req, res)=>{
             res.send({err: err})
         }
         else{
-         //   console.log(result)
+         
             res.send(result)
-            // if (result.length == 0) { 
-            //     console.log(result)
-            //     res.send({message: "Wrong username/password"})   
-            // } else {
-            //     console.log("found")
-            //     res.send(result)
-            // }
+            
         }
     }
-    //         var r = JSON.parse(JSON.stringify(result))
-            
-    //         for(const type of r){
-    //             if(type.username == username && type.password == pw){  
-    //               //  console.log("LoGGED IN")
-    //                 auth = true;
-               
-    //             }
-                
-    //         }
-           
-    //     }
-      
-    // }
+    
     )
     
   //  res.redirect('http://google.com');
@@ -453,16 +437,22 @@ app.post('/api/reservationDetails',  (req, res)=>{
     const regNo = req.body.regNo;
     const user = req.body.user;
     const insurance = req.body.insurance;
+    const make = req.body.make;
+    const model = req.body.model;
+    const year = req.body.year;
+    const pickUp = req.body.pickUp;
 
-    const sqlInsert = "INSERT INTO reservation (reservationNumber, start_date, end_date, reg_number, user, insurance) VALUES (?, ?, ?, ?, ?, ?)";
     
-    db.query(sqlInsert, [reservationNumber, startDate, endDate, regNo, user, insurance], (err, result)=>{
+
+    const sqlInsert = "INSERT INTO reservation (reservationNumber, start_date, end_date, reg_number, user, insurance, year, make, model, pickUp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    db.query(sqlInsert, [reservationNumber, startDate, endDate, regNo, user, insurance, year, make, model, pickUp], (err, result)=>{
         if(err){
             console.log(err);
             res.send("Reservation failed");
         }
         else{
-            console.log(result);
+            
            
             res.send("Successful reservation");
         }
@@ -483,12 +473,12 @@ app.post('/api/insert',  (req, res)=>{
     const sqlInsert = "INSERT INTO users (username, password, type, FirstName, LastName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?)";
     const check = "SELECT * FROM users WHERE username = ?";
     
-    console.log("okkk")
+   
     
     db.query(check, [username], (err, result)=>{
-        //console.log(result)
+        
         if (result.length == 0){
-            console.log("registeringg")
+            
             db.query(sqlInsert, [username, pw, type, fName, lName, phone, email], (err, result)=>{
                 res.send("Successful registration");
             });

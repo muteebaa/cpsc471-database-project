@@ -34,6 +34,7 @@ function ReservationPage() {
   const [cardCvcError,setCardCvcError] = useState("");
   const [cardExpiryDateError,setCardExpiryDateError] = useState("");
   const [dateError,setDateError] = useState("");
+  const [pickUp,setPickup] = useState("");
   
   const [ranges, setRanges] = useState([]);
 
@@ -55,6 +56,7 @@ function ReservationPage() {
             setYear(car.year)
             setMake(car.make)
             setModel(car.model)
+            setPickup(car.pickupAddress)
           }
         }
            
@@ -174,7 +176,11 @@ function ReservationPage() {
         endDate: endDate,
         regNo: state.car_regNo,
         user: auth.user,
-        insurance: insurance
+        insurance: insurance,
+        make: make,
+        year: year,
+        model: model,
+        pickUp: pickUp
         }).then((response)=>{    
             // if (response.data == "Successful reservation"){
               alert(`Your reservation was successfull. Thank you!`);

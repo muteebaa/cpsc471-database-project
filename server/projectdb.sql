@@ -60,6 +60,10 @@ CREATE TABLE `reservation` (
   `reg_number` varchar(45) NOT NULL,
   `user` varchar(45) NOT NULL,
   `insurance` varchar(45) NOT NULL,
+  `year` varchar(45) NOT NULL,
+  `make` varchar(45) NOT NULL,
+  `model` varchar(45) NOT NULL,
+  `pickUp` varchar(45) NOT NULL,
   PRIMARY KEY (`reservationNumber`),
   FOREIGN KEY (`reg_number`) REFERENCES cars(`regNumber`)
   );

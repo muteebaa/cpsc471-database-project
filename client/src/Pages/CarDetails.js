@@ -190,6 +190,8 @@ function CarDetails(props) {
                   
           <div className="comment">
             <div> Renter: {  getR.username  } </div> 
+            <div> Location Rating: {  getR.location_rating  } </div> 
+            <div> Condition Rating: {  getR.consdition_rating  } </div> 
             <div> comment: {  getR.writting_comments  } </div> 
           </div>
                  
@@ -212,9 +214,9 @@ function CarDetails(props) {
                       </ReviewForm> 
                     </div> 
                 :
-                <div className="noreviewmessage"> Rent the car to leave a review :</div>
+                <div className="noreviewmessage"> Rent the car to leave a review </div>
               :
-              <div className="noreviewmessage"> Must be a renter to leave a review :</div>
+              <div className="noreviewmessage"> Must be a renter to leave a review </div>
 
             : 
             <button

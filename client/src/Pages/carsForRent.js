@@ -320,7 +320,7 @@ function CarsForRent() {
                 <br></br>
                 <div class="Picture"><strong></strong><img class="Picture" src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
                 <br></br>
-                <div class="button">
+                <div class="buttonClass">
                 <button class="button4" onClick={() => DetailPage("/CarDetails/"+getD.regNumber)}>Reserve / Find out more</button>
                 </div>
                 <br></br>

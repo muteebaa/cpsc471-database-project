@@ -19,6 +19,9 @@ function RenterPage() {
     const [phoneNumber, setPhoNumber] = useState("");
     const [emailAddress, setEmail] = useState("");
     const [regNo, setRegNo] = useState("");
+    const [year, setYear] = useState("");
+    const [make, setMake] = useState("");
+    const [model, setModel] = useState("");
     const [image, setImage] = useState([]);
 
     const [fname,setFileName] = useState("");
@@ -33,8 +36,7 @@ function RenterPage() {
       Axios.post("http://localhost:3001/api/UserInfo", {
       username: auth.user
       }).then((response) => {
-        console.log(response.data)
-        console.log("userrrrr RENTER PAGE" + auth.user)
+
         setFName(response.data[0].FirstName);
         setLName(response.data[0].LastName);
         setPhoNumber(response.data[0].PhoneNumber);
@@ -67,10 +69,12 @@ function RenterPage() {
         username: auth.user
         }).then((response) => {
             setReservations(response.data);
-            console.log(response.data);
+            setRegNo(response.data.reg_number);
+            
         }
     );
 }
+  
 
  info();
  getReservations();
@@ -96,6 +100,10 @@ function RenterPage() {
         <div> PhoneNumber : {phoneNumber} </div>
         <div> Email : {emailAddress} </div>
       </div>
+      <div class="buttonClass">
+ 
+      <button onClick={carsForRent}>Reserve / Look for cars</button>
+      </div>
 
       <button onClick={handleView}> Change View </button>
       
@@ -103,7 +111,9 @@ function RenterPage() {
             {reservations.map( (getR)=>(
               <div className="reservationInfo">
                 <div> Reservation Details </div> 
-                <div> Cars Registration Number: {getR.reg_number} </div>
+                <div> Registration Number: {getR.reg_number} </div>
+                <div> Car: {getR.year} {getR.make} {getR.model} </div>
+                <div> PickUp Address: {getR.pickUp} </div>
                 <div> Reservation Number: {getR.reservationNumber} </div>
                 <div> Start date: {getR.start_date.substring(0, 10)} </div>
                 <div> End date: {getR.end_date.substring(0, 10)} </div> 
@@ -121,10 +131,7 @@ function RenterPage() {
       }
      
      
-      <div class="button">
- 
-      <button onClick={carsForRent}>Reserve / Look for cars</button>
-      </div>
+      
       </div>
       </div>
       </body>

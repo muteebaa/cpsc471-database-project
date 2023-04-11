@@ -114,7 +114,7 @@ useEffect(()=>{
             <div key={getD.regNumber}>
               <div class = "Car">
               <a>{getD.make} {getD.model}</a>
-              <div class="button">
+              <div class="buttonClass">
               <br></br>
                 <br></br>
                 </div>
