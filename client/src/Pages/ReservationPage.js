@@ -35,6 +35,8 @@ function ReservationPage() {
   const [cardExpiryDateError,setCardExpiryDateError] = useState("");
   const [dateError,setDateError] = useState("");
   const [pickUp,setPickup] = useState("");
+  const [cost,setCost] = useState("");
+  const [price,setPrice] = useState("0");
   
   const [ranges, setRanges] = useState([]);
 
@@ -57,6 +59,7 @@ function ReservationPage() {
             setMake(car.make)
             setModel(car.model)
             setPickup(car.pickupAddress)
+            setCost(car.price)
           }
         }
            
@@ -212,13 +215,15 @@ function ReservationPage() {
     <br></br>
     <div> Start Date: </div>
     <div class="Calendar">
-    <Calendar regNumber={state.car_regNo} sDate="start" availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setStartDate} setEnd={setEndDate}></Calendar>
+    <Calendar regNumber={state.car_regNo} sDate={"start"} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setStartDate} setEnd={setEndDate} setPrice={setPrice} cost={cost}></Calendar>
       </div>
       <br></br>
     <div> End Date: </div>
     <div class="Calendar">
       {startDate=="" ? <div style={{color:"white"}}>Please select start date.</div>:
-      <Calendar regNumber={state.car_regNo} sDate={startDate} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setEndDate} selectedStartDate={startDate} isDisabled="true">  </Calendar>
+      <div class="Calendar">
+      <Calendar regNumber={state.car_regNo} sDate={startDate} availableStart={availableStartDate} availableEnd={availableEndDate} setDate={setEndDate} selectedStartDate={startDate} setPrice={setPrice} cost={cost}>  </Calendar>
+      </div>
       }
     </div>
     <br></br>
@@ -231,6 +236,8 @@ function ReservationPage() {
     <br></br>
     <br></br>
     <div> Payment Details: </div>
+    <br></br>
+    <div>Total Cost: ${price}</div>
     <br></br>
     <label for='cardName'>Card Holder Name</label>
     <input class="Input" type='text' id='cardName' onChange={(e)=>{setCardName(e.target.value)}}/>

@@ -11,7 +11,10 @@ function Calendar(props){
     const min = props.availableStart;
     const max = props.availableEnd;
     const [date, setDate] = useState(new Date());
-
+    const current = new Date();
+    const date1 = `${current.getFullYear()}-${current.getMonth() + 1<10?`0${current.getMonth() + 1}`:`${current.getMonth() + 1}`}-${current.getDate()<10?`0${current.getDate()}`:`${current.getDate()-1}`}`;
+    const date2 = `${current.getFullYear()}-${current.getMonth() + 1<10?`0${current.getMonth() + 1}`:`${current.getMonth() + 1}`}-${current.getDate()<10?`0${current.getDate()}`:`${current.getDate()}`}`;  
+  
 
     const getReservations = () =>{
         Axios.post('http://localhost:3001/api/unavailableDates', {
@@ -25,42 +28,39 @@ function Calendar(props){
     const disableDates = date => {
         const s = new Date(props.availableStart);
         const e = new Date(props.availableEnd);
-        if (date < s || date > e) {
+        if (date < s || date > e || date < new Date(date2)) {
             return false;
         }
+        
         if (props.sDate == "start"){
-
-            for (let i = 0; i < prevReservations.length; i++) {
-                const start = new Date(prevReservations[i].start_date);
-                const end = new Date(prevReservations[i].end_date);
-                const nStart = new Date(props.sDate)
-                
-                if (date >= start  && date <= end) {
-                    return false;
-                }
-                
-            } 
+                for (let i = 0; i < prevReservations.length; i++) {
+                    const start = new Date(prevReservations[i].start_date);
+                    const end = new Date(prevReservations[i].end_date);  
+                    
+                    if (date >= start  && date <= end) {
+                        return false;
+                    }
+                } 
+        
             return true;  
         }
+
         else{
+            const nStart = new Date(props.sDate);
+            if (date< nStart ) {
+                return false;
+            }
+            
             for (let i = 0; i < prevReservations.length; i++) {
                 const start = new Date(prevReservations[i].start_date);
                 const end = new Date(prevReservations[i].end_date);
-                const nStart = new Date(props.sDate)
-                
-                if (date< nStart) {
-                    
+         
+                if(date >= start && start > nStart){
                     return false;
                 }
-                else if(date >= start && start > nStart){
-                    return false;
-                }
-                
-                
+   
             }
-
             return true;
-
         }
           
         
@@ -70,22 +70,28 @@ function Calendar(props){
         for (let i = 0; i < prevReservations.length; i++) {
             const start = new Date(prevReservations[i].start_date);
             const end = new Date(prevReservations[i].end_date);
-            console.log(start)
-            if (new Date(selected) < start  && check > start) {
-                console.log("we in here")     
+           
+            if (new Date(selected) < start  && check > start) {   
                 return false;
             }
             else{return true;}
         }     
         return true;
     };
+
     const handleDateChange = (date) => {
-       
-            props.setDate(date.toISOString().substring(0, 10));
-        
-        
-    }
-    const [startDate, setStartDate] = useState(new Date());
+            if(props.sDate =="start"){
+                props.setDate(date.toISOString().substring(0, 10));
+            }
+            else{
+                var one = new Date(props.sDate)
+                var two = new Date(date.toISOString().substring(0, 10))
+                var days = ((two-one)/86400000)+1; 
+                props.setPrice(days * props.cost)
+                props.setDate(date.toISOString().substring(0, 10));
+            }
+    };
+
     getReservations()
  
     return (
@@ -98,9 +104,6 @@ function Calendar(props){
                 placeholder="Select date"
                 className="test"
             />
-         
-            
-            {/* <DatePicker selected={startDate}  />                      */}
         </div>
     ) ;
 }
