@@ -117,6 +117,10 @@ function RegisterUser() {
                       navigate('/renter-page');
                   }
               }
+              else{
+                alert(response.data)
+              }
+
           });
 
     }
@@ -200,7 +204,7 @@ function RegisterUser() {
             (e) => {setPW(e.target.value);
           }}  
         />
-        <div style={{color: "red"}}>{pwError}</div>
+        <div style={{color: "red", margin:"0% 30%", textAlign:'center'}}>{pwError}</div>
 
         <div  class="Reg"> User Type </div>
         <select id="userType">

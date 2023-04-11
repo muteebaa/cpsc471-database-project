@@ -106,6 +106,7 @@ useEffect(()=>{
         </div>
         <div class="Cars">
       
+        
         {
           
           data.map( (getD)=>(
@@ -127,13 +128,22 @@ useEffect(()=>{
                 <button class="button4" onClick={() =>{ history(getD.regNumber); handleClick();}}>View reservations</button>
                
 
-                <div className='.res' >
+            
+                  
+                        <div className='.res' >
+                          {
+                reservations.length==0 ? <div>  <ReservationsPopup trigger={resPopup} setTrigger={setResPopup} reservations={reservations}>
+                <h1>Reservation</h1>
+                <div className="allReservations"> 
+                No reservations found.
+                </div></ReservationsPopup> </div>
+                :
                 <ReservationsPopup trigger={resPopup} setTrigger={setResPopup} reservations={reservations}>
                 <h1>Reservations</h1>
                 <div className="allReservations"> 
                 </div></ReservationsPopup>
                 
-                </div>
+                } </div>
                 <div id="overlay"></div>
                 
 

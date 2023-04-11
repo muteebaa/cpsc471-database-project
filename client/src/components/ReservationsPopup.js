@@ -7,7 +7,7 @@ function ReservationsPopup(props){
     return (props.trigger) ? (
         <div className="popup">
             <div className="inner">
-                <button className="close" onClick={()=>props.setTrigger(false)}>close</button>
+                <button className="close" onClick={()=>props.setTrigger(false)} > &#x2715; </button>
                 {props.children}
                 
                 {props.reservations.map( (getR)=>(
