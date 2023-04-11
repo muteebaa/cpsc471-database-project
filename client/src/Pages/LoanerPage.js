@@ -7,6 +7,7 @@ import { useAuth } from "./auth";
 import videoBG from "../styles/background12.mp4";
 
 import {BrowserRouter as Router, Switch, Route, Link, useNavigate, useParams} from 'react-router-dom';
+import { set } from "date-fns";
 
 
 function LoanerPage() {
@@ -31,6 +32,7 @@ function LoanerPage() {
     const [usernamee, setUsername] = useState("");
     const [carWash, setCarWash] = useState("");
     const [detail, setDetail] = useState("");
+    const [price, setPrice] = useState("0");
 
     
  
@@ -174,8 +176,12 @@ function LoanerPage() {
   function listingsPage(){
     navigate('/listings');
   }
-  function showHistory() {
-    navigate('/loaner-history');
+  function handlePlanSelection(e) {
+    setPremiumPlanValue(e.target.value);
+
+    if(e.target.value=="Detailing") setPrice('$10');
+    if(e.target.value=="Car_wash") setPrice('$10');
+    if(e.target.value=="Both") setPrice('$20');
   }
 
   return (
@@ -247,14 +253,15 @@ function LoanerPage() {
                               <>
                                 <p>Tired of washing and detailing your car? Choose our premium plan and let us handle your worries</p>
                                 <div> Plan: </div>
-                                <select class="Input" name="plan" id="plan" onChange={(e)=>{setPremiumPlanValue(e.target.value)}}>
+                                <select class="Input" name="plan" id="plan" onChange={(e)=>{handlePlanSelection(e) }}>
                                 <option value=""></option>
                                 <option value="Car_wash">Car Wash</option>
                                 <option value="Detailing">Detailing</option>
                                 <option value="Both">Both</option>
                                 </select>
                                 <div style={{color: "red"}}>{premiumPlanError}</div>
-                                <div> Payment Details: </div>
+                                <h2 style={{margin:"4% 0%"}}> Payment Details: </h2>
+                                <div> Total Cost: {price}</div>
                                 <label for='cardName'>Card Holder Name</label>
                                 <input class="Input" type='text' id='cardName' onChange={(e)=>{setCardName(e.target.value)}}/>
                                 <div style={{color: "red"}}>{cardNameError}</div>
