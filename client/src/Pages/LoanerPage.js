@@ -192,7 +192,7 @@ function LoanerPage() {
       {info()}
       {planInfo()}
     </div>
-    <video class="Video" src={videoBG} autoPlay loop playsInline/>
+    <video class="Video" src={videoBG} autoPlay muted loop playsInline/>
     <Nav></Nav>
 
     <div class="LoanerPage">

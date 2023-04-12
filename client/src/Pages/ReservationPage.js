@@ -202,7 +202,7 @@ function ReservationPage() {
   // }
   return (
     <body>
-    <video class="Video" src={videoBG} autoPlay loop playsInline/>
+    <video class="Video" src={videoBG} autoPlay muted loop playsInline/>
     <Nav></Nav>
     <div class="HomePage">
     <div class="Page2">

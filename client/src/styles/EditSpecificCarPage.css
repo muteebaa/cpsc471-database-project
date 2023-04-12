@@ -41,10 +41,10 @@ img {
 }
 
 .PageInfoAll{
-    display: flex;
+     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     outline: 0.1rem solid white;
     box-shadow: 0 0 20px #9ecaed;
@@ -57,10 +57,10 @@ img {
 }
 
 .carInfoAll{
-    /* width: 45%; */
-    display: flex;
+     width: 45%; 
+    /* display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 5px; */
 
 }
 

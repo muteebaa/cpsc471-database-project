@@ -101,7 +101,7 @@ function EditSpecificCarPage() {
 
     <body> 
 
-      <video class="Video" src={videoBG} autoPlay loop playsInline/>
+      <video class="Video" src={videoBG} autoPlay muted loop playsInline/>
       
       <Nav></Nav> 
     <div class="HomePage">
@@ -112,28 +112,28 @@ function EditSpecificCarPage() {
         </div> 
         <div class="PageInfoAll">
         <div class="carInfoAll">
-        <div class="Registraion Number">Registration Number : {regNumber}</div>
- 
-       <div class="Make">Make : {make}</div>
- 
-       <div class="Model">Model : {model}</div>
-       <div class="Year">Year : {year}</div>
-       <div class="Type">Type : {type}</div>
-       <div class="Colour">Colour : {colour}</div>
-       <div class="Features">Features : {features}</div>
-       <div class="Pickup Address">Pickup Address : {address}</div>
-       <div class="price">Price : {price} per day</div>
-       <div class="Description">Description : {description}</div>
-       <div class="Recalls">Number of pending recalls : {recalls}</div>
-       <div class="Status">The car has a {status} status</div>
-       <div class="Damage">Any damage on the car : {damage}</div>
-       <div class="CurrentStartDate">Current Start Date : {startDate}</div>
-       <div class="Damage">Current End Date : {endDate}</div>
-       <div class="EndDate">
-            Extended End Date:
-            <input class="Input" type="date" placeholder="EndDate" name="EndDate" min={endDate}  onChange={(e)=>{setExtendedEndDate(e.target.value)}} />
-            
-        </div>
+          <div class="Registraion Number">Registration Number : {regNumber}</div>
+  
+        <div class="Make">Make : {make}</div>
+  
+        <div class="Model">Model : {model}</div>
+        <div class="Year">Year : {year}</div>
+        <div class="Type">Type : {type}</div>
+        <div class="Colour">Colour : {colour}</div>
+        <div class="Features">Features : {features}</div>
+        <div class="Pickup Address">Pickup Address : {address}</div>
+        <div class="price">Price : {price} per day</div>
+        <div class="Description">Description : {description}</div>
+        <div class="Recalls">Number of pending recalls : {recalls}</div>
+        <div class="Status">The car has a {status} status</div>
+        <div class="Damage">Any damage on the car : {damage}</div>
+        <div class="CurrentStartDate">Current Start Date : {startDate}</div>
+        <div class="Damage">Current End Date : {endDate}</div>
+        <div class="EndDate">
+              Extended End Date:
+              <input class="Input" type="date" placeholder="EndDate" name="EndDate" min={endDate}  onChange={(e)=>{setExtendedEndDate(e.target.value)}} />
+              
+          </div>
        <br></br>
        
 
