@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Recursive&display=swap');
 
 *{
     margin: 0;
@@ -13,8 +15,14 @@ Nav {
 }
 
 
+body {
+   font-family: 'Nanum Gothic', sans-serif;
+  font-weight: bolder;
+}
+
+
 .HomePage {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Nanum Gothic', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100%;
     height: 90vh;
     position: relative;
@@ -49,7 +57,7 @@ Nav {
 
 
 .Appp{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Recursive', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-size: cover;
     color: white;
     gap: 3rem;
@@ -64,12 +72,30 @@ Nav {
 }
 
 .Appp a{
+    font-size: 15px;
+    border-style: solid;
+    border-color: rgb(57, 50, 50);
+    padding: 6px;
+    border-radius: 10px;
+    background-color: rgb(25, 23, 32);
     color: inherit;
     text-decoration: none; 
+    text-transform: uppercase;
+    
 }
 
 .Appp a:hover {
-    background-color: #777;
+    /* background-color: #777; */
+    font-size: larger;
+    text-shadow:
+      0 0 7px #c9c6c6,
+      0 0 10px #c9c6c6,
+      0 0 21px #c9c6c6,
+      0 0 42px rgb(25, 23, 32),
+      0 0 82px rgb(25, 23, 32),
+      0 0 92px rgb(25, 23, 32),
+      0 0 102px rgb(25, 23, 32),
+      0 0 151px rgb(25, 23, 32);
 }
 
 
@@ -78,15 +104,16 @@ Nav {
     position: relative;
     font-family: 'Neonderthaw', Brush Script MT, Brush Script Std, cursive;
     font-size: 300%;
+    margin: 10% 0%;
     text-shadow:
       0 0 7px #c9c6c6,
       0 0 10px #c9c6c6,
       0 0 21px #c9c6c6,
-      0 0 42px #5271ff,
-      0 0 82px #5271ff,
-      0 0 92px #5271ff,
-      0 0 102px #5271ff,
-      0 0 151px #5271ff;
+      0 0 42px #450606,
+      0 0 82px #450606,
+      0 0 92px #450606,
+      0 0 102px #450606,
+      0 0 151px #450606;
       animation: pulsate 0.6s ease-in-out infinite alternate;     
 }
 
@@ -98,11 +125,11 @@ Nav {
         0 0 4px #c9c6c6,
         0 0 11px #c9c6c6,
         0 0 19px #c9c6c6,
-        0 0 40px #5271ff,
-        0 0 80px #5271ff,
-        0 0 90px #5271ff,
-        0 0 100px #5271ff,
-        0 0 150px #5271ff;
+        0 0 40px #450606,
+        0 0 80px #450606,
+        0 0 90px #450606,
+        0 0 100px #450606,
+        0 0 150px #450606;
     
     }
     
@@ -112,11 +139,11 @@ Nav {
       0 0 4px #fff,
       0 0 10px #fff,
       0 0 18px #fff,
-      0 0 38px #5271ff,
-      0 0 73px #5271ff,
-      0 0 80px #5271ff,
-      0 0 94px #5271ff,
-      0 0 140px #5271ff;
+      0 0 38px #450606,
+      0 0 73px #450606,
+      0 0 80px #450606,
+      0 0 94px #450606,
+      0 0 140px #450606;
   
   }
 }
@@ -134,13 +161,4 @@ Nav {
     padding: 5%;
     background-size: cover;
     overflow: scroll;
-}
-
-.App a{
-    color: inherit;
-    text-decoration: none; 
-}
-
-.App a:hover {
-    background-color: #777;
 }
