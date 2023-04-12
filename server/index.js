@@ -147,7 +147,7 @@ app.post('/api/DeleteReviews', (req, res)=>{
     const usernameDelete = req.body.usernameDelete;
     const regNumber = req.body.regNumber;
     console.log(usernameDelete)
-    db.query("DELETE FROM review WHERE username = ? AND car_reg", [usernameDelete, regNumber], (err, result)=>{
+    db.query("DELETE FROM review WHERE username = ? AND car_reg = ?", [usernameDelete, regNumber], (err, result)=>{
         if(err) throw err;
         else console.log("worked")
     });
