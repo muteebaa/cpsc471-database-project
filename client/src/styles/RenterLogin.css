@@ -29,6 +29,7 @@ button{
 
 .Appp button:hover {
     background-color: #777;
+    cursor: pointer;
 }
 
 .link{

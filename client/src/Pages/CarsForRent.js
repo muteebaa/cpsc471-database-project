@@ -307,14 +307,14 @@ function CarsForRent() {
             
             <div key={getD.regNumber}>
               <div class = "Car">
-              <a>{getD.make} {getD.model}</a>
+              <h2>{getD.make} {getD.model}</h2>
               <br></br>
-                <div class="Price">Price: {  getD.price  } per day</div>
+                <div class="Price">Price: ${  getD.price  } per day</div>
                 <br></br>
                 <div class="Picture"><strong></strong><img class="Picture" src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
                 <br></br>
                 <div class="buttonClass">
-                <button class="button4" onClick={() => DetailPage("/CarDetails/"+getD.regNumber)}>Reserve / Find out more</button>
+                <button class="" onClick={() => DetailPage("/CarDetails/"+getD.regNumber)}>Reserve / Find out more</button>
                 </div>
                 <br></br>
 

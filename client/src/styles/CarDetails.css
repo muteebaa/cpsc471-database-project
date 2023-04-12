@@ -71,13 +71,13 @@ Nav{
 
 }
 
-.buttonClass{
+/* .buttonClass{
     margin-left: 10%;
     display: flex;
     color: white;
     text-decoration: none;
      
-}
+} */
 
 .button1, .button2, .button3{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -92,6 +92,7 @@ Nav{
 
 button:hover {
     background-color: #777;
+    cursor: pointer;
 }
 
 .content{
@@ -122,15 +123,46 @@ button:hover {
     min-height: 0px;
 }
 
+
 .comment{
+    display: flex;
+    flex-direction: column;
     background-color: transparent;
-    padding: 5px;
+    padding: 0px;
     margin: 0.5% 15%;
-    outline: 0.1rem solid white;
+    outline: 0px solid rgb(14, 32, 30);
+    
+    border-radius: 10px;
+}
+.leavecomment{
+    background-color: #253034;
+    padding: 0.6% 0% 1.5% 2%;
+    margin: 5% 15%;
+    border-radius: 10px;
+    
+    outline: 0px solid rgb(14, 32, 30);
+
+}
+.commenter h2{
+    font-family: monospace;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #141414;
+    color:  #c1c1c1;
+    padding: 0.6% 0% 1.5% 2%;
+    font-size: 16px;
 }
 
+.commentInfo{
+    background-color: rgba(226, 226, 226, 0.1);
+    border-radius: 0px 0px 10px 10px;
+    padding: 2% 0% 2% 4%;
+}
 .centerAlign{
     text-align: center;
     
 }
 
+.commentInfo button{
+    background-color: rgb(22, 21, 21);
+    box-shadow: none;
+}

@@ -29,7 +29,7 @@ function Home() {
       <h1 class="line-1"> RentMyRide </h1>
       
       <br></br>
-      
+      <div className="links">
        <nav>
         <a class="link" href="/loaner-login"> Loaner Login </a>
       </nav> 
@@ -45,6 +45,7 @@ function Home() {
       <nav>
         <a class="link" href="/CarsForRent"> Search for cars as a guest </a>
       </nav>  
+      </div>
       </div>
 
     </div>

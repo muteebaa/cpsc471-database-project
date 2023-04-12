@@ -42,7 +42,7 @@ var upload = multer({
 
 const db = mysql.createPool({
     host: "localhost",
-    user: "sqluser",
+    user: "root",
     password: "password",
     database: "rentmyridedb",
     connectionLimit: 10

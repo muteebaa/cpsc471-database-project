@@ -8,6 +8,9 @@
     
 }
 
+.links{
+    font-weight: bolder;
+}
 
 Nav {
     width: 100%;
@@ -85,7 +88,7 @@ body {
 
 .Appp a:hover {
     /* background-color: #777; */
-    font-size: larger;
+    cursor: pointer;
     text-shadow:
       0 0 7px #c9c6c6,
       0 0 10px #c9c6c6,
@@ -113,7 +116,7 @@ body {
       0 0 92px #450606,
       0 0 102px #450606,
       0 0 151px #450606;
-      animation: pulsate 0.6s ease-in-out infinite alternate;     
+      /* animation: pulsate 0.6s ease-in-out infinite alternate;      */
 }
 
 @keyframes pulsate {

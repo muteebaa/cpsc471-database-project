@@ -94,18 +94,19 @@ function RenterPage() {
       </div>
     
       <div class="Information">
-        <h1 class="Heading"> About: </h1>
+        <h2 class="Heading"> About </h2>
         <div> First Name : {firstName} </div>
         <div> Last Name : {lastName} </div>
         <div> PhoneNumber : {phoneNumber} </div>
         <div> Email : {emailAddress} </div>
       </div>
-      <div class="buttonClass">
+      <div class="buttonClass2">
  
-      <button onClick={carsForRent}>Reserve / Look for cars</button>
+        <button onClick={carsForRent}>Reserve / Look for cars</button>
+        <button onClick={handleView}> Change View </button>
+
       </div>
 
-      <button onClick={handleView}> Change View </button>
       
       {list ? <div> 
             {reservations.map( (getR)=>(
@@ -116,9 +117,7 @@ function RenterPage() {
                 <div> PickUp Address: {getR.pickUp} </div>
                 <div> Reservation Number: {getR.reservationNumber} </div>
                 <div> Start date: {getR.start_date.substring(0, 10)} </div>
-                <div> End date: {getR.end_date.substring(0, 10)} </div> 
-
-                <br></br>        
+                <div> End date: {getR.end_date.substring(0, 10)} </div>        
               </div>
             ))} 
       </div> :

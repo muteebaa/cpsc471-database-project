@@ -37,14 +37,25 @@
 
 button{
     
-    padding: 0.4%;
-    color: white;
-    background-color: #333;
-    border-radius: 4px;
-    border-style: solid;
+    margin: 1%;
+    padding: 1%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(32, 44, 54);
+    border-radius: 5px;
+    /* box-shadow: 
+    0 0 7px #c7a2a2,
+    0 0 42px rgb(25, 23, 32),
+    0 0 82px rgb(25, 23, 32),
+    0 0 92px rgb(25, 23, 32),
+    0 0 102px rgb(25, 23, 32),
+    0 0 151px rgb(25, 23, 32);; */
     
 }
 
+button::hover{
+    background-color: rgb(32, 44, 54);
+    cursor: pointer;
+}
 
 
 .link{

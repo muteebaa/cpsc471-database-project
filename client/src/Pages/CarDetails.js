@@ -186,29 +186,34 @@ function CarDetails(props) {
       <div class="content">
       <div class="PageInfoAll">
         <div class="carInfoAll">
-       <div class="Registraion Number">Registration Number : {regNumber}</div>
-       <div class="Make">Make : {make}</div>
-       <div class="Model">Model : {model}</div>
-       <div class="Year">Year : {year}</div>
-       <div class="Type">Type : {type}</div>
-       <div class="Colour">Colour : {colour}</div>
-       <div class="Features">Features : {features}</div>
-       <div class="Pickup Address">Pickup Address : {address}</div>
-       <div class="price">Price : {price} per day</div>
-       <div class="Recalls">Number of pending recalls : {recalls}</div>
-       <div class="Status">The car has a {status} status</div>
-       <div class="Damage">Any damage on the car : {damage}</div>
-       <div class="Description">Description : {description}</div>
-       </div>
-       <div class="picture">
-       <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
-       </div>
+          <div class="Registraion Number">Registration Number : {regNumber}</div>
+          <div class="Make"> Make: {make}</div>
+          <div class="Model">Model: {model}</div>
+          <div class="Year">Year: {year}</div>
+          <div class="Type">Type: {type}</div>
+          <div class="Colour">Colour: {colour}</div>
+          <div class="Features">Features: {features}</div>
+          <div class="Pickup Address">Pickup Address : {address}</div>
+          <div class="price">Price: {price} per day</div>
+          <div class="Recalls">Number of pending recalls: {recalls}</div>
+          <div class="Status">The car has a {status} status</div>
+          <div class="Damage">Any damage on the car: {damage}</div>
+          <div class="Description">Description: {description}</div>
+          </div>
+          
+            <div class="Picture"><strong></strong><img src={require(`../imgs/${  photo  }`)} width="300" height="215" /> </div>
+        
+       
+       
+       
        </div>
       {renter ? 
         <button onClick={() => { reservation() }}> Make Reservation </button> 
         :
         <div></div>
       }
+       <br></br>
+
       <div className="reviewsection">
         <div class="ReviewHeading">
         <h1>Reviews </h1>
@@ -217,23 +222,27 @@ function CarDetails(props) {
         {allReviews.map( (getR)=>(
                   
           <div class="comment">
-            <div> Renter: {  getR.username  } </div> 
-            <div> Location Rating: {  getR.location_rating  } </div> 
-            <div> Condition Rating: {  getR.consdition_rating  } </div> 
-            <div> comment: {  getR.writting_comments  } </div> 
-
-            <div>     
+            <div className="commenter"> 
+              <h2> @{  getR.username  } </h2> 
+            </div>
+            <div className="commentInfo">
+              <div> Location Rating: {  getR.location_rating  } </div> 
+              <div> Condition Rating: {  getR.consdition_rating  } </div> 
+              <div> Comment: {  getR.writting_comments  } </div>
+              <div>     
               {
                   auth.user === getR.username && <button onClick={() => deleteComment(getR.username)}>Delete Comment</button>
               } 
             </div>
+            </div>
+           
            
           </div>
                 
                   
         ))} 
         </div>
-
+           
           {auth.user ?
               renter ?
                 prevRenter ?
@@ -246,7 +255,7 @@ function CarDetails(props) {
                     : 
                     <div> 
                       <div class="ReviewHeading">
-                      <h1>Leave A Review </h1>
+                      
                       </div>
                       <ReviewForm cond={setConditionRate} loc={setLocationRate} comment={setComment} sub={setRevState}>
                       </ReviewForm> 

@@ -56,7 +56,7 @@ function LoanerLogin() {
     
     <div class="ApppL"> 
  
-      <h1> Loaner Login </h1>
+      <h1 class="Heading"> Loaner Login </h1>
     
       <br></br> 
 

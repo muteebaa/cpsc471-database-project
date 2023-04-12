@@ -54,7 +54,7 @@ function RenterLogin() {
     <div class="HomePage">
 
     
-    <div class="Appp">  
+    <div class="ApppL">  
       <h1 class="Heading"> Renter Login </h1>
 
       <br></br>

@@ -195,7 +195,7 @@ function LoanerPage() {
     <video class="Video" src={videoBG} autoPlay loop playsInline/>
     <Nav></Nav>
 
-    <div class="HomePage">
+    <div class="LoanerPage">
     <div class="Page2">
     
 
@@ -203,8 +203,9 @@ function LoanerPage() {
         <h1 class="Heading"> Loaner Home Page </h1>
         <div> Welcome {auth.user} </div>
       </div>
+      <div className="fullpage">
       <div class="Information">
-        <h1 class="Heading"> About: </h1>
+        <h2 class="Heading"> About </h2>
         <div> First Name : {firstName} </div>
         <div> Last Name : {lastName} </div>
         <div> PhoneNumber : {phoneNumber} </div>
@@ -213,26 +214,26 @@ function LoanerPage() {
     
       </div>
       <div class="buttonClass">
-        <button class="button1" onClick={addCarPage}>Add Car</button>
-        <button class="button2" onClick={listingsPage}>View Listings</button>
+        <button  onClick={addCarPage}>Add Car</button>
+        <button  onClick={listingsPage}>View Listings</button>
         
       </div>
       
       
       <div class="premiumplan">
-      <h1 class="Heading"> Premium Plan: </h1>     
+      <h2 class="Heading"> Premium Plan </h2>     
             {
                 (() => {
                     if(`${premiumPlan}`==="true") {
                             return (
                               <>
                                 <p>Your Premium Plan is active.</p>
-                                <p><strong class="Heading1">Services:</strong></p>
-
-                                  <p><strong class="Heading1">Detailing:</strong> {detail}</p>
+                                <br></br>
+                
+                                <p><strong class="Heading1">Detailing:</strong> {detail}</p>
                                   <p><strong class="Heading1">Car Wash:</strong> {carWash}</p>
 
-
+                                <br></br>
                                 <p>Please visit one of our following locations to use your active services</p>
 
                                   <p><strong class="Heading1">Location: </strong>4624 Valiant Dr NW, Calgary, AB T3A 0X9 <strong> Time: </strong> 8:00 AM - 7:00 PM</p>
@@ -240,7 +241,7 @@ function LoanerPage() {
                                   <p><strong class="Heading1">Location: </strong>150 Citadel Way NW, Calgary, AB T3G 5C1 <strong> Time: </strong> 8:00 AM - 5:00 PM</p>
                                   <p><strong class="Heading1">Location: </strong>177 Country Hills Blvd NW, Calgary, AB T3K 5M6 <strong> Time: </strong> 10:00 AM - 7:00 PM</p>
 
-
+                                  <br></br>
                                 <p>Your plan will automatically renew next month unless you cancel it.</p>
                                 
                                 <p>To cancel your plan, please click the cancel button.</p>
@@ -252,15 +253,16 @@ function LoanerPage() {
                             return (
                               <>
                                 <p>Tired of washing and detailing your car? Choose our premium plan and let us handle your worries</p>
-                                <div> Plan: </div>
+                                <br></br>
+                                <div> Plan:  
                                 <select class="Input" name="plan" id="plan" onChange={(e)=>{handlePlanSelection(e) }}>
                                 <option value=""></option>
                                 <option value="Car_wash">Car Wash</option>
                                 <option value="Detailing">Detailing</option>
                                 <option value="Both">Both</option>
-                                </select>
+                                </select> </div>
                                 <div style={{color: "red"}}>{premiumPlanError}</div>
-                                <h2 style={{margin:"4% 0%"}}> Payment Details: </h2>
+                                <h3 style={{margin:"5% 0% 0% 0%"}}> Payment Details </h3>
                                 <div> Total Cost: {price}</div>
                                 <label for='cardName'>Card Holder Name</label>
                                 <input class="Input" type='text' id='cardName' onChange={(e)=>{setCardName(e.target.value)}}/>
@@ -280,7 +282,7 @@ function LoanerPage() {
                             )
                         }
                 })()  
-            }  
+            }  </div>
         </div>
         </div>
         </div>

@@ -15,7 +15,14 @@
     font-size: 150%;
 }
 
-
+.buttonClass2{
+    margin-left: 10%;
+    padding: 0px 0px 0px 16px;
+    display: flex;
+    color: white;
+    text-decoration: none;
+     
+}
 .Page{
     background-size: cover;
     font-family: Verdana;
@@ -32,7 +39,7 @@
 
 
 .Information{
-    color: lightgray;
+    color: white;
     gap: 3rem;
     padding: 1rem;
     margin-left: 10%;

@@ -1,28 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Recursive&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     
     
 }
-.Heading{
-    font-family: Brush Script MT, Brush Script Std, cursive;
+h1.Heading{
+    font-family: 'Recursive';
+    text-transform: uppercase;
+    
+    /* text-shadow: */
+    /* 0 0 7px #c9c6c6,
+    0 0 10px #c9c6c6,
+    0 0 21px #c9c6c6,
+    0 0 42px rgb(25, 23, 32),
+    0 0 82px rgb(25, 23, 32),
+    0 0 92px rgb(25, 23, 32),
+    0 0 102px rgb(25, 23, 32),
+    0 0 151px rgb(25, 23, 32); */
+    /* font-family: Brush Script MT, Brush Script Std, cursive; */
 }
-
-.Heading1{
-    font-family: Brush Script MT, Brush Script Std, cursive;
-    font-size: 150%;
+h2.Heading{
+    font-family: 'Recursive';
+    /* text-transform: uppercase; */
+}
+h3{
+    font-family: 'Recursive';
+}
+.premiumplan .Heading1{
+    font-family: 'Recursive';
+    font-size: 16px;
 }
 
 Nav{
     width: 100%;
+   
 }
 
 
 
 .Page2{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     background-size: cover;
-    font-family: Verdana;
+    /* font-family: Verdana; */
     color: white;
     display: flexbox;
     align-items: center;
@@ -37,13 +60,11 @@ Nav{
 
 
 .Information{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family: "Recursive", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     color: white;
     gap: 3rem;
     padding: 1rem;
-    margin-left: 10%;
-
-    
+    margin-left: 10%;    
 }
 
 .Input{
@@ -52,7 +73,7 @@ Nav{
 }
 
 .premiumplan{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     color: white;
     gap: 3rem;
     padding: 1rem;
@@ -63,7 +84,7 @@ Nav{
 
 .Welcome{
     color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,27 +92,29 @@ Nav{
 
 }
 
-.buttonClass{
+.LoanerPage .buttonClass{
     margin-left: 10%;
+    padding: 0px 0px 0px 16px;
     display: flex;
     color: white;
     text-decoration: none;
      
 }
 
-.button1, .button2, .button3{
+button{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 1%;
-    padding: 0.3%;
-    color: lightgray;
-    background-color: #333;
-    border-radius: 12px;
-    border-style: solid;
+    padding: 1%;
+    color: rgb(255, 255, 255);
+    background-color: #66120c;
+    border-radius: 5px;
+    /* border-style: solid; */
     
 }
 
 button:hover {
     background-color: #777;
+    cursor: pointer;
 }
 
 
@@ -100,6 +123,8 @@ button:hover {
 .App a{
     color: inherit;
     text-decoration: none;
-    
-    
+}
+
+h1{
+    font-family: 'Recursive';
 }

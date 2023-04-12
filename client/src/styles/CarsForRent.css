@@ -103,7 +103,7 @@ Nav {
      
 }
 
-.button4{
+/* .button4{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 1%;
     padding: 0.1rem;
@@ -112,17 +112,18 @@ Nav {
     border-radius: 6px;
     border-style: solid;
     
-}
+} */
 
 .button .button4:hover {
-    background-color: #333;
+    background-color: #777;
+    cursor: pointer;
 }
 
-.Price{
+.Car .Price{
     color: white;
     width: max-content;
-    background-color: #777;
-    border-radius: 8px;
+    background-color: #1c3740;
+    border-radius: 2px;
     padding: 0.2rem;
 }
 

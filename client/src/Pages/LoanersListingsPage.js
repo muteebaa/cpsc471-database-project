@@ -114,19 +114,18 @@ useEffect(()=>{
             
             <div key={getD.regNumber}>
               <div class = "Car">
-              <a>{getD.make} {getD.model}</a>
+              <h2>{getD.make} {getD.model}</h2>
               <div class="buttonClass">
               <br></br>
                 <br></br>
                 </div>
                 <div class="Picture"><strong></strong><img class="Picture" src={require(`../imgs/${  getD.photo  }`)} width="300" height="215" /> </div>
                 <br></br>
-                <button class="button4" onClick={() => DetailPage("/editYourCar/"+getD.regNumber)}>Edit Listing</button>
-                <button class="button4" onClick={() => DetailPage("/CarDetails/"+getD.regNumber)}>View Live Listing</button>
-
-              
-                <button class="button4" onClick={() =>{ history(getD.regNumber); handleClick();}}>View reservations</button>
-               
+                <div className="LLbuttons">
+                <button  onClick={() => DetailPage("/editYourCar/"+getD.regNumber)}>Edit Listing</button>
+                <button  onClick={() => DetailPage("/CarDetails/"+getD.regNumber)}>View Live Listing</button>
+                <button onClick={() =>{ history(getD.regNumber); handleClick();}}>View reservations</button>
+                </div>
 
             
                   

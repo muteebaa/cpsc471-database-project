@@ -63,6 +63,7 @@ Nav {
 .Car{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     outline: 0.1rem solid white;
+    box-shadow: 0 0 20px #9ecaed;
     color: white;
     padding: 1rem;
     border-radius: 4px;
@@ -70,9 +71,11 @@ Nav {
     
 }
 
-.Car a{
+.Car h2{
+    font-family: 'Recursive', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
     color: white;
-    background-color: #777;
+    background-color: #0a263e;
     padding: 0.2rem;
     border-radius: 8px;
     text-decoration: none;
@@ -80,11 +83,17 @@ Nav {
 }
 
 .button{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: 10%;
     display: flex;
     color: white;
     text-decoration: none;
      
+}
+.LLbuttons{
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
 }
 
 .button4{
@@ -100,6 +109,7 @@ Nav {
 
 .button .button4:hover {
     background-color: #333;
+    cursor: pointer;
 }
 
 .Price{
@@ -147,8 +157,15 @@ Nav {
 
 
 .reservationInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
     outline: 0.1rem solid white;
     padding: 2%;
+    margin-top: 5%;
+    margin-left: 12%;
+    box-shadow: 0 0 20px #9ecaed;
     background-color: transparent;
     color: white;
 }
